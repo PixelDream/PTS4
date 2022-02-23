@@ -1,14 +1,10 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
-import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
-    show OperationSerializer;
-import 'package:socialnetwork/graphql/RequestResetPassword.data.gql.dart'
-    show GRequestResetPasswordData;
-import 'package:socialnetwork/graphql/RequestResetPassword.req.gql.dart'
-    show GRequestResetPasswordReq;
-import 'package:socialnetwork/graphql/RequestResetPassword.var.gql.dart'
-    show GRequestResetPasswordVars;
+import 'package:gql_code_builder/src/serializers/operation_serializer.dart' show OperationSerializer;
+import 'package:socialnetwork/graphql/RequestResetPassword.data.gql.dart' show GRequestResetPasswordData;
+import 'package:socialnetwork/graphql/RequestResetPassword.req.gql.dart' show GRequestResetPasswordReq;
+import 'package:socialnetwork/graphql/RequestResetPassword.var.gql.dart' show GRequestResetPasswordVars;
 import 'package:socialnetwork/graphql/schema.schema.gql.dart'
     show
         GCommentConnectInput,
@@ -181,12 +177,10 @@ import 'package:socialnetwork/graphql/schema.schema.gql.dart'
         GUserUniqueWhere,
         GUserUpdateInput,
         GUserWhere;
-import 'package:socialnetwork/graphql/sign_in.data.gql.dart'
-    show GSignInData, GSignInData_signIn;
+import 'package:socialnetwork/graphql/sign_in.data.gql.dart' show GSignInData, GSignInData_signIn;
 import 'package:socialnetwork/graphql/sign_in.req.gql.dart' show GSignInReq;
 import 'package:socialnetwork/graphql/sign_in.var.gql.dart' show GSignInVars;
-import 'package:socialnetwork/graphql/sign_up.data.gql.dart'
-    show GSignUpData, GSignUpData_signUp;
+import 'package:socialnetwork/graphql/sign_up.data.gql.dart' show GSignUpData, GSignUpData_signUp;
 import 'package:socialnetwork/graphql/sign_up.req.gql.dart' show GSignUpReq;
 import 'package:socialnetwork/graphql/sign_up.var.gql.dart' show GSignUpVars;
 

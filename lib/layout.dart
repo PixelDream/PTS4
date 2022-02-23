@@ -163,6 +163,7 @@ class LayoutState extends State<Layout> {
   }
 
   double tempLast = 0;
+
   _updateNavWidget() {
     final double pixels = _controller.position.pixels;
 

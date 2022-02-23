@@ -154,7 +154,7 @@ class ForgetPwdState extends State<ForgetPwd> with TickerProviderStateMixin {
                           hintText: "Adresse mail",
                           hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
                           filled: true,
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
                           fillColor: const Color(0xff1c4969),
                           contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                           isDense: true,

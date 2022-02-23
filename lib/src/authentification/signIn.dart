@@ -116,7 +116,7 @@ class SignInState extends State<SignIn> {
                               hintText: "Adresse mail ou nom d'utilisateur",
                               hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
                               filled: true,
-                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(100), borderSide: BorderSide.none),
                               fillColor: const Color(0xff1c4969),
                               contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                               isDense: true,
@@ -141,7 +141,7 @@ class SignInState extends State<SignIn> {
                               hintText: "Mot de passe",
                               hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
                               filled: true,
-                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(100), borderSide: BorderSide.none),
                               fillColor: const Color(0xff1c4969),
                               contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                               isDense: true,
@@ -189,9 +189,7 @@ class SignInState extends State<SignIn> {
                           style: ElevatedButton.styleFrom(
                             primary: const Color(0xffFD5F00),
                             onPrimary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32.0),
-                            ),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                           ),
                           child: !_isLoading
                               ? const Text("SE CONNECTER", style: TextStyle(color: Colors.white))

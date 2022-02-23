@@ -14,25 +14,23 @@ class CommentsList extends StatefulWidget {
 }
 
 class CommentsListState extends State<CommentsList> {
-  final int _itemCount = 20;
+  final int _itemCount = 15;
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-
-    return SizedBox(
-      height: size.height - 140 - 300,
+    return Expanded(
       child: ListView.builder(
         physics: ClampingScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemCount: _itemCount,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: index == (_itemCount - 1) ? EdgeInsets.only(bottom: 110) : EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(bottom: 10),
             child: CommentItem(
               image: 'assets/images/user.jpg',
               fullName: "John Doe",
-              text: "@johndoe",
+              text:
+                  "Dum haec in oriente aguntur, Arelate hiemem agens Constantius post theatralis ludos atque circenses ambitioso editos apparatu diem sextum idus Octobres, qui imperii eius annum tricensimum.",
               likeCount: index,
               isLiked: false,
             ),
