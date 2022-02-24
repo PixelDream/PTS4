@@ -81,21 +81,21 @@ class ForgetPwdState extends State<ForgetPwd> with TickerProviderStateMixin {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xff13334C),
+      backgroundColor: Color(0xff13334C),
       appBar: AppBar(
         brightness: Brightness.light,
-        backgroundColor: const Color(0xff13334C),
+        backgroundColor: Color(0xff13334C),
         bottom: PreferredSize(
             child: Container(
               color: Colors.white,
               height: 1.0,
             ),
-            preferredSize: const Size.fromHeight(4.0)),
+            preferredSize: Size.fromHeight(4.0)),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios,
               size: 20,
               color: Colors.white,
@@ -108,7 +108,7 @@ class ForgetPwdState extends State<ForgetPwd> with TickerProviderStateMixin {
           key: _formKey,
           child: Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 50,
               ),
               Column(
@@ -135,7 +135,7 @@ class ForgetPwdState extends State<ForgetPwd> with TickerProviderStateMixin {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
                   children: [
                     SizedBox(
@@ -149,19 +149,19 @@ class ForgetPwdState extends State<ForgetPwd> with TickerProviderStateMixin {
                           return null;
                         },
                         controller: _emailField,
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           hintText: "Adresse mail",
-                          hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                          hintStyle: TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
                           filled: true,
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
-                          fillColor: const Color(0xff1c4969),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                          fillColor: Color(0xff1c4969),
+                          contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                           isDense: true,
                         ),
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 50,
                     ),
                     Column(
@@ -171,14 +171,14 @@ class ForgetPwdState extends State<ForgetPwd> with TickerProviderStateMixin {
                             if (_formKey.currentState!.validate() && !_isLoading) _forgetPassword();
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: const Color(0xffFD5F00),
+                            primary: Color(0xffFD5F00),
                             onPrimary: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
                             ),
                           ),
                           child: !_isLoading
-                              ? const Text("RECHERCHER", style: TextStyle(color: Colors.white))
+                              ? Text("RECHERCHER", style: TextStyle(color: Colors.white))
                               : Countdown(
                                   animation: StepTween(
                                     begin: time, // THIS IS A USER ENTERED NUMBER

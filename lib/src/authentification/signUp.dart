@@ -146,7 +146,7 @@ class SignUPState extends State<SignUP> {
                                       style: const TextStyle(color: Colors.white),
                                       decoration: InputDecoration(
                                         hintText: "Prénom",
-                                        hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                                        hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
                                         filled: true,
                                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
                                         fillColor: const Color(0xff1c4969),
@@ -172,7 +172,7 @@ class SignUPState extends State<SignUP> {
                                       style: const TextStyle(color: Colors.white),
                                       decoration: InputDecoration(
                                         hintText: "Nom",
-                                        hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                                        hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
                                         filled: true,
                                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
                                         fillColor: const Color(0xff1c4969),
@@ -204,7 +204,7 @@ class SignUPState extends State<SignUP> {
                                     style: const TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
                                       hintText: "Nom d'utilisateur",
-                                      hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                                      hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
                                       filled: true,
                                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
                                       fillColor: const Color(0xff1c4969),
@@ -229,7 +229,7 @@ class SignUPState extends State<SignUP> {
                                   style: const TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
                                     hintText: "Adresse mail",
-                                    hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                                    hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
                                     filled: true,
                                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
                                     fillColor: const Color(0xff1c4969),
@@ -256,7 +256,7 @@ class SignUPState extends State<SignUP> {
                                   style: const TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
                                     hintText: "Mot de passe",
-                                    hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                                    hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
                                     filled: true,
                                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(40), borderSide: BorderSide.none),
                                     fillColor: const Color(0xff1c4969),

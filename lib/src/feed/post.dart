@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:socialnetwork/src/feed/comments_list.dart';
 
 import 'comment_input.dart';
@@ -42,9 +43,23 @@ class Post extends StatefulWidget {
   }
 }
 
-class PostState extends State<Post> {
+class PostState extends State<Post> with TickerProviderStateMixin {
   int _current = 0;
   final CarouselController _controller = CarouselController();
+  late final AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +77,8 @@ class PostState extends State<Post> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-                    child: CarouselSlider(
+                    child: GestureDetector(
+                      child: CarouselSlider(
                         carouselController: _controller,
                         options: CarouselOptions(
                           viewportFraction: 1.0,
@@ -79,7 +95,14 @@ class PostState extends State<Post> {
                             .map(
                               (item) => Image.network(item, fit: BoxFit.fill, width: 1500),
                             )
-                            .toList()),
+                            .toList(),
+                      ),
+                      onDoubleTap: () {
+                        _animationController
+                          ..reset()
+                          ..forward();
+                      },
+                    ),
                   ),
                   Positioned(
                     top: 10,
@@ -126,6 +149,20 @@ class PostState extends State<Post> {
                           ),
                         );
                       }).toList(),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 80,
+                    top: 80,
+                    right: 130,
+                    left: 130,
+                    child: Lottie.asset(
+                      "assets/lottie/like.json",
+                      fit: BoxFit.fill,
+                      repeat: false,
+                      onLoaded: (composition) {
+                        _animationController.duration = composition.duration;
+                      },
                     ),
                   ),
                 ],
