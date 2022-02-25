@@ -5,6 +5,7 @@ import 'package:socialnetwork/src/Profile/profile_music.dart';
 import 'package:socialnetwork/src/Profile/profile_music_list.dart';
 import 'package:socialnetwork/src/Profile/profile_post.dart';
 import 'package:socialnetwork/src/Profile/profile_tag.dart';
+import 'package:socialnetwork/src/settings/settings.dart';
 
 class Profile extends StatefulWidget{
 
@@ -45,6 +46,12 @@ class ProfileState extends State<Profile> {
               right: 10,top: 10,
               child: GestureDetector(
                 child: Icon(Icons.settings,color: Colors.white,),
+                  onTap: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  SettingsPage()),
+                    )
+                  },
               ),
             ),
             Column(
