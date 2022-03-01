@@ -215,9 +215,6 @@ class ProfileState extends State<Profile> {
     switch (currentIndex) {
       case 1:
         return ProfileMusicList();
-      case 2:
-        return ProfileImage();
-
       default:
         return ProfileImage();
     }

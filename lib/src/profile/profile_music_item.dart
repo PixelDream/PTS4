@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProfileMusic  extends StatefulWidget {
+class ProfileMusic extends StatefulWidget {
   final String image;
   final String songName;
   final String artist;
 
   const ProfileMusic({Key? key, required this.image, required this.songName, required this.artist}) : super(key: key);
-
 
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +13,7 @@ class ProfileMusic  extends StatefulWidget {
   }
 }
 
-class MusicItem extends State<ProfileMusic>{
+class MusicItem extends State<ProfileMusic> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +21,7 @@ class MusicItem extends State<ProfileMusic>{
       child: Card(
         elevation: 0.0,
         child: Padding(
-          padding: const EdgeInsets.only(top:2),
+          padding: const EdgeInsets.only(top: 2),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -94,11 +92,4 @@ class MusicItem extends State<ProfileMusic>{
       ),
     );
   }
-
 }
-
-
-
-
-
-

@@ -24,16 +24,21 @@ class StoriesListState extends State<StoriesList> {
           'assets/images/user.jpg',
           "Morgan",
           index > 2 ? false : true,
+          index,
         ),
       ),
     );
   }
 
-  Widget _storyItem(String image, String fullName, bool active) {
+  Widget _storyItem(String image, String fullName, bool active, int index) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 5),
       child: GestureDetector(
-        onTap: () => {Navigator.of(context).push(MaterialPageRoute(builder: (context) => Story()))},
+        onTap: () => {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => Story(id: index)),
+          )
+        },
         child: Column(
           children: [
             SizedBox(

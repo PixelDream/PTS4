@@ -3,50 +3,73 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-];
-
 class StoryItem extends StatefulWidget {
+  final Key key;
   final String image;
   final String fullName;
-  final String pseudo;
-  final List<String> posts;
-  final int commentCount;
-  final int likeCount;
-  final bool isLiked;
-
-  const StoryItem(
-      {Key? key,
-      required this.image,
-      required this.fullName,
-      required this.pseudo,
-      required this.posts,
-      required this.commentCount,
-      required this.likeCount,
-      required this.isLiked})
-      : super(key: key);
+  final String time;
+  final List<String> images;
+  const StoryItem({required this.key, required this.image, required this.fullName, required this.images, required this.time}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return StoryItemState();
+    return StoryItemState(key: key);
   }
 }
 
-class StoryItemState extends State<StoryItem> with TickerProviderStateMixin {
+class StoryItemState extends State<StoryItem> with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
+  final Key key;
+
+  StoryItemState({required this.key});
+
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
+  bool keepAlive = true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     final Size size = MediaQuery.of(context).size;
 
-    return Text("hello");
+    return Stack(
+      children: [
+        GestureDetector(
+          onTapDown: (TapDownDetails details) {
+            if ((size.width / 2) < details.localPosition.dx) {
+              _controller.nextPage();
+            } else {
+              _controller.previousPage();
+            }
+          },
+          child: CarouselSlider(
+              carouselController: _controller,
+              options: CarouselOptions(
+                height: size.height,
+                viewportFraction: 1.0,
+                enableInfiniteScroll: false,
+                disableCenter: true,
+                scrollPhysics: NeverScrollableScrollPhysics(),
+                onPageChanged: (index, reason) {
+                  setState(() => _current = index);
+                },
+              ),
+              items: widget.images
+                  .map(
+                    (item) => Image.network(item, fit: BoxFit.fill, width: size.width),
+                  )
+                  .toList()),
+        ),
+        Positioned(
+          bottom: 0,
+          child: ElevatedButton(
+            onPressed: () => _controller.nextPage(),
+            child: Text(widget.time),
+          ),
+        )
+      ],
+    );
 
     /*return Padding(
       padding: const EdgeInsets.only(left: 10, right: 5),
@@ -224,4 +247,7 @@ class StoryItemState extends State<StoryItem> with TickerProviderStateMixin {
       ),
     );*/
   }
+
+  @override
+  bool get wantKeepAlive => keepAlive;
 }
