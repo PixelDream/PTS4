@@ -1,12 +1,9 @@
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:socialnetwork/src/feed/comments_list.dart';
-
-import 'comment_input.dart';
+import 'package:socialnetwork/src/feed/post/post.dart';
+import 'package:socialnetwork/src/transition/size_transition.dart';
 
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -17,7 +14,7 @@ final List<String> imgList = [
   'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
 ];
 
-class Post extends StatefulWidget {
+class PostItem extends StatefulWidget {
   final String image;
   final String fullName;
   final String pseudo;
@@ -26,7 +23,7 @@ class Post extends StatefulWidget {
   final int likeCount;
   final bool isLiked;
 
-  const Post(
+  const PostItem(
       {Key? key,
       required this.image,
       required this.fullName,
@@ -39,187 +36,34 @@ class Post extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return PostState();
+    return PostItemState();
   }
 }
 
-class PostState extends State<Post> with TickerProviderStateMixin {
+class PostItemState extends State<PostItem> with TickerProviderStateMixin {
   int _current = 0;
   final CarouselController _controller = CarouselController();
-  late final AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _animationController = AnimationController(vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 300,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-                    child: GestureDetector(
-                      child: CarouselSlider(
-                        carouselController: _controller,
-                        options: CarouselOptions(
-                          viewportFraction: 1.0,
-                          autoPlay: true,
-                          enableInfiniteScroll: false,
-                          pauseAutoPlayInFiniteScroll: true,
-                          pauseAutoPlayOnTouch: true,
-                          disableCenter: true,
-                          onPageChanged: (index, reason) {
-                            setState(() => _current = index);
-                          },
-                        ),
-                        items: widget.posts
-                            .map(
-                              (item) => Image.network(item, fit: BoxFit.fill, width: 1500),
-                            )
-                            .toList(),
-                      ),
-                      onDoubleTap: () {
-                        _animationController
-                          ..reset()
-                          ..forward();
-                      },
-                    ),
-                  ),
-                  Positioned(
-                    top: 10,
-                    left: 0,
-                    right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.white,
-                              size: 25,
-                            ),
-                            onTap: () => Navigator.of(context).pop(),
-                          ),
-                          GestureDetector(
-                            child: Icon(
-                              Icons.more_vert,
-                              color: Colors.white,
-                              size: 25,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    left: 0,
-                    right: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: imgList.asMap().entries.map((entry) {
-                        return Container(
-                          width: 10,
-                          height: 10,
-                          margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _current == entry.key ? Colors.white.withOpacity(0.85) : Colors.grey.withOpacity(0.85),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 80,
-                    top: 80,
-                    right: 130,
-                    left: 130,
-                    child: Lottie.asset(
-                      "assets/lottie/like.json",
-                      fit: BoxFit.fill,
-                      repeat: false,
-                      onLoaded: (composition) {
-                        _animationController.duration = composition.duration;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5),
-                              child: Icon(Icons.messenger, color: Colors.grey.withOpacity(0.85), size: 27),
-                            ),
-                            Text(
-                              widget.commentCount.toString(),
-                              style: TextStyle(color: Colors.grey.withOpacity(0.85)),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Icon(Icons.favorite, color: Colors.grey.withOpacity(0.85), size: 27),
-                          ),
-                          Text(
-                            (widget.likeCount > 1000 ? (widget.likeCount / 1000).toString() + 'K' : widget.likeCount.toString()),
-                            style: TextStyle(color: Colors.grey.withOpacity(0.85)),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  GestureDetector(
-                    child: Icon(Icons.send, color: Colors.grey.withOpacity(0.85), size: 27),
-                  ),
-                ],
-              ),
-            ),
-            CommentsList(),
-            CommentInput()
-          ],
-        ),
-      ),
-    );
-
-    /*return Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 10, right: 5),
       child: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          SizeRoute(
+            page: Post(
+              image: widget.image,
+              fullName: widget.fullName,
+              pseudo: widget.pseudo,
+              posts: widget.posts,
+              commentCount: widget.commentCount,
+              likeCount: widget.likeCount,
+              isLiked: widget.isLiked,
+            ),
+          ),
+        ),
         child: Card(
           elevation: 4,
           color: Colors.white,
@@ -378,6 +222,6 @@ class PostState extends State<Post> with TickerProviderStateMixin {
           ),
         ),
       ),
-    );*/
+    );
   }
 }

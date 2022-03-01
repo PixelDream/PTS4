@@ -114,7 +114,7 @@ class SignInState extends State<SignIn> {
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               hintText: "Adresse mail ou nom d'utilisateur",
-                              hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
+                              hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
                               filled: true,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(100), borderSide: BorderSide.none),
                               fillColor: const Color(0xff1c4969),
@@ -139,7 +139,7 @@ class SignInState extends State<SignIn> {
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               hintText: "Mot de passe",
-                              hintStyle: const TextStyle(color: Colors.white, fontSize: 12, letterSpacing: 1),
+                              hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
                               filled: true,
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(100), borderSide: BorderSide.none),
                               fillColor: const Color(0xff1c4969),

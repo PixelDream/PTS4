@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:socialnetwork/src/Profile/profile.dart';
-import 'package:socialnetwork/src/Profile/profile_music.dart';
-import 'package:socialnetwork/src/feed/comment_item.dart';
+import 'package:socialnetwork/src/Profile/profile_music_item.dart';
 
 typedef ControllerCallback = void Function();
 
@@ -21,20 +19,20 @@ class CommentsListState extends State<ProfileMusicList> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-        physics: ClampingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemCount: _itemCount,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: EdgeInsets.only(bottom: 0,top: 20),
-            child: ProfileMusic(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 85),
+        child: ListView.builder(
+          physics: ClampingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: _itemCount,
+          itemBuilder: (BuildContext context, int index) {
+            return ProfileMusic(
               image: '',
               songName: 'Hello',
               artist: 'Adele',
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

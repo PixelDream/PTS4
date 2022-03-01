@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:socialnetwork/src/feed/post_item.dart';
+import 'package:socialnetwork/src/feed/post/post_item.dart';
 import 'package:socialnetwork/src/feed/stories_list.dart';
 
 final List<String> imgList = [

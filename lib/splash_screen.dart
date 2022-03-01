@@ -18,17 +18,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-      const Duration(seconds: kReleaseMode ? 6 : 0), // 6s by default
-      () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (BuildContext context) => SignIn(),
-        ),
-      ),
-    );
+    WidgetsBinding.instance?.addPostFrameCallback((_) => asyncCheckJWT());
   }
 
-  Future<void> doSomeAsyncStuff() async {
+  Future<void> asyncCheckJWT() async {
     const storage = FlutterSecureStorage();
     final isConnected = await storage.containsKey(key: "jwt");
 

@@ -5,12 +5,10 @@ class SettingsPage extends StatefulWidget {
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
-
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
-  String dropdownValue = 'One';
+  String dropdownValue = 'Français';
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,10 @@ class _SettingsPageState extends State<SettingsPage> {
         backgroundColor: Color(0xff13334C),
         title: Transform.translate(
           offset: Offset(-70, 0),
-          child: Text('Paramètres',style: TextStyle(fontSize: 23),),
+          child: Text(
+            'Paramètres',
+            style: TextStyle(fontSize: 23),
+          ),
         ),
       ),
       body: Theme(
@@ -114,7 +115,6 @@ class _SettingsPageState extends State<SettingsPage> {
                       );
                     }).toList(),
                   ),
-
                 ),
                 ListTile(
                   leading: Icon(Icons.help),
@@ -152,16 +152,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   onTap: () {},
                 ),
-               SizedBox(
-                 height: 120,
-               ),
+                SizedBox(
+                  height: 120,
+                ),
                 ListTile(
                   title: Text(
                     "Déconnexion",
-                    style: TextStyle(
-                      color: Color(0xffFD5F00)
-                    ),
-
+                    style: TextStyle(color: Color(0xffFD5F00)),
                   ),
                   onTap: () {},
                 ),
@@ -173,4 +170,3 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 }
-

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socialnetwork/src/Profile/profile.dart';
-import 'package:socialnetwork/src/feed/posts_list.dart';
+import 'package:socialnetwork/src/feed/post/posts_list.dart';
 import 'package:socialnetwork/src/map.dart';
 
 class Layout extends StatefulWidget {
@@ -145,7 +145,6 @@ class LayoutState extends State<Layout> {
         return CustomMarker();
       case 3:
         return Profile();
-
       default:
         return SingleChildScrollView(
           child: Column(
@@ -163,7 +162,6 @@ class LayoutState extends State<Layout> {
             ],
           ),
         );
-
     }
   }
 
