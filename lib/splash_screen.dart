@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:socialnetwork/layout.dart';
+import 'package:socialnetwork/src/Profile/profile.dart';
 import 'package:socialnetwork/src/authentification/signIn.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,11 +20,18 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) => asyncCheckJWT());
+    //Navigator.of(context).push( MaterialPageRoute(builder: (BuildContext context) => Profile()));
   }
 
   Future<void> asyncCheckJWT() async {
     const storage = FlutterSecureStorage();
     final isConnected = await storage.containsKey(key: "jwt");
+    print("connected!!!" + isConnected.toString());
+    String? jwt = await storage.read(key: "jwt");
+
+    if (jwt != null) {
+      print("jwtSocialNetwork" + jwt);
+    }
 
     Timer(
       const Duration(seconds: kReleaseMode ? 6 : 0), // 6s by default

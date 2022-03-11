@@ -53,7 +53,7 @@ class PostItemState extends State<PostItem> with TickerProviderStateMixin {
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(
           SizeRoute(
-            widget: Post(
+            page: Post(
               image: widget.image,
               fullName: widget.fullName,
               pseudo: widget.pseudo,

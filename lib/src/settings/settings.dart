@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialnetwork/src/settings/seetings_account.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -83,7 +84,10 @@ class _SettingsPageState extends State<SettingsPage> {
                     Icons.keyboard_arrow_right,
                     color: Colors.black,
                   ),
-                  onTap: () {},
+                  onTap: () => {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => settingsAccount())),
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.language),
@@ -108,7 +112,8 @@ class _SettingsPageState extends State<SettingsPage> {
                         dropdownValue = newValue!;
                       });
                     },
-                    items: <String>['Français', 'Anglais', 'Espagnol'].map((String value) {
+                    items: <String>['Français', 'Anglais', 'Espagnol']
+                        .map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),

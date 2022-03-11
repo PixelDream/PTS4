@@ -17,7 +17,6 @@ targets:
         enabled: true
         options:
           schema: socialnetwork|lib/graphql/schema.graphql
-
       ferry_generator|req_builder:
         enabled: true
         options:

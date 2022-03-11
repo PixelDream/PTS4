@@ -1,2946 +1,2946 @@
 type Query {
-    posts(where: PostWhere, options: PostOptions): [Post!]!
-    users(where: UserWhere, options: UserOptions): [User!]!
-    comments(where: CommentWhere, options: CommentOptions): [Comment!]!
-    commentsCount(where: CommentWhere): Int!
-    commentsAggregate(where: CommentWhere): CommentAggregateSelection!
-    hashtags(where: HashtagWhere, options: HashtagOptions): [Hashtag!]!
-    hashtagsCount(where: HashtagWhere): Int!
-    hashtagsAggregate(where: HashtagWhere): HashtagAggregateSelection!
-    postsCount(where: PostWhere): Int!
-    postsAggregate(where: PostWhere): PostAggregateSelection!
-    usersCount(where: UserWhere): Int!
-    usersAggregate(where: UserWhere): UserAggregateSelection!
+  posts(where: PostWhere, options: PostOptions): [Post!]!
+  users(where: UserWhere, options: UserOptions): [User!]!
+  comments(where: CommentWhere, options: CommentOptions): [Comment!]!
+  commentsCount(where: CommentWhere): Int!
+  commentsAggregate(where: CommentWhere): CommentAggregateSelection!
+  hashtags(where: HashtagWhere, options: HashtagOptions): [Hashtag!]!
+  hashtagsCount(where: HashtagWhere): Int!
+  hashtagsAggregate(where: HashtagWhere): HashtagAggregateSelection!
+  postsCount(where: PostWhere): Int!
+  postsAggregate(where: PostWhere): PostAggregateSelection!
+  usersCount(where: UserWhere): Int!
+  usersAggregate(where: UserWhere): UserAggregateSelection!
 }
 
 type Mutation {
-    signIn(email: String!, password: String!): AuthData!
-    signUp(firstName: String!, lastName: String!, pseudo: String!, email: String!, password: String!): AuthData!
-    sendLocalisation(lat: Float!, lng: Float!): Point!
-    requestResetPassword(email: String!): Boolean!
-    createComments(input: [CommentCreateInput!]!): CreateCommentsMutationResponse!
-    deleteComments(where: CommentWhere, delete: CommentDeleteInput): DeleteInfo!
-    updateComments(where: CommentWhere, update: CommentUpdateInput, connect: CommentConnectInput, disconnect: CommentDisconnectInput, create: CommentRelationInput, delete: CommentDeleteInput, connectOrCreate: CommentConnectOrCreateInput): UpdateCommentsMutationResponse!
-    createHashtags(input: [HashtagCreateInput!]!): CreateHashtagsMutationResponse!
-    deleteHashtags(where: HashtagWhere): DeleteInfo!
-    updateHashtags(where: HashtagWhere, update: HashtagUpdateInput): UpdateHashtagsMutationResponse!
-    createPosts(input: [PostCreateInput!]!): CreatePostsMutationResponse!
-    deletePosts(where: PostWhere, delete: PostDeleteInput): DeleteInfo!
-    updatePosts(where: PostWhere, update: PostUpdateInput, connect: PostConnectInput, disconnect: PostDisconnectInput, create: PostRelationInput, delete: PostDeleteInput, connectOrCreate: PostConnectOrCreateInput): UpdatePostsMutationResponse!
-    createUsers(input: [UserCreateInput!]!): CreateUsersMutationResponse!
-    deleteUsers(where: UserWhere, delete: UserDeleteInput): DeleteInfo!
-    updateUsers(where: UserWhere, update: UserUpdateInput, connect: UserConnectInput, disconnect: UserDisconnectInput, create: UserRelationInput, delete: UserDeleteInput, connectOrCreate: UserConnectOrCreateInput): UpdateUsersMutationResponse!
+  signIn(email: String!, password: String!): AuthData!
+  signUp(firstName: String!, lastName: String!, pseudo: String!, email: String!, password: String!): AuthData!
+  sendLocalisation(lat: Float!, lng: Float!): Point!
+  requestResetPassword(email: String!): Boolean!
+  createComments(input: [CommentCreateInput!]!): CreateCommentsMutationResponse!
+  deleteComments(where: CommentWhere, delete: CommentDeleteInput): DeleteInfo!
+  updateComments(where: CommentWhere, update: CommentUpdateInput, connect: CommentConnectInput, disconnect: CommentDisconnectInput, create: CommentRelationInput, delete: CommentDeleteInput, connectOrCreate: CommentConnectOrCreateInput): UpdateCommentsMutationResponse!
+  createHashtags(input: [HashtagCreateInput!]!): CreateHashtagsMutationResponse!
+  deleteHashtags(where: HashtagWhere): DeleteInfo!
+  updateHashtags(where: HashtagWhere, update: HashtagUpdateInput): UpdateHashtagsMutationResponse!
+  createPosts(input: [PostCreateInput!]!): CreatePostsMutationResponse!
+  deletePosts(where: PostWhere, delete: PostDeleteInput): DeleteInfo!
+  updatePosts(where: PostWhere, update: PostUpdateInput, connect: PostConnectInput, disconnect: PostDisconnectInput, create: PostRelationInput, delete: PostDeleteInput, connectOrCreate: PostConnectOrCreateInput): UpdatePostsMutationResponse!
+  createUsers(input: [UserCreateInput!]!): CreateUsersMutationResponse!
+  deleteUsers(where: UserWhere, delete: UserDeleteInput): DeleteInfo!
+  updateUsers(where: UserWhere, update: UserUpdateInput, connect: UserConnectInput, disconnect: UserDisconnectInput, create: UserRelationInput, delete: UserDeleteInput, connectOrCreate: UserConnectOrCreateInput): UpdateUsersMutationResponse!
 }
 
 """A date and time, represented as an ISO-8601 string"""
 scalar DateTime
 
 enum RequestStatus {
-    PENDING
-    ACCEPTED
-    REFUSED
-    BLOCKED
+  PENDING
+  ACCEPTED
+  REFUSED
+  BLOCKED
 }
 
 enum SortDirection {
-    """Sort by field values in ascending order."""
-    ASC
+  """Sort by field values in ascending order."""
+  ASC
 
-    """Sort by field values in descending order."""
-    DESC
+  """Sort by field values in descending order."""
+  DESC
 }
 
 interface Status {
-    Status: RequestStatus!
+  Status: RequestStatus!
 }
 
 type AuthData {
-    token: String!
-    user: User!
+  token: String!
+  user: User!
 }
 
 type Comment {
-    id: ID!
-    commentary: String!
-    createdAt: DateTime
-    updatedAt: DateTime
-    creator(where: UserWhere, options: UserOptions): User!
-    creatorAggregate(where: UserWhere): CommentUserCreatorAggregationSelection
-    post(where: PostWhere, options: PostOptions): Post!
-    postAggregate(where: PostWhere): CommentPostPostAggregationSelection
-    creatorConnection(where: CommentCreatorConnectionWhere, sort: [CommentCreatorConnectionSort!], first: Int, after: String): CommentCreatorConnection!
-    postConnection(where: CommentPostConnectionWhere, sort: [CommentPostConnectionSort!], first: Int, after: String): CommentPostConnection!
+  id: ID!
+  commentary: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  creator(where: UserWhere, options: UserOptions): User!
+  creatorAggregate(where: UserWhere): CommentUserCreatorAggregationSelection
+  post(where: PostWhere, options: PostOptions): Post!
+  postAggregate(where: PostWhere): CommentPostPostAggregationSelection
+  creatorConnection(where: CommentCreatorConnectionWhere, sort: [CommentCreatorConnectionSort!], first: Int, after: String): CommentCreatorConnection!
+  postConnection(where: CommentPostConnectionWhere, sort: [CommentPostConnectionSort!], first: Int, after: String): CommentPostConnection!
 }
 
 type CommentAggregateSelection {
-    count: Int!
-    id: IDAggregateSelection!
-    commentary: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  count: Int!
+  id: IDAggregateSelection!
+  commentary: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type CommentCreatorConnection {
-    edges: [CommentCreatorRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [CommentCreatorRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type CommentCreatorRelationship {
-    cursor: String!
-    node: User!
+  cursor: String!
+  node: User!
 }
 
 type CommentPostConnection {
-    edges: [CommentPostRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [CommentPostRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type CommentPostPostAggregationSelection {
-    count: Int!
-    node: CommentPostPostNodeAggregateSelection
+  count: Int!
+  node: CommentPostPostNodeAggregateSelection
 }
 
 type CommentPostPostNodeAggregateSelection {
-    id: IDAggregateSelection!
-    music: StringAggregateSelection!
-    description: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  music: StringAggregateSelection!
+  description: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type CommentPostRelationship {
-    cursor: String!
-    node: Post!
+  cursor: String!
+  node: Post!
 }
 
 type CommentUserCreatorAggregationSelection {
-    count: Int!
-    node: CommentUserCreatorNodeAggregateSelection
+  count: Int!
+  node: CommentUserCreatorNodeAggregateSelection
 }
 
 type CommentUserCreatorNodeAggregateSelection {
-    id: IDAggregateSelection!
-    email: StringAggregateSelection!
-    pseudo: StringAggregateSelection!
-    firstName: StringAggregateSelection!
-    lastName: StringAggregateSelection!
-    password: StringAggregateSelection!
-    biography: StringAggregateSelection!
-    image: StringAggregateSelection!
-    resetToken: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
-    resetTokenExpiry: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  email: StringAggregateSelection!
+  pseudo: StringAggregateSelection!
+  firstName: StringAggregateSelection!
+  lastName: StringAggregateSelection!
+  password: StringAggregateSelection!
+  biography: StringAggregateSelection!
+  image: StringAggregateSelection!
+  resetToken: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
+  resetTokenExpiry: DateTimeAggregateSelection!
 }
 
 type CreateCommentsMutationResponse {
-    info: CreateInfo!
-    comments: [Comment!]!
+  info: CreateInfo!
+  comments: [Comment!]!
 }
 
 type CreateHashtagsMutationResponse {
-    info: CreateInfo!
-    hashtags: [Hashtag!]!
+  info: CreateInfo!
+  hashtags: [Hashtag!]!
 }
 
 type CreateInfo {
-    bookmark: String
-    nodesCreated: Int!
-    relationshipsCreated: Int!
+  bookmark: String
+  nodesCreated: Int!
+  relationshipsCreated: Int!
 }
 
 type CreatePostsMutationResponse {
-    info: CreateInfo!
-    posts: [Post!]!
+  info: CreateInfo!
+  posts: [Post!]!
 }
 
 type CreateUsersMutationResponse {
-    info: CreateInfo!
-    users: [User!]!
+  info: CreateInfo!
+  users: [User!]!
 }
 
 type DateTimeAggregateSelection {
-    min: DateTime
-    max: DateTime
+  min: DateTime
+  max: DateTime
 }
 
 type DeleteInfo {
-    bookmark: String
-    nodesDeleted: Int!
-    relationshipsDeleted: Int!
+  bookmark: String
+  nodesDeleted: Int!
+  relationshipsDeleted: Int!
 }
 
 type Hashtag {
-    id: ID!
-    hashtag: String!
-    createdAt: DateTime
-    updatedAt: DateTime
+  id: ID!
+  hashtag: String!
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 type HashtagAggregateSelection {
-    count: Int!
-    id: IDAggregateSelection!
-    hashtag: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  count: Int!
+  id: IDAggregateSelection!
+  hashtag: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type IDAggregateSelection {
-    shortest: ID
-    longest: ID
+  shortest: ID
+  longest: ID
 }
 
 """Pagination information (Relay)"""
 type PageInfo {
-    hasNextPage: Boolean!
-    hasPreviousPage: Boolean!
-    startCursor: String
-    endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
 }
 
 type Point {
-    longitude: Float!
-    latitude: Float!
-    height: Float
-    crs: String!
-    srid: Int!
+  longitude: Float!
+  latitude: Float!
+  height: Float
+  crs: String!
+  srid: Int!
 }
 
 type Post {
-    id: ID!
-    music: String
-    description: String!
-    hashtag: [Hashtag]!
-    createdAt: DateTime
-    updatedAt: DateTime
-    creator(where: UserWhere, options: UserOptions): User
-    creatorAggregate(where: UserWhere): PostUserCreatorAggregationSelection
-    likes(where: UserWhere, options: UserOptions): [User]!
-    likesAggregate(where: UserWhere): PostUserLikesAggregationSelection
-    comments(where: CommentWhere, options: CommentOptions): [Comment]!
-    commentsAggregate(where: CommentWhere): PostCommentCommentsAggregationSelection
-    creatorConnection(where: PostCreatorConnectionWhere, sort: [PostCreatorConnectionSort!], first: Int, after: String): PostCreatorConnection!
-    likesConnection(where: PostLikesConnectionWhere, sort: [PostLikesConnectionSort!], first: Int, after: String): PostLikesConnection!
-    commentsConnection(where: PostCommentsConnectionWhere, sort: [PostCommentsConnectionSort!], first: Int, after: String): PostCommentsConnection!
+  id: ID!
+  music: String
+  description: String!
+  hashtag: [Hashtag]!
+  createdAt: DateTime
+  updatedAt: DateTime
+  creator(where: UserWhere, options: UserOptions): User
+  creatorAggregate(where: UserWhere): PostUserCreatorAggregationSelection
+  likes(where: UserWhere, options: UserOptions): [User]!
+  likesAggregate(where: UserWhere): PostUserLikesAggregationSelection
+  comments(where: CommentWhere, options: CommentOptions): [Comment]!
+  commentsAggregate(where: CommentWhere): PostCommentCommentsAggregationSelection
+  creatorConnection(where: PostCreatorConnectionWhere, sort: [PostCreatorConnectionSort!], first: Int, after: String): PostCreatorConnection!
+  likesConnection(where: PostLikesConnectionWhere, sort: [PostLikesConnectionSort!], first: Int, after: String): PostLikesConnection!
+  commentsConnection(where: PostCommentsConnectionWhere, sort: [PostCommentsConnectionSort!], first: Int, after: String): PostCommentsConnection!
 }
 
 type PostAggregateSelection {
-    count: Int!
-    id: IDAggregateSelection!
-    music: StringAggregateSelection!
-    description: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  count: Int!
+  id: IDAggregateSelection!
+  music: StringAggregateSelection!
+  description: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type PostCommentCommentsAggregationSelection {
-    count: Int!
-    node: PostCommentCommentsNodeAggregateSelection
+  count: Int!
+  node: PostCommentCommentsNodeAggregateSelection
 }
 
 type PostCommentCommentsNodeAggregateSelection {
-    id: IDAggregateSelection!
-    commentary: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  commentary: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type PostCommentsConnection {
-    edges: [PostCommentsRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [PostCommentsRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type PostCommentsRelationship {
-    cursor: String!
-    node: Comment!
+  cursor: String!
+  node: Comment!
 }
 
 type PostCreatorConnection {
-    edges: [PostCreatorRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [PostCreatorRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type PostCreatorRelationship {
-    cursor: String!
-    node: User!
+  cursor: String!
+  node: User!
 }
 
 type PostLikesConnection {
-    edges: [PostLikesRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [PostLikesRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type PostLikesRelationship {
-    cursor: String!
-    node: User!
+  cursor: String!
+  node: User!
 }
 
 type PostUserCreatorAggregationSelection {
-    count: Int!
-    node: PostUserCreatorNodeAggregateSelection
+  count: Int!
+  node: PostUserCreatorNodeAggregateSelection
 }
 
 type PostUserCreatorNodeAggregateSelection {
-    id: IDAggregateSelection!
-    email: StringAggregateSelection!
-    pseudo: StringAggregateSelection!
-    firstName: StringAggregateSelection!
-    lastName: StringAggregateSelection!
-    password: StringAggregateSelection!
-    biography: StringAggregateSelection!
-    image: StringAggregateSelection!
-    resetToken: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
-    resetTokenExpiry: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  email: StringAggregateSelection!
+  pseudo: StringAggregateSelection!
+  firstName: StringAggregateSelection!
+  lastName: StringAggregateSelection!
+  password: StringAggregateSelection!
+  biography: StringAggregateSelection!
+  image: StringAggregateSelection!
+  resetToken: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
+  resetTokenExpiry: DateTimeAggregateSelection!
 }
 
 type PostUserLikesAggregationSelection {
-    count: Int!
-    node: PostUserLikesNodeAggregateSelection
+  count: Int!
+  node: PostUserLikesNodeAggregateSelection
 }
 
 type PostUserLikesNodeAggregateSelection {
-    id: IDAggregateSelection!
-    email: StringAggregateSelection!
-    pseudo: StringAggregateSelection!
-    firstName: StringAggregateSelection!
-    lastName: StringAggregateSelection!
-    password: StringAggregateSelection!
-    biography: StringAggregateSelection!
-    image: StringAggregateSelection!
-    resetToken: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
-    resetTokenExpiry: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  email: StringAggregateSelection!
+  pseudo: StringAggregateSelection!
+  firstName: StringAggregateSelection!
+  lastName: StringAggregateSelection!
+  password: StringAggregateSelection!
+  biography: StringAggregateSelection!
+  image: StringAggregateSelection!
+  resetToken: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
+  resetTokenExpiry: DateTimeAggregateSelection!
 }
 
 type StringAggregateSelection {
-    shortest: String
-    longest: String
+  shortest: String
+  longest: String
 }
 
 type UpdateCommentsMutationResponse {
-    info: UpdateInfo!
-    comments: [Comment!]!
+  info: UpdateInfo!
+  comments: [Comment!]!
 }
 
 type UpdateHashtagsMutationResponse {
-    info: UpdateInfo!
-    hashtags: [Hashtag!]!
+  info: UpdateInfo!
+  hashtags: [Hashtag!]!
 }
 
 type UpdateInfo {
-    bookmark: String
-    nodesCreated: Int!
-    nodesDeleted: Int!
-    relationshipsCreated: Int!
-    relationshipsDeleted: Int!
+  bookmark: String
+  nodesCreated: Int!
+  nodesDeleted: Int!
+  relationshipsCreated: Int!
+  relationshipsDeleted: Int!
 }
 
 type UpdatePostsMutationResponse {
-    info: UpdateInfo!
-    posts: [Post!]!
+  info: UpdateInfo!
+  posts: [Post!]!
 }
 
 type UpdateUsersMutationResponse {
-    info: UpdateInfo!
-    users: [User!]!
+  info: UpdateInfo!
+  users: [User!]!
 }
 
 type User {
-    id: ID!
-    email: String!
-    pseudo: String!
-    firstName: String!
-    lastName: String!
-    password: String!
-    biography: String
-    image: String
-    resetToken: String
-    createdAt: DateTime
-    updatedAt: DateTime
-    resetTokenExpiry: DateTime
-    location: Point
-    posts(where: PostWhere, options: PostOptions): [Post]!
-    postsAggregate(where: PostWhere): UserPostPostsAggregationSelection
-    postLikes(where: PostWhere, options: PostOptions): [Post]!
-    postLikesAggregate(where: PostWhere): UserPostPostLikesAggregationSelection
-    commentLikes(where: CommentWhere, options: CommentOptions): [Comment]!
-    commentLikesAggregate(where: CommentWhere): UserCommentCommentLikesAggregationSelection
-    friends(where: UserWhere, options: UserOptions): [User]!
-    friendsAggregate(where: UserWhere): UserUserFriendsAggregationSelection
-    postsConnection(where: UserPostsConnectionWhere, sort: [UserPostsConnectionSort!], first: Int, after: String): UserPostsConnection!
-    postLikesConnection(where: UserPostLikesConnectionWhere, sort: [UserPostLikesConnectionSort!], first: Int, after: String): UserPostLikesConnection!
-    commentLikesConnection(where: UserCommentLikesConnectionWhere, sort: [UserCommentLikesConnectionSort!], first: Int, after: String): UserCommentLikesConnection!
-    friendsConnection(where: UserFriendsConnectionWhere, sort: [UserFriendsConnectionSort!], first: Int, after: String): UserFriendsConnection!
+  id: ID!
+  email: String!
+  pseudo: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  biography: String
+  image: String
+  resetToken: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  resetTokenExpiry: DateTime
+  location: Point
+  posts(where: PostWhere, options: PostOptions): [Post]!
+  postsAggregate(where: PostWhere): UserPostPostsAggregationSelection
+  postLikes(where: PostWhere, options: PostOptions): [Post]!
+  postLikesAggregate(where: PostWhere): UserPostPostLikesAggregationSelection
+  commentLikes(where: CommentWhere, options: CommentOptions): [Comment]!
+  commentLikesAggregate(where: CommentWhere): UserCommentCommentLikesAggregationSelection
+  friends(where: UserWhere, options: UserOptions): [User]!
+  friendsAggregate(where: UserWhere): UserUserFriendsAggregationSelection
+  postsConnection(where: UserPostsConnectionWhere, sort: [UserPostsConnectionSort!], first: Int, after: String): UserPostsConnection!
+  postLikesConnection(where: UserPostLikesConnectionWhere, sort: [UserPostLikesConnectionSort!], first: Int, after: String): UserPostLikesConnection!
+  commentLikesConnection(where: UserCommentLikesConnectionWhere, sort: [UserCommentLikesConnectionSort!], first: Int, after: String): UserCommentLikesConnection!
+  friendsConnection(where: UserFriendsConnectionWhere, sort: [UserFriendsConnectionSort!], first: Int, after: String): UserFriendsConnection!
 }
 
 type UserAggregateSelection {
-    count: Int!
-    id: IDAggregateSelection!
-    email: StringAggregateSelection!
-    pseudo: StringAggregateSelection!
-    firstName: StringAggregateSelection!
-    lastName: StringAggregateSelection!
-    password: StringAggregateSelection!
-    biography: StringAggregateSelection!
-    image: StringAggregateSelection!
-    resetToken: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
-    resetTokenExpiry: DateTimeAggregateSelection!
+  count: Int!
+  id: IDAggregateSelection!
+  email: StringAggregateSelection!
+  pseudo: StringAggregateSelection!
+  firstName: StringAggregateSelection!
+  lastName: StringAggregateSelection!
+  password: StringAggregateSelection!
+  biography: StringAggregateSelection!
+  image: StringAggregateSelection!
+  resetToken: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
+  resetTokenExpiry: DateTimeAggregateSelection!
 }
 
 type UserCommentCommentLikesAggregationSelection {
-    count: Int!
-    node: UserCommentCommentLikesNodeAggregateSelection
+  count: Int!
+  node: UserCommentCommentLikesNodeAggregateSelection
 }
 
 type UserCommentCommentLikesNodeAggregateSelection {
-    id: IDAggregateSelection!
-    commentary: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  commentary: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type UserCommentLikesConnection {
-    edges: [UserCommentLikesRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [UserCommentLikesRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type UserCommentLikesRelationship {
-    cursor: String!
-    node: Comment!
+  cursor: String!
+  node: Comment!
 }
 
 type UserFriendsConnection {
-    edges: [UserFriendsRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [UserFriendsRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type UserFriendsRelationship implements Status {
-    cursor: String!
-    node: User!
-    Status: RequestStatus!
+  cursor: String!
+  node: User!
+  Status: RequestStatus!
 }
 
 type UserPostLikesConnection {
-    edges: [UserPostLikesRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [UserPostLikesRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type UserPostLikesRelationship {
-    cursor: String!
-    node: Post!
+  cursor: String!
+  node: Post!
 }
 
 type UserPostPostLikesAggregationSelection {
-    count: Int!
-    node: UserPostPostLikesNodeAggregateSelection
+  count: Int!
+  node: UserPostPostLikesNodeAggregateSelection
 }
 
 type UserPostPostLikesNodeAggregateSelection {
-    id: IDAggregateSelection!
-    music: StringAggregateSelection!
-    description: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  music: StringAggregateSelection!
+  description: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type UserPostPostsAggregationSelection {
-    count: Int!
-    node: UserPostPostsNodeAggregateSelection
+  count: Int!
+  node: UserPostPostsNodeAggregateSelection
 }
 
 type UserPostPostsNodeAggregateSelection {
-    id: IDAggregateSelection!
-    music: StringAggregateSelection!
-    description: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  music: StringAggregateSelection!
+  description: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
 }
 
 type UserPostsConnection {
-    edges: [UserPostsRelationship!]!
-    totalCount: Int!
-    pageInfo: PageInfo!
+  edges: [UserPostsRelationship!]!
+  totalCount: Int!
+  pageInfo: PageInfo!
 }
 
 type UserPostsRelationship {
-    cursor: String!
-    node: Post!
+  cursor: String!
+  node: Post!
 }
 
 type UserUserFriendsAggregationSelection {
-    count: Int!
-    node: UserUserFriendsNodeAggregateSelection
+  count: Int!
+  node: UserUserFriendsNodeAggregateSelection
 }
 
 type UserUserFriendsNodeAggregateSelection {
-    id: IDAggregateSelection!
-    email: StringAggregateSelection!
-    pseudo: StringAggregateSelection!
-    firstName: StringAggregateSelection!
-    lastName: StringAggregateSelection!
-    password: StringAggregateSelection!
-    biography: StringAggregateSelection!
-    image: StringAggregateSelection!
-    resetToken: StringAggregateSelection!
-    createdAt: DateTimeAggregateSelection!
-    updatedAt: DateTimeAggregateSelection!
-    resetTokenExpiry: DateTimeAggregateSelection!
+  id: IDAggregateSelection!
+  email: StringAggregateSelection!
+  pseudo: StringAggregateSelection!
+  firstName: StringAggregateSelection!
+  lastName: StringAggregateSelection!
+  password: StringAggregateSelection!
+  biography: StringAggregateSelection!
+  image: StringAggregateSelection!
+  resetToken: StringAggregateSelection!
+  createdAt: DateTimeAggregateSelection!
+  updatedAt: DateTimeAggregateSelection!
+  resetTokenExpiry: DateTimeAggregateSelection!
 }
 
 input CommentConnectInput {
-    creator: CommentCreatorConnectFieldInput
-    post: CommentPostConnectFieldInput
+  creator: CommentCreatorConnectFieldInput
+  post: CommentPostConnectFieldInput
 }
 
 input CommentConnectOrCreateInput {
-    creator: CommentCreatorConnectOrCreateFieldInput
-    post: CommentPostConnectOrCreateFieldInput
+  creator: CommentCreatorConnectOrCreateFieldInput
+  post: CommentPostConnectOrCreateFieldInput
 }
 
 input CommentConnectOrCreateWhere {
-    node: CommentUniqueWhere!
+  node: CommentUniqueWhere!
 }
 
 input CommentConnectWhere {
-    node: CommentWhere!
+  node: CommentWhere!
 }
 
 input CommentCreateInput {
-    commentary: String!
-    creator: CommentCreatorFieldInput
-    post: CommentPostFieldInput
+  commentary: String!
+  creator: CommentCreatorFieldInput
+  post: CommentPostFieldInput
 }
 
 input CommentCreatorAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [CommentCreatorAggregateInput!]
-    OR: [CommentCreatorAggregateInput!]
-    node: CommentCreatorNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [CommentCreatorAggregateInput!]
+  OR: [CommentCreatorAggregateInput!]
+  node: CommentCreatorNodeAggregationWhereInput
 }
 
 input CommentCreatorConnectFieldInput {
-    where: UserConnectWhere
-    connect: UserConnectInput
+  where: UserConnectWhere
+  connect: UserConnectInput
 }
 
 input CommentCreatorConnectionSort {
-    node: UserSort
+  node: UserSort
 }
 
 input CommentCreatorConnectionWhere {
-    AND: [CommentCreatorConnectionWhere!]
-    OR: [CommentCreatorConnectionWhere!]
-    node: UserWhere
-    node_NOT: UserWhere
+  AND: [CommentCreatorConnectionWhere!]
+  OR: [CommentCreatorConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
 }
 
 input CommentCreatorConnectOrCreateFieldInput {
-    where: UserConnectOrCreateWhere!
-    onCreate: CommentCreatorConnectOrCreateFieldInputOnCreate!
+  where: UserConnectOrCreateWhere!
+  onCreate: CommentCreatorConnectOrCreateFieldInputOnCreate!
 }
 
 input CommentCreatorConnectOrCreateFieldInputOnCreate {
-    node: UserCreateInput!
+  node: UserCreateInput!
 }
 
 input CommentCreatorCreateFieldInput {
-    node: UserCreateInput!
+  node: UserCreateInput!
 }
 
 input CommentCreatorDeleteFieldInput {
-    where: CommentCreatorConnectionWhere
-    delete: UserDeleteInput
+  where: CommentCreatorConnectionWhere
+  delete: UserDeleteInput
 }
 
 input CommentCreatorDisconnectFieldInput {
-    where: CommentCreatorConnectionWhere
-    disconnect: UserDisconnectInput
+  where: CommentCreatorConnectionWhere
+  disconnect: UserDisconnectInput
 }
 
 input CommentCreatorFieldInput {
-    create: CommentCreatorCreateFieldInput
-    connect: CommentCreatorConnectFieldInput
-    connectOrCreate: CommentCreatorConnectOrCreateFieldInput
+  create: CommentCreatorCreateFieldInput
+  connect: CommentCreatorConnectFieldInput
+  connectOrCreate: CommentCreatorConnectOrCreateFieldInput
 }
 
 input CommentCreatorNodeAggregationWhereInput {
-    AND: [CommentCreatorNodeAggregationWhereInput!]
-    OR: [CommentCreatorNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    email_EQUAL: String
-    email_AVERAGE_EQUAL: Float
-    email_LONGEST_EQUAL: Int
-    email_SHORTEST_EQUAL: Int
-    email_GT: Int
-    email_AVERAGE_GT: Float
-    email_LONGEST_GT: Int
-    email_SHORTEST_GT: Int
-    email_GTE: Int
-    email_AVERAGE_GTE: Float
-    email_LONGEST_GTE: Int
-    email_SHORTEST_GTE: Int
-    email_LT: Int
-    email_AVERAGE_LT: Float
-    email_LONGEST_LT: Int
-    email_SHORTEST_LT: Int
-    email_LTE: Int
-    email_AVERAGE_LTE: Float
-    email_LONGEST_LTE: Int
-    email_SHORTEST_LTE: Int
-    pseudo_EQUAL: String
-    pseudo_AVERAGE_EQUAL: Float
-    pseudo_LONGEST_EQUAL: Int
-    pseudo_SHORTEST_EQUAL: Int
-    pseudo_GT: Int
-    pseudo_AVERAGE_GT: Float
-    pseudo_LONGEST_GT: Int
-    pseudo_SHORTEST_GT: Int
-    pseudo_GTE: Int
-    pseudo_AVERAGE_GTE: Float
-    pseudo_LONGEST_GTE: Int
-    pseudo_SHORTEST_GTE: Int
-    pseudo_LT: Int
-    pseudo_AVERAGE_LT: Float
-    pseudo_LONGEST_LT: Int
-    pseudo_SHORTEST_LT: Int
-    pseudo_LTE: Int
-    pseudo_AVERAGE_LTE: Float
-    pseudo_LONGEST_LTE: Int
-    pseudo_SHORTEST_LTE: Int
-    firstName_EQUAL: String
-    firstName_AVERAGE_EQUAL: Float
-    firstName_LONGEST_EQUAL: Int
-    firstName_SHORTEST_EQUAL: Int
-    firstName_GT: Int
-    firstName_AVERAGE_GT: Float
-    firstName_LONGEST_GT: Int
-    firstName_SHORTEST_GT: Int
-    firstName_GTE: Int
-    firstName_AVERAGE_GTE: Float
-    firstName_LONGEST_GTE: Int
-    firstName_SHORTEST_GTE: Int
-    firstName_LT: Int
-    firstName_AVERAGE_LT: Float
-    firstName_LONGEST_LT: Int
-    firstName_SHORTEST_LT: Int
-    firstName_LTE: Int
-    firstName_AVERAGE_LTE: Float
-    firstName_LONGEST_LTE: Int
-    firstName_SHORTEST_LTE: Int
-    lastName_EQUAL: String
-    lastName_AVERAGE_EQUAL: Float
-    lastName_LONGEST_EQUAL: Int
-    lastName_SHORTEST_EQUAL: Int
-    lastName_GT: Int
-    lastName_AVERAGE_GT: Float
-    lastName_LONGEST_GT: Int
-    lastName_SHORTEST_GT: Int
-    lastName_GTE: Int
-    lastName_AVERAGE_GTE: Float
-    lastName_LONGEST_GTE: Int
-    lastName_SHORTEST_GTE: Int
-    lastName_LT: Int
-    lastName_AVERAGE_LT: Float
-    lastName_LONGEST_LT: Int
-    lastName_SHORTEST_LT: Int
-    lastName_LTE: Int
-    lastName_AVERAGE_LTE: Float
-    lastName_LONGEST_LTE: Int
-    lastName_SHORTEST_LTE: Int
-    password_EQUAL: String
-    password_AVERAGE_EQUAL: Float
-    password_LONGEST_EQUAL: Int
-    password_SHORTEST_EQUAL: Int
-    password_GT: Int
-    password_AVERAGE_GT: Float
-    password_LONGEST_GT: Int
-    password_SHORTEST_GT: Int
-    password_GTE: Int
-    password_AVERAGE_GTE: Float
-    password_LONGEST_GTE: Int
-    password_SHORTEST_GTE: Int
-    password_LT: Int
-    password_AVERAGE_LT: Float
-    password_LONGEST_LT: Int
-    password_SHORTEST_LT: Int
-    password_LTE: Int
-    password_AVERAGE_LTE: Float
-    password_LONGEST_LTE: Int
-    password_SHORTEST_LTE: Int
-    biography_EQUAL: String
-    biography_AVERAGE_EQUAL: Float
-    biography_LONGEST_EQUAL: Int
-    biography_SHORTEST_EQUAL: Int
-    biography_GT: Int
-    biography_AVERAGE_GT: Float
-    biography_LONGEST_GT: Int
-    biography_SHORTEST_GT: Int
-    biography_GTE: Int
-    biography_AVERAGE_GTE: Float
-    biography_LONGEST_GTE: Int
-    biography_SHORTEST_GTE: Int
-    biography_LT: Int
-    biography_AVERAGE_LT: Float
-    biography_LONGEST_LT: Int
-    biography_SHORTEST_LT: Int
-    biography_LTE: Int
-    biography_AVERAGE_LTE: Float
-    biography_LONGEST_LTE: Int
-    biography_SHORTEST_LTE: Int
-    image_EQUAL: String
-    image_AVERAGE_EQUAL: Float
-    image_LONGEST_EQUAL: Int
-    image_SHORTEST_EQUAL: Int
-    image_GT: Int
-    image_AVERAGE_GT: Float
-    image_LONGEST_GT: Int
-    image_SHORTEST_GT: Int
-    image_GTE: Int
-    image_AVERAGE_GTE: Float
-    image_LONGEST_GTE: Int
-    image_SHORTEST_GTE: Int
-    image_LT: Int
-    image_AVERAGE_LT: Float
-    image_LONGEST_LT: Int
-    image_SHORTEST_LT: Int
-    image_LTE: Int
-    image_AVERAGE_LTE: Float
-    image_LONGEST_LTE: Int
-    image_SHORTEST_LTE: Int
-    resetToken_EQUAL: String
-    resetToken_AVERAGE_EQUAL: Float
-    resetToken_LONGEST_EQUAL: Int
-    resetToken_SHORTEST_EQUAL: Int
-    resetToken_GT: Int
-    resetToken_AVERAGE_GT: Float
-    resetToken_LONGEST_GT: Int
-    resetToken_SHORTEST_GT: Int
-    resetToken_GTE: Int
-    resetToken_AVERAGE_GTE: Float
-    resetToken_LONGEST_GTE: Int
-    resetToken_SHORTEST_GTE: Int
-    resetToken_LT: Int
-    resetToken_AVERAGE_LT: Float
-    resetToken_LONGEST_LT: Int
-    resetToken_SHORTEST_LT: Int
-    resetToken_LTE: Int
-    resetToken_AVERAGE_LTE: Float
-    resetToken_LONGEST_LTE: Int
-    resetToken_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
-    resetTokenExpiry_EQUAL: DateTime
-    resetTokenExpiry_MIN_EQUAL: DateTime
-    resetTokenExpiry_MAX_EQUAL: DateTime
-    resetTokenExpiry_GT: DateTime
-    resetTokenExpiry_MIN_GT: DateTime
-    resetTokenExpiry_MAX_GT: DateTime
-    resetTokenExpiry_GTE: DateTime
-    resetTokenExpiry_MIN_GTE: DateTime
-    resetTokenExpiry_MAX_GTE: DateTime
-    resetTokenExpiry_LT: DateTime
-    resetTokenExpiry_MIN_LT: DateTime
-    resetTokenExpiry_MAX_LT: DateTime
-    resetTokenExpiry_LTE: DateTime
-    resetTokenExpiry_MIN_LTE: DateTime
-    resetTokenExpiry_MAX_LTE: DateTime
+  AND: [CommentCreatorNodeAggregationWhereInput!]
+  OR: [CommentCreatorNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  email_EQUAL: String
+  email_AVERAGE_EQUAL: Float
+  email_LONGEST_EQUAL: Int
+  email_SHORTEST_EQUAL: Int
+  email_GT: Int
+  email_AVERAGE_GT: Float
+  email_LONGEST_GT: Int
+  email_SHORTEST_GT: Int
+  email_GTE: Int
+  email_AVERAGE_GTE: Float
+  email_LONGEST_GTE: Int
+  email_SHORTEST_GTE: Int
+  email_LT: Int
+  email_AVERAGE_LT: Float
+  email_LONGEST_LT: Int
+  email_SHORTEST_LT: Int
+  email_LTE: Int
+  email_AVERAGE_LTE: Float
+  email_LONGEST_LTE: Int
+  email_SHORTEST_LTE: Int
+  pseudo_EQUAL: String
+  pseudo_AVERAGE_EQUAL: Float
+  pseudo_LONGEST_EQUAL: Int
+  pseudo_SHORTEST_EQUAL: Int
+  pseudo_GT: Int
+  pseudo_AVERAGE_GT: Float
+  pseudo_LONGEST_GT: Int
+  pseudo_SHORTEST_GT: Int
+  pseudo_GTE: Int
+  pseudo_AVERAGE_GTE: Float
+  pseudo_LONGEST_GTE: Int
+  pseudo_SHORTEST_GTE: Int
+  pseudo_LT: Int
+  pseudo_AVERAGE_LT: Float
+  pseudo_LONGEST_LT: Int
+  pseudo_SHORTEST_LT: Int
+  pseudo_LTE: Int
+  pseudo_AVERAGE_LTE: Float
+  pseudo_LONGEST_LTE: Int
+  pseudo_SHORTEST_LTE: Int
+  firstName_EQUAL: String
+  firstName_AVERAGE_EQUAL: Float
+  firstName_LONGEST_EQUAL: Int
+  firstName_SHORTEST_EQUAL: Int
+  firstName_GT: Int
+  firstName_AVERAGE_GT: Float
+  firstName_LONGEST_GT: Int
+  firstName_SHORTEST_GT: Int
+  firstName_GTE: Int
+  firstName_AVERAGE_GTE: Float
+  firstName_LONGEST_GTE: Int
+  firstName_SHORTEST_GTE: Int
+  firstName_LT: Int
+  firstName_AVERAGE_LT: Float
+  firstName_LONGEST_LT: Int
+  firstName_SHORTEST_LT: Int
+  firstName_LTE: Int
+  firstName_AVERAGE_LTE: Float
+  firstName_LONGEST_LTE: Int
+  firstName_SHORTEST_LTE: Int
+  lastName_EQUAL: String
+  lastName_AVERAGE_EQUAL: Float
+  lastName_LONGEST_EQUAL: Int
+  lastName_SHORTEST_EQUAL: Int
+  lastName_GT: Int
+  lastName_AVERAGE_GT: Float
+  lastName_LONGEST_GT: Int
+  lastName_SHORTEST_GT: Int
+  lastName_GTE: Int
+  lastName_AVERAGE_GTE: Float
+  lastName_LONGEST_GTE: Int
+  lastName_SHORTEST_GTE: Int
+  lastName_LT: Int
+  lastName_AVERAGE_LT: Float
+  lastName_LONGEST_LT: Int
+  lastName_SHORTEST_LT: Int
+  lastName_LTE: Int
+  lastName_AVERAGE_LTE: Float
+  lastName_LONGEST_LTE: Int
+  lastName_SHORTEST_LTE: Int
+  password_EQUAL: String
+  password_AVERAGE_EQUAL: Float
+  password_LONGEST_EQUAL: Int
+  password_SHORTEST_EQUAL: Int
+  password_GT: Int
+  password_AVERAGE_GT: Float
+  password_LONGEST_GT: Int
+  password_SHORTEST_GT: Int
+  password_GTE: Int
+  password_AVERAGE_GTE: Float
+  password_LONGEST_GTE: Int
+  password_SHORTEST_GTE: Int
+  password_LT: Int
+  password_AVERAGE_LT: Float
+  password_LONGEST_LT: Int
+  password_SHORTEST_LT: Int
+  password_LTE: Int
+  password_AVERAGE_LTE: Float
+  password_LONGEST_LTE: Int
+  password_SHORTEST_LTE: Int
+  biography_EQUAL: String
+  biography_AVERAGE_EQUAL: Float
+  biography_LONGEST_EQUAL: Int
+  biography_SHORTEST_EQUAL: Int
+  biography_GT: Int
+  biography_AVERAGE_GT: Float
+  biography_LONGEST_GT: Int
+  biography_SHORTEST_GT: Int
+  biography_GTE: Int
+  biography_AVERAGE_GTE: Float
+  biography_LONGEST_GTE: Int
+  biography_SHORTEST_GTE: Int
+  biography_LT: Int
+  biography_AVERAGE_LT: Float
+  biography_LONGEST_LT: Int
+  biography_SHORTEST_LT: Int
+  biography_LTE: Int
+  biography_AVERAGE_LTE: Float
+  biography_LONGEST_LTE: Int
+  biography_SHORTEST_LTE: Int
+  image_EQUAL: String
+  image_AVERAGE_EQUAL: Float
+  image_LONGEST_EQUAL: Int
+  image_SHORTEST_EQUAL: Int
+  image_GT: Int
+  image_AVERAGE_GT: Float
+  image_LONGEST_GT: Int
+  image_SHORTEST_GT: Int
+  image_GTE: Int
+  image_AVERAGE_GTE: Float
+  image_LONGEST_GTE: Int
+  image_SHORTEST_GTE: Int
+  image_LT: Int
+  image_AVERAGE_LT: Float
+  image_LONGEST_LT: Int
+  image_SHORTEST_LT: Int
+  image_LTE: Int
+  image_AVERAGE_LTE: Float
+  image_LONGEST_LTE: Int
+  image_SHORTEST_LTE: Int
+  resetToken_EQUAL: String
+  resetToken_AVERAGE_EQUAL: Float
+  resetToken_LONGEST_EQUAL: Int
+  resetToken_SHORTEST_EQUAL: Int
+  resetToken_GT: Int
+  resetToken_AVERAGE_GT: Float
+  resetToken_LONGEST_GT: Int
+  resetToken_SHORTEST_GT: Int
+  resetToken_GTE: Int
+  resetToken_AVERAGE_GTE: Float
+  resetToken_LONGEST_GTE: Int
+  resetToken_SHORTEST_GTE: Int
+  resetToken_LT: Int
+  resetToken_AVERAGE_LT: Float
+  resetToken_LONGEST_LT: Int
+  resetToken_SHORTEST_LT: Int
+  resetToken_LTE: Int
+  resetToken_AVERAGE_LTE: Float
+  resetToken_LONGEST_LTE: Int
+  resetToken_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
+  resetTokenExpiry_EQUAL: DateTime
+  resetTokenExpiry_MIN_EQUAL: DateTime
+  resetTokenExpiry_MAX_EQUAL: DateTime
+  resetTokenExpiry_GT: DateTime
+  resetTokenExpiry_MIN_GT: DateTime
+  resetTokenExpiry_MAX_GT: DateTime
+  resetTokenExpiry_GTE: DateTime
+  resetTokenExpiry_MIN_GTE: DateTime
+  resetTokenExpiry_MAX_GTE: DateTime
+  resetTokenExpiry_LT: DateTime
+  resetTokenExpiry_MIN_LT: DateTime
+  resetTokenExpiry_MAX_LT: DateTime
+  resetTokenExpiry_LTE: DateTime
+  resetTokenExpiry_MIN_LTE: DateTime
+  resetTokenExpiry_MAX_LTE: DateTime
 }
 
 input CommentCreatorUpdateConnectionInput {
-    node: UserUpdateInput
+  node: UserUpdateInput
 }
 
 input CommentCreatorUpdateFieldInput {
-    where: CommentCreatorConnectionWhere
-    update: CommentCreatorUpdateConnectionInput
-    connect: CommentCreatorConnectFieldInput
-    disconnect: CommentCreatorDisconnectFieldInput
-    create: CommentCreatorCreateFieldInput
-    delete: CommentCreatorDeleteFieldInput
-    connectOrCreate: CommentCreatorConnectOrCreateFieldInput
+  where: CommentCreatorConnectionWhere
+  update: CommentCreatorUpdateConnectionInput
+  connect: CommentCreatorConnectFieldInput
+  disconnect: CommentCreatorDisconnectFieldInput
+  create: CommentCreatorCreateFieldInput
+  delete: CommentCreatorDeleteFieldInput
+  connectOrCreate: CommentCreatorConnectOrCreateFieldInput
 }
 
 input CommentDeleteInput {
-    creator: CommentCreatorDeleteFieldInput
-    post: CommentPostDeleteFieldInput
+  creator: CommentCreatorDeleteFieldInput
+  post: CommentPostDeleteFieldInput
 }
 
 input CommentDisconnectInput {
-    creator: CommentCreatorDisconnectFieldInput
-    post: CommentPostDisconnectFieldInput
+  creator: CommentCreatorDisconnectFieldInput
+  post: CommentPostDisconnectFieldInput
 }
 
 input CommentOptions {
-    """
-    Specify one or more CommentSort objects to sort Comments by. The sorts will be applied in the order in which they are arranged in the array.
-    """
-    sort: [CommentSort]
-    limit: Int
-    offset: Int
+  """
+  Specify one or more CommentSort objects to sort Comments by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [CommentSort]
+  limit: Int
+  offset: Int
 }
 
 input CommentPostAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [CommentPostAggregateInput!]
-    OR: [CommentPostAggregateInput!]
-    node: CommentPostNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [CommentPostAggregateInput!]
+  OR: [CommentPostAggregateInput!]
+  node: CommentPostNodeAggregationWhereInput
 }
 
 input CommentPostConnectFieldInput {
-    where: PostConnectWhere
-    connect: PostConnectInput
+  where: PostConnectWhere
+  connect: PostConnectInput
 }
 
 input CommentPostConnectionSort {
-    node: PostSort
+  node: PostSort
 }
 
 input CommentPostConnectionWhere {
-    AND: [CommentPostConnectionWhere!]
-    OR: [CommentPostConnectionWhere!]
-    node: PostWhere
-    node_NOT: PostWhere
+  AND: [CommentPostConnectionWhere!]
+  OR: [CommentPostConnectionWhere!]
+  node: PostWhere
+  node_NOT: PostWhere
 }
 
 input CommentPostConnectOrCreateFieldInput {
-    where: PostConnectOrCreateWhere!
-    onCreate: CommentPostConnectOrCreateFieldInputOnCreate!
+  where: PostConnectOrCreateWhere!
+  onCreate: CommentPostConnectOrCreateFieldInputOnCreate!
 }
 
 input CommentPostConnectOrCreateFieldInputOnCreate {
-    node: PostCreateInput!
+  node: PostCreateInput!
 }
 
 input CommentPostCreateFieldInput {
-    node: PostCreateInput!
+  node: PostCreateInput!
 }
 
 input CommentPostDeleteFieldInput {
-    where: CommentPostConnectionWhere
-    delete: PostDeleteInput
+  where: CommentPostConnectionWhere
+  delete: PostDeleteInput
 }
 
 input CommentPostDisconnectFieldInput {
-    where: CommentPostConnectionWhere
-    disconnect: PostDisconnectInput
+  where: CommentPostConnectionWhere
+  disconnect: PostDisconnectInput
 }
 
 input CommentPostFieldInput {
-    create: CommentPostCreateFieldInput
-    connect: CommentPostConnectFieldInput
-    connectOrCreate: CommentPostConnectOrCreateFieldInput
+  create: CommentPostCreateFieldInput
+  connect: CommentPostConnectFieldInput
+  connectOrCreate: CommentPostConnectOrCreateFieldInput
 }
 
 input CommentPostNodeAggregationWhereInput {
-    AND: [CommentPostNodeAggregationWhereInput!]
-    OR: [CommentPostNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    music_EQUAL: String
-    music_AVERAGE_EQUAL: Float
-    music_LONGEST_EQUAL: Int
-    music_SHORTEST_EQUAL: Int
-    music_GT: Int
-    music_AVERAGE_GT: Float
-    music_LONGEST_GT: Int
-    music_SHORTEST_GT: Int
-    music_GTE: Int
-    music_AVERAGE_GTE: Float
-    music_LONGEST_GTE: Int
-    music_SHORTEST_GTE: Int
-    music_LT: Int
-    music_AVERAGE_LT: Float
-    music_LONGEST_LT: Int
-    music_SHORTEST_LT: Int
-    music_LTE: Int
-    music_AVERAGE_LTE: Float
-    music_LONGEST_LTE: Int
-    music_SHORTEST_LTE: Int
-    description_EQUAL: String
-    description_AVERAGE_EQUAL: Float
-    description_LONGEST_EQUAL: Int
-    description_SHORTEST_EQUAL: Int
-    description_GT: Int
-    description_AVERAGE_GT: Float
-    description_LONGEST_GT: Int
-    description_SHORTEST_GT: Int
-    description_GTE: Int
-    description_AVERAGE_GTE: Float
-    description_LONGEST_GTE: Int
-    description_SHORTEST_GTE: Int
-    description_LT: Int
-    description_AVERAGE_LT: Float
-    description_LONGEST_LT: Int
-    description_SHORTEST_LT: Int
-    description_LTE: Int
-    description_AVERAGE_LTE: Float
-    description_LONGEST_LTE: Int
-    description_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
+  AND: [CommentPostNodeAggregationWhereInput!]
+  OR: [CommentPostNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  music_EQUAL: String
+  music_AVERAGE_EQUAL: Float
+  music_LONGEST_EQUAL: Int
+  music_SHORTEST_EQUAL: Int
+  music_GT: Int
+  music_AVERAGE_GT: Float
+  music_LONGEST_GT: Int
+  music_SHORTEST_GT: Int
+  music_GTE: Int
+  music_AVERAGE_GTE: Float
+  music_LONGEST_GTE: Int
+  music_SHORTEST_GTE: Int
+  music_LT: Int
+  music_AVERAGE_LT: Float
+  music_LONGEST_LT: Int
+  music_SHORTEST_LT: Int
+  music_LTE: Int
+  music_AVERAGE_LTE: Float
+  music_LONGEST_LTE: Int
+  music_SHORTEST_LTE: Int
+  description_EQUAL: String
+  description_AVERAGE_EQUAL: Float
+  description_LONGEST_EQUAL: Int
+  description_SHORTEST_EQUAL: Int
+  description_GT: Int
+  description_AVERAGE_GT: Float
+  description_LONGEST_GT: Int
+  description_SHORTEST_GT: Int
+  description_GTE: Int
+  description_AVERAGE_GTE: Float
+  description_LONGEST_GTE: Int
+  description_SHORTEST_GTE: Int
+  description_LT: Int
+  description_AVERAGE_LT: Float
+  description_LONGEST_LT: Int
+  description_SHORTEST_LT: Int
+  description_LTE: Int
+  description_AVERAGE_LTE: Float
+  description_LONGEST_LTE: Int
+  description_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
 }
 
 input CommentPostUpdateConnectionInput {
-    node: PostUpdateInput
+  node: PostUpdateInput
 }
 
 input CommentPostUpdateFieldInput {
-    where: CommentPostConnectionWhere
-    update: CommentPostUpdateConnectionInput
-    connect: CommentPostConnectFieldInput
-    disconnect: CommentPostDisconnectFieldInput
-    create: CommentPostCreateFieldInput
-    delete: CommentPostDeleteFieldInput
-    connectOrCreate: CommentPostConnectOrCreateFieldInput
+  where: CommentPostConnectionWhere
+  update: CommentPostUpdateConnectionInput
+  connect: CommentPostConnectFieldInput
+  disconnect: CommentPostDisconnectFieldInput
+  create: CommentPostCreateFieldInput
+  delete: CommentPostDeleteFieldInput
+  connectOrCreate: CommentPostConnectOrCreateFieldInput
 }
 
 input CommentRelationInput {
-    creator: CommentCreatorCreateFieldInput
-    post: CommentPostCreateFieldInput
+  creator: CommentCreatorCreateFieldInput
+  post: CommentPostCreateFieldInput
 }
 
 """
 Fields to sort Comments by. The order in which sorts are applied is not guaranteed when specifying many fields in one CommentSort object.
 """
 input CommentSort {
-    id: SortDirection
-    commentary: SortDirection
-    createdAt: SortDirection
-    updatedAt: SortDirection
+  id: SortDirection
+  commentary: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
 }
 
 input CommentUniqueWhere {
-    id: ID
+  id: ID
 }
 
 input CommentUpdateInput {
-    commentary: String
-    creator: CommentCreatorUpdateFieldInput
-    post: CommentPostUpdateFieldInput
+  commentary: String
+  creator: CommentCreatorUpdateFieldInput
+  post: CommentPostUpdateFieldInput
 }
 
 input CommentWhere {
-    OR: [CommentWhere!]
-    AND: [CommentWhere!]
-    id: ID
-    id_NOT: ID
-    id_IN: [ID]
-    id_NOT_IN: [ID]
-    id_CONTAINS: ID
-    id_NOT_CONTAINS: ID
-    id_STARTS_WITH: ID
-    id_NOT_STARTS_WITH: ID
-    id_ENDS_WITH: ID
-    id_NOT_ENDS_WITH: ID
-    commentary: String
-    commentary_NOT: String
-    commentary_IN: [String]
-    commentary_NOT_IN: [String]
-    commentary_CONTAINS: String
-    commentary_NOT_CONTAINS: String
-    commentary_STARTS_WITH: String
-    commentary_NOT_STARTS_WITH: String
-    commentary_ENDS_WITH: String
-    commentary_NOT_ENDS_WITH: String
-    createdAt: DateTime
-    createdAt_NOT: DateTime
-    createdAt_IN: [DateTime]
-    createdAt_NOT_IN: [DateTime]
-    createdAt_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_GT: DateTime
-    createdAt_GTE: DateTime
-    updatedAt: DateTime
-    updatedAt_NOT: DateTime
-    updatedAt_IN: [DateTime]
-    updatedAt_NOT_IN: [DateTime]
-    updatedAt_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_GTE: DateTime
-    creator: UserWhere
-    creator_NOT: UserWhere
-    creatorAggregate: CommentCreatorAggregateInput
-    post: PostWhere
-    post_NOT: PostWhere
-    postAggregate: CommentPostAggregateInput
-    creatorConnection: CommentCreatorConnectionWhere
-    creatorConnection_NOT: CommentCreatorConnectionWhere
-    postConnection: CommentPostConnectionWhere
-    postConnection_NOT: CommentPostConnectionWhere
+  OR: [CommentWhere!]
+  AND: [CommentWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  commentary: String
+  commentary_NOT: String
+  commentary_IN: [String]
+  commentary_NOT_IN: [String]
+  commentary_CONTAINS: String
+  commentary_NOT_CONTAINS: String
+  commentary_STARTS_WITH: String
+  commentary_NOT_STARTS_WITH: String
+  commentary_ENDS_WITH: String
+  commentary_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  creator: UserWhere
+  creator_NOT: UserWhere
+  creatorAggregate: CommentCreatorAggregateInput
+  post: PostWhere
+  post_NOT: PostWhere
+  postAggregate: CommentPostAggregateInput
+  creatorConnection: CommentCreatorConnectionWhere
+  creatorConnection_NOT: CommentCreatorConnectionWhere
+  postConnection: CommentPostConnectionWhere
+  postConnection_NOT: CommentPostConnectionWhere
 }
 
 input HashtagCreateInput {
-    hashtag: String!
+  hashtag: String!
 }
 
 input HashtagOptions {
-    """
-    Specify one or more HashtagSort objects to sort Hashtags by. The sorts will be applied in the order in which they are arranged in the array.
-    """
-    sort: [HashtagSort]
-    limit: Int
-    offset: Int
+  """
+  Specify one or more HashtagSort objects to sort Hashtags by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [HashtagSort]
+  limit: Int
+  offset: Int
 }
 
 """
 Fields to sort Hashtags by. The order in which sorts are applied is not guaranteed when specifying many fields in one HashtagSort object.
 """
 input HashtagSort {
-    id: SortDirection
-    hashtag: SortDirection
-    createdAt: SortDirection
-    updatedAt: SortDirection
+  id: SortDirection
+  hashtag: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
 }
 
 input HashtagUpdateInput {
-    hashtag: String
+  hashtag: String
 }
 
 input HashtagWhere {
-    OR: [HashtagWhere!]
-    AND: [HashtagWhere!]
-    id: ID
-    id_NOT: ID
-    id_IN: [ID]
-    id_NOT_IN: [ID]
-    id_CONTAINS: ID
-    id_NOT_CONTAINS: ID
-    id_STARTS_WITH: ID
-    id_NOT_STARTS_WITH: ID
-    id_ENDS_WITH: ID
-    id_NOT_ENDS_WITH: ID
-    hashtag: String
-    hashtag_NOT: String
-    hashtag_IN: [String]
-    hashtag_NOT_IN: [String]
-    hashtag_CONTAINS: String
-    hashtag_NOT_CONTAINS: String
-    hashtag_STARTS_WITH: String
-    hashtag_NOT_STARTS_WITH: String
-    hashtag_ENDS_WITH: String
-    hashtag_NOT_ENDS_WITH: String
-    createdAt: DateTime
-    createdAt_NOT: DateTime
-    createdAt_IN: [DateTime]
-    createdAt_NOT_IN: [DateTime]
-    createdAt_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_GT: DateTime
-    createdAt_GTE: DateTime
-    updatedAt: DateTime
-    updatedAt_NOT: DateTime
-    updatedAt_IN: [DateTime]
-    updatedAt_NOT_IN: [DateTime]
-    updatedAt_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_GTE: DateTime
+  OR: [HashtagWhere!]
+  AND: [HashtagWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  hashtag: String
+  hashtag_NOT: String
+  hashtag_IN: [String]
+  hashtag_NOT_IN: [String]
+  hashtag_CONTAINS: String
+  hashtag_NOT_CONTAINS: String
+  hashtag_STARTS_WITH: String
+  hashtag_NOT_STARTS_WITH: String
+  hashtag_ENDS_WITH: String
+  hashtag_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
 }
 
 input PointDistance {
-    point: PointInput!
+  point: PointInput!
 
-    """The distance in metres to be used when comparing two points"""
-    distance: Float!
+  """The distance in metres to be used when comparing two points"""
+  distance: Float!
 }
 
 input PointInput {
-    longitude: Float!
-    latitude: Float!
-    height: Float
+  longitude: Float!
+  latitude: Float!
+  height: Float
 }
 
 input PostCommentsAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [PostCommentsAggregateInput!]
-    OR: [PostCommentsAggregateInput!]
-    node: PostCommentsNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [PostCommentsAggregateInput!]
+  OR: [PostCommentsAggregateInput!]
+  node: PostCommentsNodeAggregationWhereInput
 }
 
 input PostCommentsConnectFieldInput {
-    where: CommentConnectWhere
-    connect: [CommentConnectInput!]
+  where: CommentConnectWhere
+  connect: [CommentConnectInput!]
 }
 
 input PostCommentsConnectionSort {
-    node: CommentSort
+  node: CommentSort
 }
 
 input PostCommentsConnectionWhere {
-    AND: [PostCommentsConnectionWhere!]
-    OR: [PostCommentsConnectionWhere!]
-    node: CommentWhere
-    node_NOT: CommentWhere
+  AND: [PostCommentsConnectionWhere!]
+  OR: [PostCommentsConnectionWhere!]
+  node: CommentWhere
+  node_NOT: CommentWhere
 }
 
 input PostCommentsConnectOrCreateFieldInput {
-    where: CommentConnectOrCreateWhere!
-    onCreate: PostCommentsConnectOrCreateFieldInputOnCreate!
+  where: CommentConnectOrCreateWhere!
+  onCreate: PostCommentsConnectOrCreateFieldInputOnCreate!
 }
 
 input PostCommentsConnectOrCreateFieldInputOnCreate {
-    node: CommentCreateInput!
+  node: CommentCreateInput!
 }
 
 input PostCommentsCreateFieldInput {
-    node: CommentCreateInput!
+  node: CommentCreateInput!
 }
 
 input PostCommentsDeleteFieldInput {
-    where: PostCommentsConnectionWhere
-    delete: CommentDeleteInput
+  where: PostCommentsConnectionWhere
+  delete: CommentDeleteInput
 }
 
 input PostCommentsDisconnectFieldInput {
-    where: PostCommentsConnectionWhere
-    disconnect: CommentDisconnectInput
+  where: PostCommentsConnectionWhere
+  disconnect: CommentDisconnectInput
 }
 
 input PostCommentsFieldInput {
-    create: [PostCommentsCreateFieldInput!]
-    connect: [PostCommentsConnectFieldInput!]
-    connectOrCreate: [PostCommentsConnectOrCreateFieldInput!]
+  create: [PostCommentsCreateFieldInput!]
+  connect: [PostCommentsConnectFieldInput!]
+  connectOrCreate: [PostCommentsConnectOrCreateFieldInput!]
 }
 
 input PostCommentsNodeAggregationWhereInput {
-    AND: [PostCommentsNodeAggregationWhereInput!]
-    OR: [PostCommentsNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    commentary_EQUAL: String
-    commentary_AVERAGE_EQUAL: Float
-    commentary_LONGEST_EQUAL: Int
-    commentary_SHORTEST_EQUAL: Int
-    commentary_GT: Int
-    commentary_AVERAGE_GT: Float
-    commentary_LONGEST_GT: Int
-    commentary_SHORTEST_GT: Int
-    commentary_GTE: Int
-    commentary_AVERAGE_GTE: Float
-    commentary_LONGEST_GTE: Int
-    commentary_SHORTEST_GTE: Int
-    commentary_LT: Int
-    commentary_AVERAGE_LT: Float
-    commentary_LONGEST_LT: Int
-    commentary_SHORTEST_LT: Int
-    commentary_LTE: Int
-    commentary_AVERAGE_LTE: Float
-    commentary_LONGEST_LTE: Int
-    commentary_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
+  AND: [PostCommentsNodeAggregationWhereInput!]
+  OR: [PostCommentsNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  commentary_EQUAL: String
+  commentary_AVERAGE_EQUAL: Float
+  commentary_LONGEST_EQUAL: Int
+  commentary_SHORTEST_EQUAL: Int
+  commentary_GT: Int
+  commentary_AVERAGE_GT: Float
+  commentary_LONGEST_GT: Int
+  commentary_SHORTEST_GT: Int
+  commentary_GTE: Int
+  commentary_AVERAGE_GTE: Float
+  commentary_LONGEST_GTE: Int
+  commentary_SHORTEST_GTE: Int
+  commentary_LT: Int
+  commentary_AVERAGE_LT: Float
+  commentary_LONGEST_LT: Int
+  commentary_SHORTEST_LT: Int
+  commentary_LTE: Int
+  commentary_AVERAGE_LTE: Float
+  commentary_LONGEST_LTE: Int
+  commentary_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
 }
 
 input PostCommentsUpdateConnectionInput {
-    node: CommentUpdateInput
+  node: CommentUpdateInput
 }
 
 input PostCommentsUpdateFieldInput {
-    where: PostCommentsConnectionWhere
-    update: PostCommentsUpdateConnectionInput
-    connect: [PostCommentsConnectFieldInput!]
-    disconnect: [PostCommentsDisconnectFieldInput!]
-    create: [PostCommentsCreateFieldInput!]
-    delete: [PostCommentsDeleteFieldInput!]
-    connectOrCreate: [PostCommentsConnectOrCreateFieldInput!]
+  where: PostCommentsConnectionWhere
+  update: PostCommentsUpdateConnectionInput
+  connect: [PostCommentsConnectFieldInput!]
+  disconnect: [PostCommentsDisconnectFieldInput!]
+  create: [PostCommentsCreateFieldInput!]
+  delete: [PostCommentsDeleteFieldInput!]
+  connectOrCreate: [PostCommentsConnectOrCreateFieldInput!]
 }
 
 input PostConnectInput {
-    creator: PostCreatorConnectFieldInput
-    likes: [PostLikesConnectFieldInput!]
-    comments: [PostCommentsConnectFieldInput!]
+  creator: PostCreatorConnectFieldInput
+  likes: [PostLikesConnectFieldInput!]
+  comments: [PostCommentsConnectFieldInput!]
 }
 
 input PostConnectOrCreateInput {
-    creator: PostCreatorConnectOrCreateFieldInput
-    likes: [PostLikesConnectOrCreateFieldInput!]
-    comments: [PostCommentsConnectOrCreateFieldInput!]
+  creator: PostCreatorConnectOrCreateFieldInput
+  likes: [PostLikesConnectOrCreateFieldInput!]
+  comments: [PostCommentsConnectOrCreateFieldInput!]
 }
 
 input PostConnectOrCreateWhere {
-    node: PostUniqueWhere!
+  node: PostUniqueWhere!
 }
 
 input PostConnectWhere {
-    node: PostWhere!
+  node: PostWhere!
 }
 
 input PostCreateInput {
-    music: String
-    description: String!
-    creator: PostCreatorFieldInput
-    likes: PostLikesFieldInput
-    comments: PostCommentsFieldInput
+  music: String
+  description: String!
+  creator: PostCreatorFieldInput
+  likes: PostLikesFieldInput
+  comments: PostCommentsFieldInput
 }
 
 input PostCreatorAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [PostCreatorAggregateInput!]
-    OR: [PostCreatorAggregateInput!]
-    node: PostCreatorNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [PostCreatorAggregateInput!]
+  OR: [PostCreatorAggregateInput!]
+  node: PostCreatorNodeAggregationWhereInput
 }
 
 input PostCreatorConnectFieldInput {
-    where: UserConnectWhere
-    connect: UserConnectInput
+  where: UserConnectWhere
+  connect: UserConnectInput
 }
 
 input PostCreatorConnectionSort {
-    node: UserSort
+  node: UserSort
 }
 
 input PostCreatorConnectionWhere {
-    AND: [PostCreatorConnectionWhere!]
-    OR: [PostCreatorConnectionWhere!]
-    node: UserWhere
-    node_NOT: UserWhere
+  AND: [PostCreatorConnectionWhere!]
+  OR: [PostCreatorConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
 }
 
 input PostCreatorConnectOrCreateFieldInput {
-    where: UserConnectOrCreateWhere!
-    onCreate: PostCreatorConnectOrCreateFieldInputOnCreate!
+  where: UserConnectOrCreateWhere!
+  onCreate: PostCreatorConnectOrCreateFieldInputOnCreate!
 }
 
 input PostCreatorConnectOrCreateFieldInputOnCreate {
-    node: UserCreateInput!
+  node: UserCreateInput!
 }
 
 input PostCreatorCreateFieldInput {
-    node: UserCreateInput!
+  node: UserCreateInput!
 }
 
 input PostCreatorDeleteFieldInput {
-    where: PostCreatorConnectionWhere
-    delete: UserDeleteInput
+  where: PostCreatorConnectionWhere
+  delete: UserDeleteInput
 }
 
 input PostCreatorDisconnectFieldInput {
-    where: PostCreatorConnectionWhere
-    disconnect: UserDisconnectInput
+  where: PostCreatorConnectionWhere
+  disconnect: UserDisconnectInput
 }
 
 input PostCreatorFieldInput {
-    create: PostCreatorCreateFieldInput
-    connect: PostCreatorConnectFieldInput
-    connectOrCreate: PostCreatorConnectOrCreateFieldInput
+  create: PostCreatorCreateFieldInput
+  connect: PostCreatorConnectFieldInput
+  connectOrCreate: PostCreatorConnectOrCreateFieldInput
 }
 
 input PostCreatorNodeAggregationWhereInput {
-    AND: [PostCreatorNodeAggregationWhereInput!]
-    OR: [PostCreatorNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    email_EQUAL: String
-    email_AVERAGE_EQUAL: Float
-    email_LONGEST_EQUAL: Int
-    email_SHORTEST_EQUAL: Int
-    email_GT: Int
-    email_AVERAGE_GT: Float
-    email_LONGEST_GT: Int
-    email_SHORTEST_GT: Int
-    email_GTE: Int
-    email_AVERAGE_GTE: Float
-    email_LONGEST_GTE: Int
-    email_SHORTEST_GTE: Int
-    email_LT: Int
-    email_AVERAGE_LT: Float
-    email_LONGEST_LT: Int
-    email_SHORTEST_LT: Int
-    email_LTE: Int
-    email_AVERAGE_LTE: Float
-    email_LONGEST_LTE: Int
-    email_SHORTEST_LTE: Int
-    pseudo_EQUAL: String
-    pseudo_AVERAGE_EQUAL: Float
-    pseudo_LONGEST_EQUAL: Int
-    pseudo_SHORTEST_EQUAL: Int
-    pseudo_GT: Int
-    pseudo_AVERAGE_GT: Float
-    pseudo_LONGEST_GT: Int
-    pseudo_SHORTEST_GT: Int
-    pseudo_GTE: Int
-    pseudo_AVERAGE_GTE: Float
-    pseudo_LONGEST_GTE: Int
-    pseudo_SHORTEST_GTE: Int
-    pseudo_LT: Int
-    pseudo_AVERAGE_LT: Float
-    pseudo_LONGEST_LT: Int
-    pseudo_SHORTEST_LT: Int
-    pseudo_LTE: Int
-    pseudo_AVERAGE_LTE: Float
-    pseudo_LONGEST_LTE: Int
-    pseudo_SHORTEST_LTE: Int
-    firstName_EQUAL: String
-    firstName_AVERAGE_EQUAL: Float
-    firstName_LONGEST_EQUAL: Int
-    firstName_SHORTEST_EQUAL: Int
-    firstName_GT: Int
-    firstName_AVERAGE_GT: Float
-    firstName_LONGEST_GT: Int
-    firstName_SHORTEST_GT: Int
-    firstName_GTE: Int
-    firstName_AVERAGE_GTE: Float
-    firstName_LONGEST_GTE: Int
-    firstName_SHORTEST_GTE: Int
-    firstName_LT: Int
-    firstName_AVERAGE_LT: Float
-    firstName_LONGEST_LT: Int
-    firstName_SHORTEST_LT: Int
-    firstName_LTE: Int
-    firstName_AVERAGE_LTE: Float
-    firstName_LONGEST_LTE: Int
-    firstName_SHORTEST_LTE: Int
-    lastName_EQUAL: String
-    lastName_AVERAGE_EQUAL: Float
-    lastName_LONGEST_EQUAL: Int
-    lastName_SHORTEST_EQUAL: Int
-    lastName_GT: Int
-    lastName_AVERAGE_GT: Float
-    lastName_LONGEST_GT: Int
-    lastName_SHORTEST_GT: Int
-    lastName_GTE: Int
-    lastName_AVERAGE_GTE: Float
-    lastName_LONGEST_GTE: Int
-    lastName_SHORTEST_GTE: Int
-    lastName_LT: Int
-    lastName_AVERAGE_LT: Float
-    lastName_LONGEST_LT: Int
-    lastName_SHORTEST_LT: Int
-    lastName_LTE: Int
-    lastName_AVERAGE_LTE: Float
-    lastName_LONGEST_LTE: Int
-    lastName_SHORTEST_LTE: Int
-    password_EQUAL: String
-    password_AVERAGE_EQUAL: Float
-    password_LONGEST_EQUAL: Int
-    password_SHORTEST_EQUAL: Int
-    password_GT: Int
-    password_AVERAGE_GT: Float
-    password_LONGEST_GT: Int
-    password_SHORTEST_GT: Int
-    password_GTE: Int
-    password_AVERAGE_GTE: Float
-    password_LONGEST_GTE: Int
-    password_SHORTEST_GTE: Int
-    password_LT: Int
-    password_AVERAGE_LT: Float
-    password_LONGEST_LT: Int
-    password_SHORTEST_LT: Int
-    password_LTE: Int
-    password_AVERAGE_LTE: Float
-    password_LONGEST_LTE: Int
-    password_SHORTEST_LTE: Int
-    biography_EQUAL: String
-    biography_AVERAGE_EQUAL: Float
-    biography_LONGEST_EQUAL: Int
-    biography_SHORTEST_EQUAL: Int
-    biography_GT: Int
-    biography_AVERAGE_GT: Float
-    biography_LONGEST_GT: Int
-    biography_SHORTEST_GT: Int
-    biography_GTE: Int
-    biography_AVERAGE_GTE: Float
-    biography_LONGEST_GTE: Int
-    biography_SHORTEST_GTE: Int
-    biography_LT: Int
-    biography_AVERAGE_LT: Float
-    biography_LONGEST_LT: Int
-    biography_SHORTEST_LT: Int
-    biography_LTE: Int
-    biography_AVERAGE_LTE: Float
-    biography_LONGEST_LTE: Int
-    biography_SHORTEST_LTE: Int
-    image_EQUAL: String
-    image_AVERAGE_EQUAL: Float
-    image_LONGEST_EQUAL: Int
-    image_SHORTEST_EQUAL: Int
-    image_GT: Int
-    image_AVERAGE_GT: Float
-    image_LONGEST_GT: Int
-    image_SHORTEST_GT: Int
-    image_GTE: Int
-    image_AVERAGE_GTE: Float
-    image_LONGEST_GTE: Int
-    image_SHORTEST_GTE: Int
-    image_LT: Int
-    image_AVERAGE_LT: Float
-    image_LONGEST_LT: Int
-    image_SHORTEST_LT: Int
-    image_LTE: Int
-    image_AVERAGE_LTE: Float
-    image_LONGEST_LTE: Int
-    image_SHORTEST_LTE: Int
-    resetToken_EQUAL: String
-    resetToken_AVERAGE_EQUAL: Float
-    resetToken_LONGEST_EQUAL: Int
-    resetToken_SHORTEST_EQUAL: Int
-    resetToken_GT: Int
-    resetToken_AVERAGE_GT: Float
-    resetToken_LONGEST_GT: Int
-    resetToken_SHORTEST_GT: Int
-    resetToken_GTE: Int
-    resetToken_AVERAGE_GTE: Float
-    resetToken_LONGEST_GTE: Int
-    resetToken_SHORTEST_GTE: Int
-    resetToken_LT: Int
-    resetToken_AVERAGE_LT: Float
-    resetToken_LONGEST_LT: Int
-    resetToken_SHORTEST_LT: Int
-    resetToken_LTE: Int
-    resetToken_AVERAGE_LTE: Float
-    resetToken_LONGEST_LTE: Int
-    resetToken_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
-    resetTokenExpiry_EQUAL: DateTime
-    resetTokenExpiry_MIN_EQUAL: DateTime
-    resetTokenExpiry_MAX_EQUAL: DateTime
-    resetTokenExpiry_GT: DateTime
-    resetTokenExpiry_MIN_GT: DateTime
-    resetTokenExpiry_MAX_GT: DateTime
-    resetTokenExpiry_GTE: DateTime
-    resetTokenExpiry_MIN_GTE: DateTime
-    resetTokenExpiry_MAX_GTE: DateTime
-    resetTokenExpiry_LT: DateTime
-    resetTokenExpiry_MIN_LT: DateTime
-    resetTokenExpiry_MAX_LT: DateTime
-    resetTokenExpiry_LTE: DateTime
-    resetTokenExpiry_MIN_LTE: DateTime
-    resetTokenExpiry_MAX_LTE: DateTime
+  AND: [PostCreatorNodeAggregationWhereInput!]
+  OR: [PostCreatorNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  email_EQUAL: String
+  email_AVERAGE_EQUAL: Float
+  email_LONGEST_EQUAL: Int
+  email_SHORTEST_EQUAL: Int
+  email_GT: Int
+  email_AVERAGE_GT: Float
+  email_LONGEST_GT: Int
+  email_SHORTEST_GT: Int
+  email_GTE: Int
+  email_AVERAGE_GTE: Float
+  email_LONGEST_GTE: Int
+  email_SHORTEST_GTE: Int
+  email_LT: Int
+  email_AVERAGE_LT: Float
+  email_LONGEST_LT: Int
+  email_SHORTEST_LT: Int
+  email_LTE: Int
+  email_AVERAGE_LTE: Float
+  email_LONGEST_LTE: Int
+  email_SHORTEST_LTE: Int
+  pseudo_EQUAL: String
+  pseudo_AVERAGE_EQUAL: Float
+  pseudo_LONGEST_EQUAL: Int
+  pseudo_SHORTEST_EQUAL: Int
+  pseudo_GT: Int
+  pseudo_AVERAGE_GT: Float
+  pseudo_LONGEST_GT: Int
+  pseudo_SHORTEST_GT: Int
+  pseudo_GTE: Int
+  pseudo_AVERAGE_GTE: Float
+  pseudo_LONGEST_GTE: Int
+  pseudo_SHORTEST_GTE: Int
+  pseudo_LT: Int
+  pseudo_AVERAGE_LT: Float
+  pseudo_LONGEST_LT: Int
+  pseudo_SHORTEST_LT: Int
+  pseudo_LTE: Int
+  pseudo_AVERAGE_LTE: Float
+  pseudo_LONGEST_LTE: Int
+  pseudo_SHORTEST_LTE: Int
+  firstName_EQUAL: String
+  firstName_AVERAGE_EQUAL: Float
+  firstName_LONGEST_EQUAL: Int
+  firstName_SHORTEST_EQUAL: Int
+  firstName_GT: Int
+  firstName_AVERAGE_GT: Float
+  firstName_LONGEST_GT: Int
+  firstName_SHORTEST_GT: Int
+  firstName_GTE: Int
+  firstName_AVERAGE_GTE: Float
+  firstName_LONGEST_GTE: Int
+  firstName_SHORTEST_GTE: Int
+  firstName_LT: Int
+  firstName_AVERAGE_LT: Float
+  firstName_LONGEST_LT: Int
+  firstName_SHORTEST_LT: Int
+  firstName_LTE: Int
+  firstName_AVERAGE_LTE: Float
+  firstName_LONGEST_LTE: Int
+  firstName_SHORTEST_LTE: Int
+  lastName_EQUAL: String
+  lastName_AVERAGE_EQUAL: Float
+  lastName_LONGEST_EQUAL: Int
+  lastName_SHORTEST_EQUAL: Int
+  lastName_GT: Int
+  lastName_AVERAGE_GT: Float
+  lastName_LONGEST_GT: Int
+  lastName_SHORTEST_GT: Int
+  lastName_GTE: Int
+  lastName_AVERAGE_GTE: Float
+  lastName_LONGEST_GTE: Int
+  lastName_SHORTEST_GTE: Int
+  lastName_LT: Int
+  lastName_AVERAGE_LT: Float
+  lastName_LONGEST_LT: Int
+  lastName_SHORTEST_LT: Int
+  lastName_LTE: Int
+  lastName_AVERAGE_LTE: Float
+  lastName_LONGEST_LTE: Int
+  lastName_SHORTEST_LTE: Int
+  password_EQUAL: String
+  password_AVERAGE_EQUAL: Float
+  password_LONGEST_EQUAL: Int
+  password_SHORTEST_EQUAL: Int
+  password_GT: Int
+  password_AVERAGE_GT: Float
+  password_LONGEST_GT: Int
+  password_SHORTEST_GT: Int
+  password_GTE: Int
+  password_AVERAGE_GTE: Float
+  password_LONGEST_GTE: Int
+  password_SHORTEST_GTE: Int
+  password_LT: Int
+  password_AVERAGE_LT: Float
+  password_LONGEST_LT: Int
+  password_SHORTEST_LT: Int
+  password_LTE: Int
+  password_AVERAGE_LTE: Float
+  password_LONGEST_LTE: Int
+  password_SHORTEST_LTE: Int
+  biography_EQUAL: String
+  biography_AVERAGE_EQUAL: Float
+  biography_LONGEST_EQUAL: Int
+  biography_SHORTEST_EQUAL: Int
+  biography_GT: Int
+  biography_AVERAGE_GT: Float
+  biography_LONGEST_GT: Int
+  biography_SHORTEST_GT: Int
+  biography_GTE: Int
+  biography_AVERAGE_GTE: Float
+  biography_LONGEST_GTE: Int
+  biography_SHORTEST_GTE: Int
+  biography_LT: Int
+  biography_AVERAGE_LT: Float
+  biography_LONGEST_LT: Int
+  biography_SHORTEST_LT: Int
+  biography_LTE: Int
+  biography_AVERAGE_LTE: Float
+  biography_LONGEST_LTE: Int
+  biography_SHORTEST_LTE: Int
+  image_EQUAL: String
+  image_AVERAGE_EQUAL: Float
+  image_LONGEST_EQUAL: Int
+  image_SHORTEST_EQUAL: Int
+  image_GT: Int
+  image_AVERAGE_GT: Float
+  image_LONGEST_GT: Int
+  image_SHORTEST_GT: Int
+  image_GTE: Int
+  image_AVERAGE_GTE: Float
+  image_LONGEST_GTE: Int
+  image_SHORTEST_GTE: Int
+  image_LT: Int
+  image_AVERAGE_LT: Float
+  image_LONGEST_LT: Int
+  image_SHORTEST_LT: Int
+  image_LTE: Int
+  image_AVERAGE_LTE: Float
+  image_LONGEST_LTE: Int
+  image_SHORTEST_LTE: Int
+  resetToken_EQUAL: String
+  resetToken_AVERAGE_EQUAL: Float
+  resetToken_LONGEST_EQUAL: Int
+  resetToken_SHORTEST_EQUAL: Int
+  resetToken_GT: Int
+  resetToken_AVERAGE_GT: Float
+  resetToken_LONGEST_GT: Int
+  resetToken_SHORTEST_GT: Int
+  resetToken_GTE: Int
+  resetToken_AVERAGE_GTE: Float
+  resetToken_LONGEST_GTE: Int
+  resetToken_SHORTEST_GTE: Int
+  resetToken_LT: Int
+  resetToken_AVERAGE_LT: Float
+  resetToken_LONGEST_LT: Int
+  resetToken_SHORTEST_LT: Int
+  resetToken_LTE: Int
+  resetToken_AVERAGE_LTE: Float
+  resetToken_LONGEST_LTE: Int
+  resetToken_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
+  resetTokenExpiry_EQUAL: DateTime
+  resetTokenExpiry_MIN_EQUAL: DateTime
+  resetTokenExpiry_MAX_EQUAL: DateTime
+  resetTokenExpiry_GT: DateTime
+  resetTokenExpiry_MIN_GT: DateTime
+  resetTokenExpiry_MAX_GT: DateTime
+  resetTokenExpiry_GTE: DateTime
+  resetTokenExpiry_MIN_GTE: DateTime
+  resetTokenExpiry_MAX_GTE: DateTime
+  resetTokenExpiry_LT: DateTime
+  resetTokenExpiry_MIN_LT: DateTime
+  resetTokenExpiry_MAX_LT: DateTime
+  resetTokenExpiry_LTE: DateTime
+  resetTokenExpiry_MIN_LTE: DateTime
+  resetTokenExpiry_MAX_LTE: DateTime
 }
 
 input PostCreatorUpdateConnectionInput {
-    node: UserUpdateInput
+  node: UserUpdateInput
 }
 
 input PostCreatorUpdateFieldInput {
-    where: PostCreatorConnectionWhere
-    update: PostCreatorUpdateConnectionInput
-    connect: PostCreatorConnectFieldInput
-    disconnect: PostCreatorDisconnectFieldInput
-    create: PostCreatorCreateFieldInput
-    delete: PostCreatorDeleteFieldInput
-    connectOrCreate: PostCreatorConnectOrCreateFieldInput
+  where: PostCreatorConnectionWhere
+  update: PostCreatorUpdateConnectionInput
+  connect: PostCreatorConnectFieldInput
+  disconnect: PostCreatorDisconnectFieldInput
+  create: PostCreatorCreateFieldInput
+  delete: PostCreatorDeleteFieldInput
+  connectOrCreate: PostCreatorConnectOrCreateFieldInput
 }
 
 input PostDeleteInput {
-    creator: PostCreatorDeleteFieldInput
-    likes: [PostLikesDeleteFieldInput!]
-    comments: [PostCommentsDeleteFieldInput!]
+  creator: PostCreatorDeleteFieldInput
+  likes: [PostLikesDeleteFieldInput!]
+  comments: [PostCommentsDeleteFieldInput!]
 }
 
 input PostDisconnectInput {
-    creator: PostCreatorDisconnectFieldInput
-    likes: [PostLikesDisconnectFieldInput!]
-    comments: [PostCommentsDisconnectFieldInput!]
+  creator: PostCreatorDisconnectFieldInput
+  likes: [PostLikesDisconnectFieldInput!]
+  comments: [PostCommentsDisconnectFieldInput!]
 }
 
 input PostLikesAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [PostLikesAggregateInput!]
-    OR: [PostLikesAggregateInput!]
-    node: PostLikesNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [PostLikesAggregateInput!]
+  OR: [PostLikesAggregateInput!]
+  node: PostLikesNodeAggregationWhereInput
 }
 
 input PostLikesConnectFieldInput {
-    where: UserConnectWhere
-    connect: [UserConnectInput!]
+  where: UserConnectWhere
+  connect: [UserConnectInput!]
 }
 
 input PostLikesConnectionSort {
-    node: UserSort
+  node: UserSort
 }
 
 input PostLikesConnectionWhere {
-    AND: [PostLikesConnectionWhere!]
-    OR: [PostLikesConnectionWhere!]
-    node: UserWhere
-    node_NOT: UserWhere
+  AND: [PostLikesConnectionWhere!]
+  OR: [PostLikesConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
 }
 
 input PostLikesConnectOrCreateFieldInput {
-    where: UserConnectOrCreateWhere!
-    onCreate: PostLikesConnectOrCreateFieldInputOnCreate!
+  where: UserConnectOrCreateWhere!
+  onCreate: PostLikesConnectOrCreateFieldInputOnCreate!
 }
 
 input PostLikesConnectOrCreateFieldInputOnCreate {
-    node: UserCreateInput!
+  node: UserCreateInput!
 }
 
 input PostLikesCreateFieldInput {
-    node: UserCreateInput!
+  node: UserCreateInput!
 }
 
 input PostLikesDeleteFieldInput {
-    where: PostLikesConnectionWhere
-    delete: UserDeleteInput
+  where: PostLikesConnectionWhere
+  delete: UserDeleteInput
 }
 
 input PostLikesDisconnectFieldInput {
-    where: PostLikesConnectionWhere
-    disconnect: UserDisconnectInput
+  where: PostLikesConnectionWhere
+  disconnect: UserDisconnectInput
 }
 
 input PostLikesFieldInput {
-    create: [PostLikesCreateFieldInput!]
-    connect: [PostLikesConnectFieldInput!]
-    connectOrCreate: [PostLikesConnectOrCreateFieldInput!]
+  create: [PostLikesCreateFieldInput!]
+  connect: [PostLikesConnectFieldInput!]
+  connectOrCreate: [PostLikesConnectOrCreateFieldInput!]
 }
 
 input PostLikesNodeAggregationWhereInput {
-    AND: [PostLikesNodeAggregationWhereInput!]
-    OR: [PostLikesNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    email_EQUAL: String
-    email_AVERAGE_EQUAL: Float
-    email_LONGEST_EQUAL: Int
-    email_SHORTEST_EQUAL: Int
-    email_GT: Int
-    email_AVERAGE_GT: Float
-    email_LONGEST_GT: Int
-    email_SHORTEST_GT: Int
-    email_GTE: Int
-    email_AVERAGE_GTE: Float
-    email_LONGEST_GTE: Int
-    email_SHORTEST_GTE: Int
-    email_LT: Int
-    email_AVERAGE_LT: Float
-    email_LONGEST_LT: Int
-    email_SHORTEST_LT: Int
-    email_LTE: Int
-    email_AVERAGE_LTE: Float
-    email_LONGEST_LTE: Int
-    email_SHORTEST_LTE: Int
-    pseudo_EQUAL: String
-    pseudo_AVERAGE_EQUAL: Float
-    pseudo_LONGEST_EQUAL: Int
-    pseudo_SHORTEST_EQUAL: Int
-    pseudo_GT: Int
-    pseudo_AVERAGE_GT: Float
-    pseudo_LONGEST_GT: Int
-    pseudo_SHORTEST_GT: Int
-    pseudo_GTE: Int
-    pseudo_AVERAGE_GTE: Float
-    pseudo_LONGEST_GTE: Int
-    pseudo_SHORTEST_GTE: Int
-    pseudo_LT: Int
-    pseudo_AVERAGE_LT: Float
-    pseudo_LONGEST_LT: Int
-    pseudo_SHORTEST_LT: Int
-    pseudo_LTE: Int
-    pseudo_AVERAGE_LTE: Float
-    pseudo_LONGEST_LTE: Int
-    pseudo_SHORTEST_LTE: Int
-    firstName_EQUAL: String
-    firstName_AVERAGE_EQUAL: Float
-    firstName_LONGEST_EQUAL: Int
-    firstName_SHORTEST_EQUAL: Int
-    firstName_GT: Int
-    firstName_AVERAGE_GT: Float
-    firstName_LONGEST_GT: Int
-    firstName_SHORTEST_GT: Int
-    firstName_GTE: Int
-    firstName_AVERAGE_GTE: Float
-    firstName_LONGEST_GTE: Int
-    firstName_SHORTEST_GTE: Int
-    firstName_LT: Int
-    firstName_AVERAGE_LT: Float
-    firstName_LONGEST_LT: Int
-    firstName_SHORTEST_LT: Int
-    firstName_LTE: Int
-    firstName_AVERAGE_LTE: Float
-    firstName_LONGEST_LTE: Int
-    firstName_SHORTEST_LTE: Int
-    lastName_EQUAL: String
-    lastName_AVERAGE_EQUAL: Float
-    lastName_LONGEST_EQUAL: Int
-    lastName_SHORTEST_EQUAL: Int
-    lastName_GT: Int
-    lastName_AVERAGE_GT: Float
-    lastName_LONGEST_GT: Int
-    lastName_SHORTEST_GT: Int
-    lastName_GTE: Int
-    lastName_AVERAGE_GTE: Float
-    lastName_LONGEST_GTE: Int
-    lastName_SHORTEST_GTE: Int
-    lastName_LT: Int
-    lastName_AVERAGE_LT: Float
-    lastName_LONGEST_LT: Int
-    lastName_SHORTEST_LT: Int
-    lastName_LTE: Int
-    lastName_AVERAGE_LTE: Float
-    lastName_LONGEST_LTE: Int
-    lastName_SHORTEST_LTE: Int
-    password_EQUAL: String
-    password_AVERAGE_EQUAL: Float
-    password_LONGEST_EQUAL: Int
-    password_SHORTEST_EQUAL: Int
-    password_GT: Int
-    password_AVERAGE_GT: Float
-    password_LONGEST_GT: Int
-    password_SHORTEST_GT: Int
-    password_GTE: Int
-    password_AVERAGE_GTE: Float
-    password_LONGEST_GTE: Int
-    password_SHORTEST_GTE: Int
-    password_LT: Int
-    password_AVERAGE_LT: Float
-    password_LONGEST_LT: Int
-    password_SHORTEST_LT: Int
-    password_LTE: Int
-    password_AVERAGE_LTE: Float
-    password_LONGEST_LTE: Int
-    password_SHORTEST_LTE: Int
-    biography_EQUAL: String
-    biography_AVERAGE_EQUAL: Float
-    biography_LONGEST_EQUAL: Int
-    biography_SHORTEST_EQUAL: Int
-    biography_GT: Int
-    biography_AVERAGE_GT: Float
-    biography_LONGEST_GT: Int
-    biography_SHORTEST_GT: Int
-    biography_GTE: Int
-    biography_AVERAGE_GTE: Float
-    biography_LONGEST_GTE: Int
-    biography_SHORTEST_GTE: Int
-    biography_LT: Int
-    biography_AVERAGE_LT: Float
-    biography_LONGEST_LT: Int
-    biography_SHORTEST_LT: Int
-    biography_LTE: Int
-    biography_AVERAGE_LTE: Float
-    biography_LONGEST_LTE: Int
-    biography_SHORTEST_LTE: Int
-    image_EQUAL: String
-    image_AVERAGE_EQUAL: Float
-    image_LONGEST_EQUAL: Int
-    image_SHORTEST_EQUAL: Int
-    image_GT: Int
-    image_AVERAGE_GT: Float
-    image_LONGEST_GT: Int
-    image_SHORTEST_GT: Int
-    image_GTE: Int
-    image_AVERAGE_GTE: Float
-    image_LONGEST_GTE: Int
-    image_SHORTEST_GTE: Int
-    image_LT: Int
-    image_AVERAGE_LT: Float
-    image_LONGEST_LT: Int
-    image_SHORTEST_LT: Int
-    image_LTE: Int
-    image_AVERAGE_LTE: Float
-    image_LONGEST_LTE: Int
-    image_SHORTEST_LTE: Int
-    resetToken_EQUAL: String
-    resetToken_AVERAGE_EQUAL: Float
-    resetToken_LONGEST_EQUAL: Int
-    resetToken_SHORTEST_EQUAL: Int
-    resetToken_GT: Int
-    resetToken_AVERAGE_GT: Float
-    resetToken_LONGEST_GT: Int
-    resetToken_SHORTEST_GT: Int
-    resetToken_GTE: Int
-    resetToken_AVERAGE_GTE: Float
-    resetToken_LONGEST_GTE: Int
-    resetToken_SHORTEST_GTE: Int
-    resetToken_LT: Int
-    resetToken_AVERAGE_LT: Float
-    resetToken_LONGEST_LT: Int
-    resetToken_SHORTEST_LT: Int
-    resetToken_LTE: Int
-    resetToken_AVERAGE_LTE: Float
-    resetToken_LONGEST_LTE: Int
-    resetToken_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
-    resetTokenExpiry_EQUAL: DateTime
-    resetTokenExpiry_MIN_EQUAL: DateTime
-    resetTokenExpiry_MAX_EQUAL: DateTime
-    resetTokenExpiry_GT: DateTime
-    resetTokenExpiry_MIN_GT: DateTime
-    resetTokenExpiry_MAX_GT: DateTime
-    resetTokenExpiry_GTE: DateTime
-    resetTokenExpiry_MIN_GTE: DateTime
-    resetTokenExpiry_MAX_GTE: DateTime
-    resetTokenExpiry_LT: DateTime
-    resetTokenExpiry_MIN_LT: DateTime
-    resetTokenExpiry_MAX_LT: DateTime
-    resetTokenExpiry_LTE: DateTime
-    resetTokenExpiry_MIN_LTE: DateTime
-    resetTokenExpiry_MAX_LTE: DateTime
+  AND: [PostLikesNodeAggregationWhereInput!]
+  OR: [PostLikesNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  email_EQUAL: String
+  email_AVERAGE_EQUAL: Float
+  email_LONGEST_EQUAL: Int
+  email_SHORTEST_EQUAL: Int
+  email_GT: Int
+  email_AVERAGE_GT: Float
+  email_LONGEST_GT: Int
+  email_SHORTEST_GT: Int
+  email_GTE: Int
+  email_AVERAGE_GTE: Float
+  email_LONGEST_GTE: Int
+  email_SHORTEST_GTE: Int
+  email_LT: Int
+  email_AVERAGE_LT: Float
+  email_LONGEST_LT: Int
+  email_SHORTEST_LT: Int
+  email_LTE: Int
+  email_AVERAGE_LTE: Float
+  email_LONGEST_LTE: Int
+  email_SHORTEST_LTE: Int
+  pseudo_EQUAL: String
+  pseudo_AVERAGE_EQUAL: Float
+  pseudo_LONGEST_EQUAL: Int
+  pseudo_SHORTEST_EQUAL: Int
+  pseudo_GT: Int
+  pseudo_AVERAGE_GT: Float
+  pseudo_LONGEST_GT: Int
+  pseudo_SHORTEST_GT: Int
+  pseudo_GTE: Int
+  pseudo_AVERAGE_GTE: Float
+  pseudo_LONGEST_GTE: Int
+  pseudo_SHORTEST_GTE: Int
+  pseudo_LT: Int
+  pseudo_AVERAGE_LT: Float
+  pseudo_LONGEST_LT: Int
+  pseudo_SHORTEST_LT: Int
+  pseudo_LTE: Int
+  pseudo_AVERAGE_LTE: Float
+  pseudo_LONGEST_LTE: Int
+  pseudo_SHORTEST_LTE: Int
+  firstName_EQUAL: String
+  firstName_AVERAGE_EQUAL: Float
+  firstName_LONGEST_EQUAL: Int
+  firstName_SHORTEST_EQUAL: Int
+  firstName_GT: Int
+  firstName_AVERAGE_GT: Float
+  firstName_LONGEST_GT: Int
+  firstName_SHORTEST_GT: Int
+  firstName_GTE: Int
+  firstName_AVERAGE_GTE: Float
+  firstName_LONGEST_GTE: Int
+  firstName_SHORTEST_GTE: Int
+  firstName_LT: Int
+  firstName_AVERAGE_LT: Float
+  firstName_LONGEST_LT: Int
+  firstName_SHORTEST_LT: Int
+  firstName_LTE: Int
+  firstName_AVERAGE_LTE: Float
+  firstName_LONGEST_LTE: Int
+  firstName_SHORTEST_LTE: Int
+  lastName_EQUAL: String
+  lastName_AVERAGE_EQUAL: Float
+  lastName_LONGEST_EQUAL: Int
+  lastName_SHORTEST_EQUAL: Int
+  lastName_GT: Int
+  lastName_AVERAGE_GT: Float
+  lastName_LONGEST_GT: Int
+  lastName_SHORTEST_GT: Int
+  lastName_GTE: Int
+  lastName_AVERAGE_GTE: Float
+  lastName_LONGEST_GTE: Int
+  lastName_SHORTEST_GTE: Int
+  lastName_LT: Int
+  lastName_AVERAGE_LT: Float
+  lastName_LONGEST_LT: Int
+  lastName_SHORTEST_LT: Int
+  lastName_LTE: Int
+  lastName_AVERAGE_LTE: Float
+  lastName_LONGEST_LTE: Int
+  lastName_SHORTEST_LTE: Int
+  password_EQUAL: String
+  password_AVERAGE_EQUAL: Float
+  password_LONGEST_EQUAL: Int
+  password_SHORTEST_EQUAL: Int
+  password_GT: Int
+  password_AVERAGE_GT: Float
+  password_LONGEST_GT: Int
+  password_SHORTEST_GT: Int
+  password_GTE: Int
+  password_AVERAGE_GTE: Float
+  password_LONGEST_GTE: Int
+  password_SHORTEST_GTE: Int
+  password_LT: Int
+  password_AVERAGE_LT: Float
+  password_LONGEST_LT: Int
+  password_SHORTEST_LT: Int
+  password_LTE: Int
+  password_AVERAGE_LTE: Float
+  password_LONGEST_LTE: Int
+  password_SHORTEST_LTE: Int
+  biography_EQUAL: String
+  biography_AVERAGE_EQUAL: Float
+  biography_LONGEST_EQUAL: Int
+  biography_SHORTEST_EQUAL: Int
+  biography_GT: Int
+  biography_AVERAGE_GT: Float
+  biography_LONGEST_GT: Int
+  biography_SHORTEST_GT: Int
+  biography_GTE: Int
+  biography_AVERAGE_GTE: Float
+  biography_LONGEST_GTE: Int
+  biography_SHORTEST_GTE: Int
+  biography_LT: Int
+  biography_AVERAGE_LT: Float
+  biography_LONGEST_LT: Int
+  biography_SHORTEST_LT: Int
+  biography_LTE: Int
+  biography_AVERAGE_LTE: Float
+  biography_LONGEST_LTE: Int
+  biography_SHORTEST_LTE: Int
+  image_EQUAL: String
+  image_AVERAGE_EQUAL: Float
+  image_LONGEST_EQUAL: Int
+  image_SHORTEST_EQUAL: Int
+  image_GT: Int
+  image_AVERAGE_GT: Float
+  image_LONGEST_GT: Int
+  image_SHORTEST_GT: Int
+  image_GTE: Int
+  image_AVERAGE_GTE: Float
+  image_LONGEST_GTE: Int
+  image_SHORTEST_GTE: Int
+  image_LT: Int
+  image_AVERAGE_LT: Float
+  image_LONGEST_LT: Int
+  image_SHORTEST_LT: Int
+  image_LTE: Int
+  image_AVERAGE_LTE: Float
+  image_LONGEST_LTE: Int
+  image_SHORTEST_LTE: Int
+  resetToken_EQUAL: String
+  resetToken_AVERAGE_EQUAL: Float
+  resetToken_LONGEST_EQUAL: Int
+  resetToken_SHORTEST_EQUAL: Int
+  resetToken_GT: Int
+  resetToken_AVERAGE_GT: Float
+  resetToken_LONGEST_GT: Int
+  resetToken_SHORTEST_GT: Int
+  resetToken_GTE: Int
+  resetToken_AVERAGE_GTE: Float
+  resetToken_LONGEST_GTE: Int
+  resetToken_SHORTEST_GTE: Int
+  resetToken_LT: Int
+  resetToken_AVERAGE_LT: Float
+  resetToken_LONGEST_LT: Int
+  resetToken_SHORTEST_LT: Int
+  resetToken_LTE: Int
+  resetToken_AVERAGE_LTE: Float
+  resetToken_LONGEST_LTE: Int
+  resetToken_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
+  resetTokenExpiry_EQUAL: DateTime
+  resetTokenExpiry_MIN_EQUAL: DateTime
+  resetTokenExpiry_MAX_EQUAL: DateTime
+  resetTokenExpiry_GT: DateTime
+  resetTokenExpiry_MIN_GT: DateTime
+  resetTokenExpiry_MAX_GT: DateTime
+  resetTokenExpiry_GTE: DateTime
+  resetTokenExpiry_MIN_GTE: DateTime
+  resetTokenExpiry_MAX_GTE: DateTime
+  resetTokenExpiry_LT: DateTime
+  resetTokenExpiry_MIN_LT: DateTime
+  resetTokenExpiry_MAX_LT: DateTime
+  resetTokenExpiry_LTE: DateTime
+  resetTokenExpiry_MIN_LTE: DateTime
+  resetTokenExpiry_MAX_LTE: DateTime
 }
 
 input PostLikesUpdateConnectionInput {
-    node: UserUpdateInput
+  node: UserUpdateInput
 }
 
 input PostLikesUpdateFieldInput {
-    where: PostLikesConnectionWhere
-    update: PostLikesUpdateConnectionInput
-    connect: [PostLikesConnectFieldInput!]
-    disconnect: [PostLikesDisconnectFieldInput!]
-    create: [PostLikesCreateFieldInput!]
-    delete: [PostLikesDeleteFieldInput!]
-    connectOrCreate: [PostLikesConnectOrCreateFieldInput!]
+  where: PostLikesConnectionWhere
+  update: PostLikesUpdateConnectionInput
+  connect: [PostLikesConnectFieldInput!]
+  disconnect: [PostLikesDisconnectFieldInput!]
+  create: [PostLikesCreateFieldInput!]
+  delete: [PostLikesDeleteFieldInput!]
+  connectOrCreate: [PostLikesConnectOrCreateFieldInput!]
 }
 
 input PostOptions {
-    """
-    Specify one or more PostSort objects to sort Posts by. The sorts will be applied in the order in which they are arranged in the array.
-    """
-    sort: [PostSort]
-    limit: Int
-    offset: Int
+  """
+  Specify one or more PostSort objects to sort Posts by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [PostSort]
+  limit: Int
+  offset: Int
 }
 
 input PostRelationInput {
-    creator: PostCreatorCreateFieldInput
-    likes: [PostLikesCreateFieldInput!]
-    comments: [PostCommentsCreateFieldInput!]
+  creator: PostCreatorCreateFieldInput
+  likes: [PostLikesCreateFieldInput!]
+  comments: [PostCommentsCreateFieldInput!]
 }
 
 """
 Fields to sort Posts by. The order in which sorts are applied is not guaranteed when specifying many fields in one PostSort object.
 """
 input PostSort {
-    id: SortDirection
-    music: SortDirection
-    description: SortDirection
-    createdAt: SortDirection
-    updatedAt: SortDirection
+  id: SortDirection
+  music: SortDirection
+  description: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
 }
 
 input PostUniqueWhere {
-    id: ID
+  id: ID
 }
 
 input PostUpdateInput {
-    music: String
-    description: String
-    creator: PostCreatorUpdateFieldInput
-    likes: [PostLikesUpdateFieldInput!]
-    comments: [PostCommentsUpdateFieldInput!]
+  music: String
+  description: String
+  creator: PostCreatorUpdateFieldInput
+  likes: [PostLikesUpdateFieldInput!]
+  comments: [PostCommentsUpdateFieldInput!]
 }
 
 input PostWhere {
-    OR: [PostWhere!]
-    AND: [PostWhere!]
-    id: ID
-    id_NOT: ID
-    id_IN: [ID]
-    id_NOT_IN: [ID]
-    id_CONTAINS: ID
-    id_NOT_CONTAINS: ID
-    id_STARTS_WITH: ID
-    id_NOT_STARTS_WITH: ID
-    id_ENDS_WITH: ID
-    id_NOT_ENDS_WITH: ID
-    music: String
-    music_NOT: String
-    music_IN: [String]
-    music_NOT_IN: [String]
-    music_CONTAINS: String
-    music_NOT_CONTAINS: String
-    music_STARTS_WITH: String
-    music_NOT_STARTS_WITH: String
-    music_ENDS_WITH: String
-    music_NOT_ENDS_WITH: String
-    description: String
-    description_NOT: String
-    description_IN: [String]
-    description_NOT_IN: [String]
-    description_CONTAINS: String
-    description_NOT_CONTAINS: String
-    description_STARTS_WITH: String
-    description_NOT_STARTS_WITH: String
-    description_ENDS_WITH: String
-    description_NOT_ENDS_WITH: String
-    createdAt: DateTime
-    createdAt_NOT: DateTime
-    createdAt_IN: [DateTime]
-    createdAt_NOT_IN: [DateTime]
-    createdAt_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_GT: DateTime
-    createdAt_GTE: DateTime
-    updatedAt: DateTime
-    updatedAt_NOT: DateTime
-    updatedAt_IN: [DateTime]
-    updatedAt_NOT_IN: [DateTime]
-    updatedAt_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_GTE: DateTime
-    creator: UserWhere
-    creator_NOT: UserWhere
-    creatorAggregate: PostCreatorAggregateInput
-    likes: UserWhere
-    likes_NOT: UserWhere
-    likesAggregate: PostLikesAggregateInput
-    comments: CommentWhere
-    comments_NOT: CommentWhere
-    commentsAggregate: PostCommentsAggregateInput
-    creatorConnection: PostCreatorConnectionWhere
-    creatorConnection_NOT: PostCreatorConnectionWhere
-    likesConnection: PostLikesConnectionWhere
-    likesConnection_NOT: PostLikesConnectionWhere
-    commentsConnection: PostCommentsConnectionWhere
-    commentsConnection_NOT: PostCommentsConnectionWhere
+  OR: [PostWhere!]
+  AND: [PostWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  music: String
+  music_NOT: String
+  music_IN: [String]
+  music_NOT_IN: [String]
+  music_CONTAINS: String
+  music_NOT_CONTAINS: String
+  music_STARTS_WITH: String
+  music_NOT_STARTS_WITH: String
+  music_ENDS_WITH: String
+  music_NOT_ENDS_WITH: String
+  description: String
+  description_NOT: String
+  description_IN: [String]
+  description_NOT_IN: [String]
+  description_CONTAINS: String
+  description_NOT_CONTAINS: String
+  description_STARTS_WITH: String
+  description_NOT_STARTS_WITH: String
+  description_ENDS_WITH: String
+  description_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  creator: UserWhere
+  creator_NOT: UserWhere
+  creatorAggregate: PostCreatorAggregateInput
+  likes: UserWhere
+  likes_NOT: UserWhere
+  likesAggregate: PostLikesAggregateInput
+  comments: CommentWhere
+  comments_NOT: CommentWhere
+  commentsAggregate: PostCommentsAggregateInput
+  creatorConnection: PostCreatorConnectionWhere
+  creatorConnection_NOT: PostCreatorConnectionWhere
+  likesConnection: PostLikesConnectionWhere
+  likesConnection_NOT: PostLikesConnectionWhere
+  commentsConnection: PostCommentsConnectionWhere
+  commentsConnection_NOT: PostCommentsConnectionWhere
 }
 
 input StatusCreateInput {
-    Status: RequestStatus!
+  Status: RequestStatus!
 }
 
 input StatusSort {
-    Status: SortDirection
+  Status: SortDirection
 }
 
 input StatusUpdateInput {
-    Status: RequestStatus
+  Status: RequestStatus
 }
 
 input StatusWhere {
-    OR: [StatusWhere!]
-    AND: [StatusWhere!]
-    Status: RequestStatus
-    Status_NOT: RequestStatus
-    Status_IN: [RequestStatus]
-    Status_NOT_IN: [RequestStatus]
+  OR: [StatusWhere!]
+  AND: [StatusWhere!]
+  Status: RequestStatus
+  Status_NOT: RequestStatus
+  Status_IN: [RequestStatus]
+  Status_NOT_IN: [RequestStatus]
 }
 
 input UserCommentLikesAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [UserCommentLikesAggregateInput!]
-    OR: [UserCommentLikesAggregateInput!]
-    node: UserCommentLikesNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [UserCommentLikesAggregateInput!]
+  OR: [UserCommentLikesAggregateInput!]
+  node: UserCommentLikesNodeAggregationWhereInput
 }
 
 input UserCommentLikesConnectFieldInput {
-    where: CommentConnectWhere
-    connect: [CommentConnectInput!]
+  where: CommentConnectWhere
+  connect: [CommentConnectInput!]
 }
 
 input UserCommentLikesConnectionSort {
-    node: CommentSort
+  node: CommentSort
 }
 
 input UserCommentLikesConnectionWhere {
-    AND: [UserCommentLikesConnectionWhere!]
-    OR: [UserCommentLikesConnectionWhere!]
-    node: CommentWhere
-    node_NOT: CommentWhere
+  AND: [UserCommentLikesConnectionWhere!]
+  OR: [UserCommentLikesConnectionWhere!]
+  node: CommentWhere
+  node_NOT: CommentWhere
 }
 
 input UserCommentLikesConnectOrCreateFieldInput {
-    where: CommentConnectOrCreateWhere!
-    onCreate: UserCommentLikesConnectOrCreateFieldInputOnCreate!
+  where: CommentConnectOrCreateWhere!
+  onCreate: UserCommentLikesConnectOrCreateFieldInputOnCreate!
 }
 
 input UserCommentLikesConnectOrCreateFieldInputOnCreate {
-    node: CommentCreateInput!
+  node: CommentCreateInput!
 }
 
 input UserCommentLikesCreateFieldInput {
-    node: CommentCreateInput!
+  node: CommentCreateInput!
 }
 
 input UserCommentLikesDeleteFieldInput {
-    where: UserCommentLikesConnectionWhere
-    delete: CommentDeleteInput
+  where: UserCommentLikesConnectionWhere
+  delete: CommentDeleteInput
 }
 
 input UserCommentLikesDisconnectFieldInput {
-    where: UserCommentLikesConnectionWhere
-    disconnect: CommentDisconnectInput
+  where: UserCommentLikesConnectionWhere
+  disconnect: CommentDisconnectInput
 }
 
 input UserCommentLikesFieldInput {
-    create: [UserCommentLikesCreateFieldInput!]
-    connect: [UserCommentLikesConnectFieldInput!]
-    connectOrCreate: [UserCommentLikesConnectOrCreateFieldInput!]
+  create: [UserCommentLikesCreateFieldInput!]
+  connect: [UserCommentLikesConnectFieldInput!]
+  connectOrCreate: [UserCommentLikesConnectOrCreateFieldInput!]
 }
 
 input UserCommentLikesNodeAggregationWhereInput {
-    AND: [UserCommentLikesNodeAggregationWhereInput!]
-    OR: [UserCommentLikesNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    commentary_EQUAL: String
-    commentary_AVERAGE_EQUAL: Float
-    commentary_LONGEST_EQUAL: Int
-    commentary_SHORTEST_EQUAL: Int
-    commentary_GT: Int
-    commentary_AVERAGE_GT: Float
-    commentary_LONGEST_GT: Int
-    commentary_SHORTEST_GT: Int
-    commentary_GTE: Int
-    commentary_AVERAGE_GTE: Float
-    commentary_LONGEST_GTE: Int
-    commentary_SHORTEST_GTE: Int
-    commentary_LT: Int
-    commentary_AVERAGE_LT: Float
-    commentary_LONGEST_LT: Int
-    commentary_SHORTEST_LT: Int
-    commentary_LTE: Int
-    commentary_AVERAGE_LTE: Float
-    commentary_LONGEST_LTE: Int
-    commentary_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
+  AND: [UserCommentLikesNodeAggregationWhereInput!]
+  OR: [UserCommentLikesNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  commentary_EQUAL: String
+  commentary_AVERAGE_EQUAL: Float
+  commentary_LONGEST_EQUAL: Int
+  commentary_SHORTEST_EQUAL: Int
+  commentary_GT: Int
+  commentary_AVERAGE_GT: Float
+  commentary_LONGEST_GT: Int
+  commentary_SHORTEST_GT: Int
+  commentary_GTE: Int
+  commentary_AVERAGE_GTE: Float
+  commentary_LONGEST_GTE: Int
+  commentary_SHORTEST_GTE: Int
+  commentary_LT: Int
+  commentary_AVERAGE_LT: Float
+  commentary_LONGEST_LT: Int
+  commentary_SHORTEST_LT: Int
+  commentary_LTE: Int
+  commentary_AVERAGE_LTE: Float
+  commentary_LONGEST_LTE: Int
+  commentary_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
 }
 
 input UserCommentLikesUpdateConnectionInput {
-    node: CommentUpdateInput
+  node: CommentUpdateInput
 }
 
 input UserCommentLikesUpdateFieldInput {
-    where: UserCommentLikesConnectionWhere
-    update: UserCommentLikesUpdateConnectionInput
-    connect: [UserCommentLikesConnectFieldInput!]
-    disconnect: [UserCommentLikesDisconnectFieldInput!]
-    create: [UserCommentLikesCreateFieldInput!]
-    delete: [UserCommentLikesDeleteFieldInput!]
-    connectOrCreate: [UserCommentLikesConnectOrCreateFieldInput!]
+  where: UserCommentLikesConnectionWhere
+  update: UserCommentLikesUpdateConnectionInput
+  connect: [UserCommentLikesConnectFieldInput!]
+  disconnect: [UserCommentLikesDisconnectFieldInput!]
+  create: [UserCommentLikesCreateFieldInput!]
+  delete: [UserCommentLikesDeleteFieldInput!]
+  connectOrCreate: [UserCommentLikesConnectOrCreateFieldInput!]
 }
 
 input UserConnectInput {
-    posts: [UserPostsConnectFieldInput!]
-    postLikes: [UserPostLikesConnectFieldInput!]
-    commentLikes: [UserCommentLikesConnectFieldInput!]
-    friends: [UserFriendsConnectFieldInput!]
+  posts: [UserPostsConnectFieldInput!]
+  postLikes: [UserPostLikesConnectFieldInput!]
+  commentLikes: [UserCommentLikesConnectFieldInput!]
+  friends: [UserFriendsConnectFieldInput!]
 }
 
 input UserConnectOrCreateInput {
-    posts: [UserPostsConnectOrCreateFieldInput!]
-    postLikes: [UserPostLikesConnectOrCreateFieldInput!]
-    commentLikes: [UserCommentLikesConnectOrCreateFieldInput!]
-    friends: [UserFriendsConnectOrCreateFieldInput!]
+  posts: [UserPostsConnectOrCreateFieldInput!]
+  postLikes: [UserPostLikesConnectOrCreateFieldInput!]
+  commentLikes: [UserCommentLikesConnectOrCreateFieldInput!]
+  friends: [UserFriendsConnectOrCreateFieldInput!]
 }
 
 input UserConnectOrCreateWhere {
-    node: UserUniqueWhere!
+  node: UserUniqueWhere!
 }
 
 input UserConnectWhere {
-    node: UserWhere!
+  node: UserWhere!
 }
 
 input UserCreateInput {
-    email: String!
-    pseudo: String!
-    firstName: String!
-    lastName: String!
-    password: String!
-    biography: String = "New in the community 👋"
-    image: String = "https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg"
-    resetToken: String
-    resetTokenExpiry: DateTime
-    location: PointInput
-    posts: UserPostsFieldInput
-    postLikes: UserPostLikesFieldInput
-    commentLikes: UserCommentLikesFieldInput
-    friends: UserFriendsFieldInput
+  email: String!
+  pseudo: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  biography: String = "New in the community 👋"
+  image: String = "https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1608/tuktukdesign160800043/61010830-user-icon-man-profile-businessman-avatar-person-glyph-vector-illustration.jpg"
+  resetToken: String
+  resetTokenExpiry: DateTime
+  location: PointInput
+  posts: UserPostsFieldInput
+  postLikes: UserPostLikesFieldInput
+  commentLikes: UserCommentLikesFieldInput
+  friends: UserFriendsFieldInput
 }
 
 input UserDeleteInput {
-    posts: [UserPostsDeleteFieldInput!]
-    postLikes: [UserPostLikesDeleteFieldInput!]
-    commentLikes: [UserCommentLikesDeleteFieldInput!]
-    friends: [UserFriendsDeleteFieldInput!]
+  posts: [UserPostsDeleteFieldInput!]
+  postLikes: [UserPostLikesDeleteFieldInput!]
+  commentLikes: [UserCommentLikesDeleteFieldInput!]
+  friends: [UserFriendsDeleteFieldInput!]
 }
 
 input UserDisconnectInput {
-    posts: [UserPostsDisconnectFieldInput!]
-    postLikes: [UserPostLikesDisconnectFieldInput!]
-    commentLikes: [UserCommentLikesDisconnectFieldInput!]
-    friends: [UserFriendsDisconnectFieldInput!]
+  posts: [UserPostsDisconnectFieldInput!]
+  postLikes: [UserPostLikesDisconnectFieldInput!]
+  commentLikes: [UserCommentLikesDisconnectFieldInput!]
+  friends: [UserFriendsDisconnectFieldInput!]
 }
 
 input UserFriendsAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [UserFriendsAggregateInput!]
-    OR: [UserFriendsAggregateInput!]
-    node: UserFriendsNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [UserFriendsAggregateInput!]
+  OR: [UserFriendsAggregateInput!]
+  node: UserFriendsNodeAggregationWhereInput
 }
 
 input UserFriendsConnectFieldInput {
-    where: UserConnectWhere
-    connect: [UserConnectInput!]
-    edge: StatusCreateInput!
+  where: UserConnectWhere
+  connect: [UserConnectInput!]
+  edge: StatusCreateInput!
 }
 
 input UserFriendsConnectionSort {
-    edge: StatusSort
-    node: UserSort
+  edge: StatusSort
+  node: UserSort
 }
 
 input UserFriendsConnectionWhere {
-    AND: [UserFriendsConnectionWhere!]
-    OR: [UserFriendsConnectionWhere!]
-    edge: StatusWhere
-    edge_NOT: StatusWhere
-    node: UserWhere
-    node_NOT: UserWhere
+  AND: [UserFriendsConnectionWhere!]
+  OR: [UserFriendsConnectionWhere!]
+  edge: StatusWhere
+  edge_NOT: StatusWhere
+  node: UserWhere
+  node_NOT: UserWhere
 }
 
 input UserFriendsConnectOrCreateFieldInput {
-    where: UserConnectOrCreateWhere!
-    onCreate: UserFriendsConnectOrCreateFieldInputOnCreate!
+  where: UserConnectOrCreateWhere!
+  onCreate: UserFriendsConnectOrCreateFieldInputOnCreate!
 }
 
 input UserFriendsConnectOrCreateFieldInputOnCreate {
-    node: UserCreateInput!
-    edge: StatusCreateInput!
+  node: UserCreateInput!
+  edge: StatusCreateInput!
 }
 
 input UserFriendsCreateFieldInput {
-    node: UserCreateInput!
-    edge: StatusCreateInput!
+  node: UserCreateInput!
+  edge: StatusCreateInput!
 }
 
 input UserFriendsDeleteFieldInput {
-    where: UserFriendsConnectionWhere
-    delete: UserDeleteInput
+  where: UserFriendsConnectionWhere
+  delete: UserDeleteInput
 }
 
 input UserFriendsDisconnectFieldInput {
-    where: UserFriendsConnectionWhere
-    disconnect: UserDisconnectInput
+  where: UserFriendsConnectionWhere
+  disconnect: UserDisconnectInput
 }
 
 input UserFriendsFieldInput {
-    create: [UserFriendsCreateFieldInput!]
-    connect: [UserFriendsConnectFieldInput!]
-    connectOrCreate: [UserFriendsConnectOrCreateFieldInput!]
+  create: [UserFriendsCreateFieldInput!]
+  connect: [UserFriendsConnectFieldInput!]
+  connectOrCreate: [UserFriendsConnectOrCreateFieldInput!]
 }
 
 input UserFriendsNodeAggregationWhereInput {
-    AND: [UserFriendsNodeAggregationWhereInput!]
-    OR: [UserFriendsNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    email_EQUAL: String
-    email_AVERAGE_EQUAL: Float
-    email_LONGEST_EQUAL: Int
-    email_SHORTEST_EQUAL: Int
-    email_GT: Int
-    email_AVERAGE_GT: Float
-    email_LONGEST_GT: Int
-    email_SHORTEST_GT: Int
-    email_GTE: Int
-    email_AVERAGE_GTE: Float
-    email_LONGEST_GTE: Int
-    email_SHORTEST_GTE: Int
-    email_LT: Int
-    email_AVERAGE_LT: Float
-    email_LONGEST_LT: Int
-    email_SHORTEST_LT: Int
-    email_LTE: Int
-    email_AVERAGE_LTE: Float
-    email_LONGEST_LTE: Int
-    email_SHORTEST_LTE: Int
-    pseudo_EQUAL: String
-    pseudo_AVERAGE_EQUAL: Float
-    pseudo_LONGEST_EQUAL: Int
-    pseudo_SHORTEST_EQUAL: Int
-    pseudo_GT: Int
-    pseudo_AVERAGE_GT: Float
-    pseudo_LONGEST_GT: Int
-    pseudo_SHORTEST_GT: Int
-    pseudo_GTE: Int
-    pseudo_AVERAGE_GTE: Float
-    pseudo_LONGEST_GTE: Int
-    pseudo_SHORTEST_GTE: Int
-    pseudo_LT: Int
-    pseudo_AVERAGE_LT: Float
-    pseudo_LONGEST_LT: Int
-    pseudo_SHORTEST_LT: Int
-    pseudo_LTE: Int
-    pseudo_AVERAGE_LTE: Float
-    pseudo_LONGEST_LTE: Int
-    pseudo_SHORTEST_LTE: Int
-    firstName_EQUAL: String
-    firstName_AVERAGE_EQUAL: Float
-    firstName_LONGEST_EQUAL: Int
-    firstName_SHORTEST_EQUAL: Int
-    firstName_GT: Int
-    firstName_AVERAGE_GT: Float
-    firstName_LONGEST_GT: Int
-    firstName_SHORTEST_GT: Int
-    firstName_GTE: Int
-    firstName_AVERAGE_GTE: Float
-    firstName_LONGEST_GTE: Int
-    firstName_SHORTEST_GTE: Int
-    firstName_LT: Int
-    firstName_AVERAGE_LT: Float
-    firstName_LONGEST_LT: Int
-    firstName_SHORTEST_LT: Int
-    firstName_LTE: Int
-    firstName_AVERAGE_LTE: Float
-    firstName_LONGEST_LTE: Int
-    firstName_SHORTEST_LTE: Int
-    lastName_EQUAL: String
-    lastName_AVERAGE_EQUAL: Float
-    lastName_LONGEST_EQUAL: Int
-    lastName_SHORTEST_EQUAL: Int
-    lastName_GT: Int
-    lastName_AVERAGE_GT: Float
-    lastName_LONGEST_GT: Int
-    lastName_SHORTEST_GT: Int
-    lastName_GTE: Int
-    lastName_AVERAGE_GTE: Float
-    lastName_LONGEST_GTE: Int
-    lastName_SHORTEST_GTE: Int
-    lastName_LT: Int
-    lastName_AVERAGE_LT: Float
-    lastName_LONGEST_LT: Int
-    lastName_SHORTEST_LT: Int
-    lastName_LTE: Int
-    lastName_AVERAGE_LTE: Float
-    lastName_LONGEST_LTE: Int
-    lastName_SHORTEST_LTE: Int
-    password_EQUAL: String
-    password_AVERAGE_EQUAL: Float
-    password_LONGEST_EQUAL: Int
-    password_SHORTEST_EQUAL: Int
-    password_GT: Int
-    password_AVERAGE_GT: Float
-    password_LONGEST_GT: Int
-    password_SHORTEST_GT: Int
-    password_GTE: Int
-    password_AVERAGE_GTE: Float
-    password_LONGEST_GTE: Int
-    password_SHORTEST_GTE: Int
-    password_LT: Int
-    password_AVERAGE_LT: Float
-    password_LONGEST_LT: Int
-    password_SHORTEST_LT: Int
-    password_LTE: Int
-    password_AVERAGE_LTE: Float
-    password_LONGEST_LTE: Int
-    password_SHORTEST_LTE: Int
-    biography_EQUAL: String
-    biography_AVERAGE_EQUAL: Float
-    biography_LONGEST_EQUAL: Int
-    biography_SHORTEST_EQUAL: Int
-    biography_GT: Int
-    biography_AVERAGE_GT: Float
-    biography_LONGEST_GT: Int
-    biography_SHORTEST_GT: Int
-    biography_GTE: Int
-    biography_AVERAGE_GTE: Float
-    biography_LONGEST_GTE: Int
-    biography_SHORTEST_GTE: Int
-    biography_LT: Int
-    biography_AVERAGE_LT: Float
-    biography_LONGEST_LT: Int
-    biography_SHORTEST_LT: Int
-    biography_LTE: Int
-    biography_AVERAGE_LTE: Float
-    biography_LONGEST_LTE: Int
-    biography_SHORTEST_LTE: Int
-    image_EQUAL: String
-    image_AVERAGE_EQUAL: Float
-    image_LONGEST_EQUAL: Int
-    image_SHORTEST_EQUAL: Int
-    image_GT: Int
-    image_AVERAGE_GT: Float
-    image_LONGEST_GT: Int
-    image_SHORTEST_GT: Int
-    image_GTE: Int
-    image_AVERAGE_GTE: Float
-    image_LONGEST_GTE: Int
-    image_SHORTEST_GTE: Int
-    image_LT: Int
-    image_AVERAGE_LT: Float
-    image_LONGEST_LT: Int
-    image_SHORTEST_LT: Int
-    image_LTE: Int
-    image_AVERAGE_LTE: Float
-    image_LONGEST_LTE: Int
-    image_SHORTEST_LTE: Int
-    resetToken_EQUAL: String
-    resetToken_AVERAGE_EQUAL: Float
-    resetToken_LONGEST_EQUAL: Int
-    resetToken_SHORTEST_EQUAL: Int
-    resetToken_GT: Int
-    resetToken_AVERAGE_GT: Float
-    resetToken_LONGEST_GT: Int
-    resetToken_SHORTEST_GT: Int
-    resetToken_GTE: Int
-    resetToken_AVERAGE_GTE: Float
-    resetToken_LONGEST_GTE: Int
-    resetToken_SHORTEST_GTE: Int
-    resetToken_LT: Int
-    resetToken_AVERAGE_LT: Float
-    resetToken_LONGEST_LT: Int
-    resetToken_SHORTEST_LT: Int
-    resetToken_LTE: Int
-    resetToken_AVERAGE_LTE: Float
-    resetToken_LONGEST_LTE: Int
-    resetToken_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
-    resetTokenExpiry_EQUAL: DateTime
-    resetTokenExpiry_MIN_EQUAL: DateTime
-    resetTokenExpiry_MAX_EQUAL: DateTime
-    resetTokenExpiry_GT: DateTime
-    resetTokenExpiry_MIN_GT: DateTime
-    resetTokenExpiry_MAX_GT: DateTime
-    resetTokenExpiry_GTE: DateTime
-    resetTokenExpiry_MIN_GTE: DateTime
-    resetTokenExpiry_MAX_GTE: DateTime
-    resetTokenExpiry_LT: DateTime
-    resetTokenExpiry_MIN_LT: DateTime
-    resetTokenExpiry_MAX_LT: DateTime
-    resetTokenExpiry_LTE: DateTime
-    resetTokenExpiry_MIN_LTE: DateTime
-    resetTokenExpiry_MAX_LTE: DateTime
+  AND: [UserFriendsNodeAggregationWhereInput!]
+  OR: [UserFriendsNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  email_EQUAL: String
+  email_AVERAGE_EQUAL: Float
+  email_LONGEST_EQUAL: Int
+  email_SHORTEST_EQUAL: Int
+  email_GT: Int
+  email_AVERAGE_GT: Float
+  email_LONGEST_GT: Int
+  email_SHORTEST_GT: Int
+  email_GTE: Int
+  email_AVERAGE_GTE: Float
+  email_LONGEST_GTE: Int
+  email_SHORTEST_GTE: Int
+  email_LT: Int
+  email_AVERAGE_LT: Float
+  email_LONGEST_LT: Int
+  email_SHORTEST_LT: Int
+  email_LTE: Int
+  email_AVERAGE_LTE: Float
+  email_LONGEST_LTE: Int
+  email_SHORTEST_LTE: Int
+  pseudo_EQUAL: String
+  pseudo_AVERAGE_EQUAL: Float
+  pseudo_LONGEST_EQUAL: Int
+  pseudo_SHORTEST_EQUAL: Int
+  pseudo_GT: Int
+  pseudo_AVERAGE_GT: Float
+  pseudo_LONGEST_GT: Int
+  pseudo_SHORTEST_GT: Int
+  pseudo_GTE: Int
+  pseudo_AVERAGE_GTE: Float
+  pseudo_LONGEST_GTE: Int
+  pseudo_SHORTEST_GTE: Int
+  pseudo_LT: Int
+  pseudo_AVERAGE_LT: Float
+  pseudo_LONGEST_LT: Int
+  pseudo_SHORTEST_LT: Int
+  pseudo_LTE: Int
+  pseudo_AVERAGE_LTE: Float
+  pseudo_LONGEST_LTE: Int
+  pseudo_SHORTEST_LTE: Int
+  firstName_EQUAL: String
+  firstName_AVERAGE_EQUAL: Float
+  firstName_LONGEST_EQUAL: Int
+  firstName_SHORTEST_EQUAL: Int
+  firstName_GT: Int
+  firstName_AVERAGE_GT: Float
+  firstName_LONGEST_GT: Int
+  firstName_SHORTEST_GT: Int
+  firstName_GTE: Int
+  firstName_AVERAGE_GTE: Float
+  firstName_LONGEST_GTE: Int
+  firstName_SHORTEST_GTE: Int
+  firstName_LT: Int
+  firstName_AVERAGE_LT: Float
+  firstName_LONGEST_LT: Int
+  firstName_SHORTEST_LT: Int
+  firstName_LTE: Int
+  firstName_AVERAGE_LTE: Float
+  firstName_LONGEST_LTE: Int
+  firstName_SHORTEST_LTE: Int
+  lastName_EQUAL: String
+  lastName_AVERAGE_EQUAL: Float
+  lastName_LONGEST_EQUAL: Int
+  lastName_SHORTEST_EQUAL: Int
+  lastName_GT: Int
+  lastName_AVERAGE_GT: Float
+  lastName_LONGEST_GT: Int
+  lastName_SHORTEST_GT: Int
+  lastName_GTE: Int
+  lastName_AVERAGE_GTE: Float
+  lastName_LONGEST_GTE: Int
+  lastName_SHORTEST_GTE: Int
+  lastName_LT: Int
+  lastName_AVERAGE_LT: Float
+  lastName_LONGEST_LT: Int
+  lastName_SHORTEST_LT: Int
+  lastName_LTE: Int
+  lastName_AVERAGE_LTE: Float
+  lastName_LONGEST_LTE: Int
+  lastName_SHORTEST_LTE: Int
+  password_EQUAL: String
+  password_AVERAGE_EQUAL: Float
+  password_LONGEST_EQUAL: Int
+  password_SHORTEST_EQUAL: Int
+  password_GT: Int
+  password_AVERAGE_GT: Float
+  password_LONGEST_GT: Int
+  password_SHORTEST_GT: Int
+  password_GTE: Int
+  password_AVERAGE_GTE: Float
+  password_LONGEST_GTE: Int
+  password_SHORTEST_GTE: Int
+  password_LT: Int
+  password_AVERAGE_LT: Float
+  password_LONGEST_LT: Int
+  password_SHORTEST_LT: Int
+  password_LTE: Int
+  password_AVERAGE_LTE: Float
+  password_LONGEST_LTE: Int
+  password_SHORTEST_LTE: Int
+  biography_EQUAL: String
+  biography_AVERAGE_EQUAL: Float
+  biography_LONGEST_EQUAL: Int
+  biography_SHORTEST_EQUAL: Int
+  biography_GT: Int
+  biography_AVERAGE_GT: Float
+  biography_LONGEST_GT: Int
+  biography_SHORTEST_GT: Int
+  biography_GTE: Int
+  biography_AVERAGE_GTE: Float
+  biography_LONGEST_GTE: Int
+  biography_SHORTEST_GTE: Int
+  biography_LT: Int
+  biography_AVERAGE_LT: Float
+  biography_LONGEST_LT: Int
+  biography_SHORTEST_LT: Int
+  biography_LTE: Int
+  biography_AVERAGE_LTE: Float
+  biography_LONGEST_LTE: Int
+  biography_SHORTEST_LTE: Int
+  image_EQUAL: String
+  image_AVERAGE_EQUAL: Float
+  image_LONGEST_EQUAL: Int
+  image_SHORTEST_EQUAL: Int
+  image_GT: Int
+  image_AVERAGE_GT: Float
+  image_LONGEST_GT: Int
+  image_SHORTEST_GT: Int
+  image_GTE: Int
+  image_AVERAGE_GTE: Float
+  image_LONGEST_GTE: Int
+  image_SHORTEST_GTE: Int
+  image_LT: Int
+  image_AVERAGE_LT: Float
+  image_LONGEST_LT: Int
+  image_SHORTEST_LT: Int
+  image_LTE: Int
+  image_AVERAGE_LTE: Float
+  image_LONGEST_LTE: Int
+  image_SHORTEST_LTE: Int
+  resetToken_EQUAL: String
+  resetToken_AVERAGE_EQUAL: Float
+  resetToken_LONGEST_EQUAL: Int
+  resetToken_SHORTEST_EQUAL: Int
+  resetToken_GT: Int
+  resetToken_AVERAGE_GT: Float
+  resetToken_LONGEST_GT: Int
+  resetToken_SHORTEST_GT: Int
+  resetToken_GTE: Int
+  resetToken_AVERAGE_GTE: Float
+  resetToken_LONGEST_GTE: Int
+  resetToken_SHORTEST_GTE: Int
+  resetToken_LT: Int
+  resetToken_AVERAGE_LT: Float
+  resetToken_LONGEST_LT: Int
+  resetToken_SHORTEST_LT: Int
+  resetToken_LTE: Int
+  resetToken_AVERAGE_LTE: Float
+  resetToken_LONGEST_LTE: Int
+  resetToken_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
+  resetTokenExpiry_EQUAL: DateTime
+  resetTokenExpiry_MIN_EQUAL: DateTime
+  resetTokenExpiry_MAX_EQUAL: DateTime
+  resetTokenExpiry_GT: DateTime
+  resetTokenExpiry_MIN_GT: DateTime
+  resetTokenExpiry_MAX_GT: DateTime
+  resetTokenExpiry_GTE: DateTime
+  resetTokenExpiry_MIN_GTE: DateTime
+  resetTokenExpiry_MAX_GTE: DateTime
+  resetTokenExpiry_LT: DateTime
+  resetTokenExpiry_MIN_LT: DateTime
+  resetTokenExpiry_MAX_LT: DateTime
+  resetTokenExpiry_LTE: DateTime
+  resetTokenExpiry_MIN_LTE: DateTime
+  resetTokenExpiry_MAX_LTE: DateTime
 }
 
 input UserFriendsUpdateConnectionInput {
-    node: UserUpdateInput
-    edge: StatusUpdateInput
+  node: UserUpdateInput
+  edge: StatusUpdateInput
 }
 
 input UserFriendsUpdateFieldInput {
-    where: UserFriendsConnectionWhere
-    update: UserFriendsUpdateConnectionInput
-    connect: [UserFriendsConnectFieldInput!]
-    disconnect: [UserFriendsDisconnectFieldInput!]
-    create: [UserFriendsCreateFieldInput!]
-    delete: [UserFriendsDeleteFieldInput!]
-    connectOrCreate: [UserFriendsConnectOrCreateFieldInput!]
+  where: UserFriendsConnectionWhere
+  update: UserFriendsUpdateConnectionInput
+  connect: [UserFriendsConnectFieldInput!]
+  disconnect: [UserFriendsDisconnectFieldInput!]
+  create: [UserFriendsCreateFieldInput!]
+  delete: [UserFriendsDeleteFieldInput!]
+  connectOrCreate: [UserFriendsConnectOrCreateFieldInput!]
 }
 
 input UserOptions {
-    """
-    Specify one or more UserSort objects to sort Users by. The sorts will be applied in the order in which they are arranged in the array.
-    """
-    sort: [UserSort]
-    limit: Int
-    offset: Int
+  """
+  Specify one or more UserSort objects to sort Users by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [UserSort]
+  limit: Int
+  offset: Int
 }
 
 input UserPostLikesAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [UserPostLikesAggregateInput!]
-    OR: [UserPostLikesAggregateInput!]
-    node: UserPostLikesNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [UserPostLikesAggregateInput!]
+  OR: [UserPostLikesAggregateInput!]
+  node: UserPostLikesNodeAggregationWhereInput
 }
 
 input UserPostLikesConnectFieldInput {
-    where: PostConnectWhere
-    connect: [PostConnectInput!]
+  where: PostConnectWhere
+  connect: [PostConnectInput!]
 }
 
 input UserPostLikesConnectionSort {
-    node: PostSort
+  node: PostSort
 }
 
 input UserPostLikesConnectionWhere {
-    AND: [UserPostLikesConnectionWhere!]
-    OR: [UserPostLikesConnectionWhere!]
-    node: PostWhere
-    node_NOT: PostWhere
+  AND: [UserPostLikesConnectionWhere!]
+  OR: [UserPostLikesConnectionWhere!]
+  node: PostWhere
+  node_NOT: PostWhere
 }
 
 input UserPostLikesConnectOrCreateFieldInput {
-    where: PostConnectOrCreateWhere!
-    onCreate: UserPostLikesConnectOrCreateFieldInputOnCreate!
+  where: PostConnectOrCreateWhere!
+  onCreate: UserPostLikesConnectOrCreateFieldInputOnCreate!
 }
 
 input UserPostLikesConnectOrCreateFieldInputOnCreate {
-    node: PostCreateInput!
+  node: PostCreateInput!
 }
 
 input UserPostLikesCreateFieldInput {
-    node: PostCreateInput!
+  node: PostCreateInput!
 }
 
 input UserPostLikesDeleteFieldInput {
-    where: UserPostLikesConnectionWhere
-    delete: PostDeleteInput
+  where: UserPostLikesConnectionWhere
+  delete: PostDeleteInput
 }
 
 input UserPostLikesDisconnectFieldInput {
-    where: UserPostLikesConnectionWhere
-    disconnect: PostDisconnectInput
+  where: UserPostLikesConnectionWhere
+  disconnect: PostDisconnectInput
 }
 
 input UserPostLikesFieldInput {
-    create: [UserPostLikesCreateFieldInput!]
-    connect: [UserPostLikesConnectFieldInput!]
-    connectOrCreate: [UserPostLikesConnectOrCreateFieldInput!]
+  create: [UserPostLikesCreateFieldInput!]
+  connect: [UserPostLikesConnectFieldInput!]
+  connectOrCreate: [UserPostLikesConnectOrCreateFieldInput!]
 }
 
 input UserPostLikesNodeAggregationWhereInput {
-    AND: [UserPostLikesNodeAggregationWhereInput!]
-    OR: [UserPostLikesNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    music_EQUAL: String
-    music_AVERAGE_EQUAL: Float
-    music_LONGEST_EQUAL: Int
-    music_SHORTEST_EQUAL: Int
-    music_GT: Int
-    music_AVERAGE_GT: Float
-    music_LONGEST_GT: Int
-    music_SHORTEST_GT: Int
-    music_GTE: Int
-    music_AVERAGE_GTE: Float
-    music_LONGEST_GTE: Int
-    music_SHORTEST_GTE: Int
-    music_LT: Int
-    music_AVERAGE_LT: Float
-    music_LONGEST_LT: Int
-    music_SHORTEST_LT: Int
-    music_LTE: Int
-    music_AVERAGE_LTE: Float
-    music_LONGEST_LTE: Int
-    music_SHORTEST_LTE: Int
-    description_EQUAL: String
-    description_AVERAGE_EQUAL: Float
-    description_LONGEST_EQUAL: Int
-    description_SHORTEST_EQUAL: Int
-    description_GT: Int
-    description_AVERAGE_GT: Float
-    description_LONGEST_GT: Int
-    description_SHORTEST_GT: Int
-    description_GTE: Int
-    description_AVERAGE_GTE: Float
-    description_LONGEST_GTE: Int
-    description_SHORTEST_GTE: Int
-    description_LT: Int
-    description_AVERAGE_LT: Float
-    description_LONGEST_LT: Int
-    description_SHORTEST_LT: Int
-    description_LTE: Int
-    description_AVERAGE_LTE: Float
-    description_LONGEST_LTE: Int
-    description_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
+  AND: [UserPostLikesNodeAggregationWhereInput!]
+  OR: [UserPostLikesNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  music_EQUAL: String
+  music_AVERAGE_EQUAL: Float
+  music_LONGEST_EQUAL: Int
+  music_SHORTEST_EQUAL: Int
+  music_GT: Int
+  music_AVERAGE_GT: Float
+  music_LONGEST_GT: Int
+  music_SHORTEST_GT: Int
+  music_GTE: Int
+  music_AVERAGE_GTE: Float
+  music_LONGEST_GTE: Int
+  music_SHORTEST_GTE: Int
+  music_LT: Int
+  music_AVERAGE_LT: Float
+  music_LONGEST_LT: Int
+  music_SHORTEST_LT: Int
+  music_LTE: Int
+  music_AVERAGE_LTE: Float
+  music_LONGEST_LTE: Int
+  music_SHORTEST_LTE: Int
+  description_EQUAL: String
+  description_AVERAGE_EQUAL: Float
+  description_LONGEST_EQUAL: Int
+  description_SHORTEST_EQUAL: Int
+  description_GT: Int
+  description_AVERAGE_GT: Float
+  description_LONGEST_GT: Int
+  description_SHORTEST_GT: Int
+  description_GTE: Int
+  description_AVERAGE_GTE: Float
+  description_LONGEST_GTE: Int
+  description_SHORTEST_GTE: Int
+  description_LT: Int
+  description_AVERAGE_LT: Float
+  description_LONGEST_LT: Int
+  description_SHORTEST_LT: Int
+  description_LTE: Int
+  description_AVERAGE_LTE: Float
+  description_LONGEST_LTE: Int
+  description_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
 }
 
 input UserPostLikesUpdateConnectionInput {
-    node: PostUpdateInput
+  node: PostUpdateInput
 }
 
 input UserPostLikesUpdateFieldInput {
-    where: UserPostLikesConnectionWhere
-    update: UserPostLikesUpdateConnectionInput
-    connect: [UserPostLikesConnectFieldInput!]
-    disconnect: [UserPostLikesDisconnectFieldInput!]
-    create: [UserPostLikesCreateFieldInput!]
-    delete: [UserPostLikesDeleteFieldInput!]
-    connectOrCreate: [UserPostLikesConnectOrCreateFieldInput!]
+  where: UserPostLikesConnectionWhere
+  update: UserPostLikesUpdateConnectionInput
+  connect: [UserPostLikesConnectFieldInput!]
+  disconnect: [UserPostLikesDisconnectFieldInput!]
+  create: [UserPostLikesCreateFieldInput!]
+  delete: [UserPostLikesDeleteFieldInput!]
+  connectOrCreate: [UserPostLikesConnectOrCreateFieldInput!]
 }
 
 input UserPostsAggregateInput {
-    count: Int
-    count_LT: Int
-    count_LTE: Int
-    count_GT: Int
-    count_GTE: Int
-    AND: [UserPostsAggregateInput!]
-    OR: [UserPostsAggregateInput!]
-    node: UserPostsNodeAggregationWhereInput
+  count: Int
+  count_LT: Int
+  count_LTE: Int
+  count_GT: Int
+  count_GTE: Int
+  AND: [UserPostsAggregateInput!]
+  OR: [UserPostsAggregateInput!]
+  node: UserPostsNodeAggregationWhereInput
 }
 
 input UserPostsConnectFieldInput {
-    where: PostConnectWhere
-    connect: [PostConnectInput!]
+  where: PostConnectWhere
+  connect: [PostConnectInput!]
 }
 
 input UserPostsConnectionSort {
-    node: PostSort
+  node: PostSort
 }
 
 input UserPostsConnectionWhere {
-    AND: [UserPostsConnectionWhere!]
-    OR: [UserPostsConnectionWhere!]
-    node: PostWhere
-    node_NOT: PostWhere
+  AND: [UserPostsConnectionWhere!]
+  OR: [UserPostsConnectionWhere!]
+  node: PostWhere
+  node_NOT: PostWhere
 }
 
 input UserPostsConnectOrCreateFieldInput {
-    where: PostConnectOrCreateWhere!
-    onCreate: UserPostsConnectOrCreateFieldInputOnCreate!
+  where: PostConnectOrCreateWhere!
+  onCreate: UserPostsConnectOrCreateFieldInputOnCreate!
 }
 
 input UserPostsConnectOrCreateFieldInputOnCreate {
-    node: PostCreateInput!
+  node: PostCreateInput!
 }
 
 input UserPostsCreateFieldInput {
-    node: PostCreateInput!
+  node: PostCreateInput!
 }
 
 input UserPostsDeleteFieldInput {
-    where: UserPostsConnectionWhere
-    delete: PostDeleteInput
+  where: UserPostsConnectionWhere
+  delete: PostDeleteInput
 }
 
 input UserPostsDisconnectFieldInput {
-    where: UserPostsConnectionWhere
-    disconnect: PostDisconnectInput
+  where: UserPostsConnectionWhere
+  disconnect: PostDisconnectInput
 }
 
 input UserPostsFieldInput {
-    create: [UserPostsCreateFieldInput!]
-    connect: [UserPostsConnectFieldInput!]
-    connectOrCreate: [UserPostsConnectOrCreateFieldInput!]
+  create: [UserPostsCreateFieldInput!]
+  connect: [UserPostsConnectFieldInput!]
+  connectOrCreate: [UserPostsConnectOrCreateFieldInput!]
 }
 
 input UserPostsNodeAggregationWhereInput {
-    AND: [UserPostsNodeAggregationWhereInput!]
-    OR: [UserPostsNodeAggregationWhereInput!]
-    id_EQUAL: ID
-    music_EQUAL: String
-    music_AVERAGE_EQUAL: Float
-    music_LONGEST_EQUAL: Int
-    music_SHORTEST_EQUAL: Int
-    music_GT: Int
-    music_AVERAGE_GT: Float
-    music_LONGEST_GT: Int
-    music_SHORTEST_GT: Int
-    music_GTE: Int
-    music_AVERAGE_GTE: Float
-    music_LONGEST_GTE: Int
-    music_SHORTEST_GTE: Int
-    music_LT: Int
-    music_AVERAGE_LT: Float
-    music_LONGEST_LT: Int
-    music_SHORTEST_LT: Int
-    music_LTE: Int
-    music_AVERAGE_LTE: Float
-    music_LONGEST_LTE: Int
-    music_SHORTEST_LTE: Int
-    description_EQUAL: String
-    description_AVERAGE_EQUAL: Float
-    description_LONGEST_EQUAL: Int
-    description_SHORTEST_EQUAL: Int
-    description_GT: Int
-    description_AVERAGE_GT: Float
-    description_LONGEST_GT: Int
-    description_SHORTEST_GT: Int
-    description_GTE: Int
-    description_AVERAGE_GTE: Float
-    description_LONGEST_GTE: Int
-    description_SHORTEST_GTE: Int
-    description_LT: Int
-    description_AVERAGE_LT: Float
-    description_LONGEST_LT: Int
-    description_SHORTEST_LT: Int
-    description_LTE: Int
-    description_AVERAGE_LTE: Float
-    description_LONGEST_LTE: Int
-    description_SHORTEST_LTE: Int
-    createdAt_EQUAL: DateTime
-    createdAt_MIN_EQUAL: DateTime
-    createdAt_MAX_EQUAL: DateTime
-    createdAt_GT: DateTime
-    createdAt_MIN_GT: DateTime
-    createdAt_MAX_GT: DateTime
-    createdAt_GTE: DateTime
-    createdAt_MIN_GTE: DateTime
-    createdAt_MAX_GTE: DateTime
-    createdAt_LT: DateTime
-    createdAt_MIN_LT: DateTime
-    createdAt_MAX_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_MIN_LTE: DateTime
-    createdAt_MAX_LTE: DateTime
-    updatedAt_EQUAL: DateTime
-    updatedAt_MIN_EQUAL: DateTime
-    updatedAt_MAX_EQUAL: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_MIN_GT: DateTime
-    updatedAt_MAX_GT: DateTime
-    updatedAt_GTE: DateTime
-    updatedAt_MIN_GTE: DateTime
-    updatedAt_MAX_GTE: DateTime
-    updatedAt_LT: DateTime
-    updatedAt_MIN_LT: DateTime
-    updatedAt_MAX_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_MIN_LTE: DateTime
-    updatedAt_MAX_LTE: DateTime
+  AND: [UserPostsNodeAggregationWhereInput!]
+  OR: [UserPostsNodeAggregationWhereInput!]
+  id_EQUAL: ID
+  music_EQUAL: String
+  music_AVERAGE_EQUAL: Float
+  music_LONGEST_EQUAL: Int
+  music_SHORTEST_EQUAL: Int
+  music_GT: Int
+  music_AVERAGE_GT: Float
+  music_LONGEST_GT: Int
+  music_SHORTEST_GT: Int
+  music_GTE: Int
+  music_AVERAGE_GTE: Float
+  music_LONGEST_GTE: Int
+  music_SHORTEST_GTE: Int
+  music_LT: Int
+  music_AVERAGE_LT: Float
+  music_LONGEST_LT: Int
+  music_SHORTEST_LT: Int
+  music_LTE: Int
+  music_AVERAGE_LTE: Float
+  music_LONGEST_LTE: Int
+  music_SHORTEST_LTE: Int
+  description_EQUAL: String
+  description_AVERAGE_EQUAL: Float
+  description_LONGEST_EQUAL: Int
+  description_SHORTEST_EQUAL: Int
+  description_GT: Int
+  description_AVERAGE_GT: Float
+  description_LONGEST_GT: Int
+  description_SHORTEST_GT: Int
+  description_GTE: Int
+  description_AVERAGE_GTE: Float
+  description_LONGEST_GTE: Int
+  description_SHORTEST_GTE: Int
+  description_LT: Int
+  description_AVERAGE_LT: Float
+  description_LONGEST_LT: Int
+  description_SHORTEST_LT: Int
+  description_LTE: Int
+  description_AVERAGE_LTE: Float
+  description_LONGEST_LTE: Int
+  description_SHORTEST_LTE: Int
+  createdAt_EQUAL: DateTime
+  createdAt_MIN_EQUAL: DateTime
+  createdAt_MAX_EQUAL: DateTime
+  createdAt_GT: DateTime
+  createdAt_MIN_GT: DateTime
+  createdAt_MAX_GT: DateTime
+  createdAt_GTE: DateTime
+  createdAt_MIN_GTE: DateTime
+  createdAt_MAX_GTE: DateTime
+  createdAt_LT: DateTime
+  createdAt_MIN_LT: DateTime
+  createdAt_MAX_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_MIN_LTE: DateTime
+  createdAt_MAX_LTE: DateTime
+  updatedAt_EQUAL: DateTime
+  updatedAt_MIN_EQUAL: DateTime
+  updatedAt_MAX_EQUAL: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_MIN_GT: DateTime
+  updatedAt_MAX_GT: DateTime
+  updatedAt_GTE: DateTime
+  updatedAt_MIN_GTE: DateTime
+  updatedAt_MAX_GTE: DateTime
+  updatedAt_LT: DateTime
+  updatedAt_MIN_LT: DateTime
+  updatedAt_MAX_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_MIN_LTE: DateTime
+  updatedAt_MAX_LTE: DateTime
 }
 
 input UserPostsUpdateConnectionInput {
-    node: PostUpdateInput
+  node: PostUpdateInput
 }
 
 input UserPostsUpdateFieldInput {
-    where: UserPostsConnectionWhere
-    update: UserPostsUpdateConnectionInput
-    connect: [UserPostsConnectFieldInput!]
-    disconnect: [UserPostsDisconnectFieldInput!]
-    create: [UserPostsCreateFieldInput!]
-    delete: [UserPostsDeleteFieldInput!]
-    connectOrCreate: [UserPostsConnectOrCreateFieldInput!]
+  where: UserPostsConnectionWhere
+  update: UserPostsUpdateConnectionInput
+  connect: [UserPostsConnectFieldInput!]
+  disconnect: [UserPostsDisconnectFieldInput!]
+  create: [UserPostsCreateFieldInput!]
+  delete: [UserPostsDeleteFieldInput!]
+  connectOrCreate: [UserPostsConnectOrCreateFieldInput!]
 }
 
 input UserRelationInput {
-    posts: [UserPostsCreateFieldInput!]
-    postLikes: [UserPostLikesCreateFieldInput!]
-    commentLikes: [UserCommentLikesCreateFieldInput!]
-    friends: [UserFriendsCreateFieldInput!]
+  posts: [UserPostsCreateFieldInput!]
+  postLikes: [UserPostLikesCreateFieldInput!]
+  commentLikes: [UserCommentLikesCreateFieldInput!]
+  friends: [UserFriendsCreateFieldInput!]
 }
 
 """
 Fields to sort Users by. The order in which sorts are applied is not guaranteed when specifying many fields in one UserSort object.
 """
 input UserSort {
-    id: SortDirection
-    email: SortDirection
-    pseudo: SortDirection
-    firstName: SortDirection
-    lastName: SortDirection
-    password: SortDirection
-    biography: SortDirection
-    image: SortDirection
-    resetToken: SortDirection
-    createdAt: SortDirection
-    updatedAt: SortDirection
-    resetTokenExpiry: SortDirection
-    location: SortDirection
+  id: SortDirection
+  email: SortDirection
+  pseudo: SortDirection
+  firstName: SortDirection
+  lastName: SortDirection
+  password: SortDirection
+  biography: SortDirection
+  image: SortDirection
+  resetToken: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
+  resetTokenExpiry: SortDirection
+  location: SortDirection
 }
 
 input UserUniqueWhere {
-    id: ID
-    email: String
-    pseudo: String
+  id: ID
+  email: String
+  pseudo: String
 }
 
 input UserUpdateInput {
-    email: String
-    pseudo: String
-    firstName: String
-    lastName: String
-    password: String
-    biography: String
-    image: String
-    resetToken: String
-    resetTokenExpiry: DateTime
-    location: PointInput
-    posts: [UserPostsUpdateFieldInput!]
-    postLikes: [UserPostLikesUpdateFieldInput!]
-    commentLikes: [UserCommentLikesUpdateFieldInput!]
-    friends: [UserFriendsUpdateFieldInput!]
+  email: String
+  pseudo: String
+  firstName: String
+  lastName: String
+  password: String
+  biography: String
+  image: String
+  resetToken: String
+  resetTokenExpiry: DateTime
+  location: PointInput
+  posts: [UserPostsUpdateFieldInput!]
+  postLikes: [UserPostLikesUpdateFieldInput!]
+  commentLikes: [UserCommentLikesUpdateFieldInput!]
+  friends: [UserFriendsUpdateFieldInput!]
 }
 
 input UserWhere {
-    OR: [UserWhere!]
-    AND: [UserWhere!]
-    id: ID
-    id_NOT: ID
-    id_IN: [ID]
-    id_NOT_IN: [ID]
-    id_CONTAINS: ID
-    id_NOT_CONTAINS: ID
-    id_STARTS_WITH: ID
-    id_NOT_STARTS_WITH: ID
-    id_ENDS_WITH: ID
-    id_NOT_ENDS_WITH: ID
-    email: String
-    email_NOT: String
-    email_IN: [String]
-    email_NOT_IN: [String]
-    email_CONTAINS: String
-    email_NOT_CONTAINS: String
-    email_STARTS_WITH: String
-    email_NOT_STARTS_WITH: String
-    email_ENDS_WITH: String
-    email_NOT_ENDS_WITH: String
-    pseudo: String
-    pseudo_NOT: String
-    pseudo_IN: [String]
-    pseudo_NOT_IN: [String]
-    pseudo_CONTAINS: String
-    pseudo_NOT_CONTAINS: String
-    pseudo_STARTS_WITH: String
-    pseudo_NOT_STARTS_WITH: String
-    pseudo_ENDS_WITH: String
-    pseudo_NOT_ENDS_WITH: String
-    firstName: String
-    firstName_NOT: String
-    firstName_IN: [String]
-    firstName_NOT_IN: [String]
-    firstName_CONTAINS: String
-    firstName_NOT_CONTAINS: String
-    firstName_STARTS_WITH: String
-    firstName_NOT_STARTS_WITH: String
-    firstName_ENDS_WITH: String
-    firstName_NOT_ENDS_WITH: String
-    lastName: String
-    lastName_NOT: String
-    lastName_IN: [String]
-    lastName_NOT_IN: [String]
-    lastName_CONTAINS: String
-    lastName_NOT_CONTAINS: String
-    lastName_STARTS_WITH: String
-    lastName_NOT_STARTS_WITH: String
-    lastName_ENDS_WITH: String
-    lastName_NOT_ENDS_WITH: String
-    password: String
-    password_NOT: String
-    password_IN: [String]
-    password_NOT_IN: [String]
-    password_CONTAINS: String
-    password_NOT_CONTAINS: String
-    password_STARTS_WITH: String
-    password_NOT_STARTS_WITH: String
-    password_ENDS_WITH: String
-    password_NOT_ENDS_WITH: String
-    biography: String
-    biography_NOT: String
-    biography_IN: [String]
-    biography_NOT_IN: [String]
-    biography_CONTAINS: String
-    biography_NOT_CONTAINS: String
-    biography_STARTS_WITH: String
-    biography_NOT_STARTS_WITH: String
-    biography_ENDS_WITH: String
-    biography_NOT_ENDS_WITH: String
-    image: String
-    image_NOT: String
-    image_IN: [String]
-    image_NOT_IN: [String]
-    image_CONTAINS: String
-    image_NOT_CONTAINS: String
-    image_STARTS_WITH: String
-    image_NOT_STARTS_WITH: String
-    image_ENDS_WITH: String
-    image_NOT_ENDS_WITH: String
-    resetToken: String
-    resetToken_NOT: String
-    resetToken_IN: [String]
-    resetToken_NOT_IN: [String]
-    resetToken_CONTAINS: String
-    resetToken_NOT_CONTAINS: String
-    resetToken_STARTS_WITH: String
-    resetToken_NOT_STARTS_WITH: String
-    resetToken_ENDS_WITH: String
-    resetToken_NOT_ENDS_WITH: String
-    createdAt: DateTime
-    createdAt_NOT: DateTime
-    createdAt_IN: [DateTime]
-    createdAt_NOT_IN: [DateTime]
-    createdAt_LT: DateTime
-    createdAt_LTE: DateTime
-    createdAt_GT: DateTime
-    createdAt_GTE: DateTime
-    updatedAt: DateTime
-    updatedAt_NOT: DateTime
-    updatedAt_IN: [DateTime]
-    updatedAt_NOT_IN: [DateTime]
-    updatedAt_LT: DateTime
-    updatedAt_LTE: DateTime
-    updatedAt_GT: DateTime
-    updatedAt_GTE: DateTime
-    resetTokenExpiry: DateTime
-    resetTokenExpiry_NOT: DateTime
-    resetTokenExpiry_IN: [DateTime]
-    resetTokenExpiry_NOT_IN: [DateTime]
-    resetTokenExpiry_LT: DateTime
-    resetTokenExpiry_LTE: DateTime
-    resetTokenExpiry_GT: DateTime
-    resetTokenExpiry_GTE: DateTime
-    location: PointInput
-    location_NOT: PointInput
-    location_IN: [PointInput]
-    location_NOT_IN: [PointInput]
-    location_DISTANCE: PointDistance
-    location_LT: PointDistance
-    location_LTE: PointDistance
-    location_GT: PointDistance
-    location_GTE: PointDistance
-    posts: PostWhere
-    posts_NOT: PostWhere
-    postsAggregate: UserPostsAggregateInput
-    postLikes: PostWhere
-    postLikes_NOT: PostWhere
-    postLikesAggregate: UserPostLikesAggregateInput
-    commentLikes: CommentWhere
-    commentLikes_NOT: CommentWhere
-    commentLikesAggregate: UserCommentLikesAggregateInput
-    friends: UserWhere
-    friends_NOT: UserWhere
-    friendsAggregate: UserFriendsAggregateInput
-    postsConnection: UserPostsConnectionWhere
-    postsConnection_NOT: UserPostsConnectionWhere
-    postLikesConnection: UserPostLikesConnectionWhere
-    postLikesConnection_NOT: UserPostLikesConnectionWhere
-    commentLikesConnection: UserCommentLikesConnectionWhere
-    commentLikesConnection_NOT: UserCommentLikesConnectionWhere
-    friendsConnection: UserFriendsConnectionWhere
-    friendsConnection_NOT: UserFriendsConnectionWhere
+  OR: [UserWhere!]
+  AND: [UserWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  email: String
+  email_NOT: String
+  email_IN: [String]
+  email_NOT_IN: [String]
+  email_CONTAINS: String
+  email_NOT_CONTAINS: String
+  email_STARTS_WITH: String
+  email_NOT_STARTS_WITH: String
+  email_ENDS_WITH: String
+  email_NOT_ENDS_WITH: String
+  pseudo: String
+  pseudo_NOT: String
+  pseudo_IN: [String]
+  pseudo_NOT_IN: [String]
+  pseudo_CONTAINS: String
+  pseudo_NOT_CONTAINS: String
+  pseudo_STARTS_WITH: String
+  pseudo_NOT_STARTS_WITH: String
+  pseudo_ENDS_WITH: String
+  pseudo_NOT_ENDS_WITH: String
+  firstName: String
+  firstName_NOT: String
+  firstName_IN: [String]
+  firstName_NOT_IN: [String]
+  firstName_CONTAINS: String
+  firstName_NOT_CONTAINS: String
+  firstName_STARTS_WITH: String
+  firstName_NOT_STARTS_WITH: String
+  firstName_ENDS_WITH: String
+  firstName_NOT_ENDS_WITH: String
+  lastName: String
+  lastName_NOT: String
+  lastName_IN: [String]
+  lastName_NOT_IN: [String]
+  lastName_CONTAINS: String
+  lastName_NOT_CONTAINS: String
+  lastName_STARTS_WITH: String
+  lastName_NOT_STARTS_WITH: String
+  lastName_ENDS_WITH: String
+  lastName_NOT_ENDS_WITH: String
+  password: String
+  password_NOT: String
+  password_IN: [String]
+  password_NOT_IN: [String]
+  password_CONTAINS: String
+  password_NOT_CONTAINS: String
+  password_STARTS_WITH: String
+  password_NOT_STARTS_WITH: String
+  password_ENDS_WITH: String
+  password_NOT_ENDS_WITH: String
+  biography: String
+  biography_NOT: String
+  biography_IN: [String]
+  biography_NOT_IN: [String]
+  biography_CONTAINS: String
+  biography_NOT_CONTAINS: String
+  biography_STARTS_WITH: String
+  biography_NOT_STARTS_WITH: String
+  biography_ENDS_WITH: String
+  biography_NOT_ENDS_WITH: String
+  image: String
+  image_NOT: String
+  image_IN: [String]
+  image_NOT_IN: [String]
+  image_CONTAINS: String
+  image_NOT_CONTAINS: String
+  image_STARTS_WITH: String
+  image_NOT_STARTS_WITH: String
+  image_ENDS_WITH: String
+  image_NOT_ENDS_WITH: String
+  resetToken: String
+  resetToken_NOT: String
+  resetToken_IN: [String]
+  resetToken_NOT_IN: [String]
+  resetToken_CONTAINS: String
+  resetToken_NOT_CONTAINS: String
+  resetToken_STARTS_WITH: String
+  resetToken_NOT_STARTS_WITH: String
+  resetToken_ENDS_WITH: String
+  resetToken_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  resetTokenExpiry: DateTime
+  resetTokenExpiry_NOT: DateTime
+  resetTokenExpiry_IN: [DateTime]
+  resetTokenExpiry_NOT_IN: [DateTime]
+  resetTokenExpiry_LT: DateTime
+  resetTokenExpiry_LTE: DateTime
+  resetTokenExpiry_GT: DateTime
+  resetTokenExpiry_GTE: DateTime
+  location: PointInput
+  location_NOT: PointInput
+  location_IN: [PointInput]
+  location_NOT_IN: [PointInput]
+  location_DISTANCE: PointDistance
+  location_LT: PointDistance
+  location_LTE: PointDistance
+  location_GT: PointDistance
+  location_GTE: PointDistance
+  posts: PostWhere
+  posts_NOT: PostWhere
+  postsAggregate: UserPostsAggregateInput
+  postLikes: PostWhere
+  postLikes_NOT: PostWhere
+  postLikesAggregate: UserPostLikesAggregateInput
+  commentLikes: CommentWhere
+  commentLikes_NOT: CommentWhere
+  commentLikesAggregate: UserCommentLikesAggregateInput
+  friends: UserWhere
+  friends_NOT: UserWhere
+  friendsAggregate: UserFriendsAggregateInput
+  postsConnection: UserPostsConnectionWhere
+  postsConnection_NOT: UserPostsConnectionWhere
+  postLikesConnection: UserPostLikesConnectionWhere
+  postLikesConnection_NOT: UserPostLikesConnectionWhere
+  commentLikesConnection: UserCommentLikesConnectionWhere
+  commentLikesConnection_NOT: UserCommentLikesConnectionWhere
+  friendsConnection: UserFriendsConnectionWhere
+  friendsConnection_NOT: UserFriendsConnectionWhere
 }

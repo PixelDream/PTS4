@@ -106,6 +106,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GPostUniqueWhere.serializer)
       ..add(GPostUpdateInput.serializer)
       ..add(GPostWhere.serializer)
+      ..add(GProfileData.serializer)
+      ..add(GProfileData_users.serializer)
+      ..add(GProfileReq.serializer)
+      ..add(GProfileVars.serializer)
       ..add(GRequestResetPasswordData.serializer)
       ..add(GRequestResetPasswordReq.serializer)
       ..add(GRequestResetPasswordVars.serializer)
@@ -539,6 +543,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GDateTime)]),
           () => new ListBuilder<GDateTime>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(GProfileData_users)]),
+          () => new ListBuilder<GProfileData_users>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GStatusWhere)]),
           () => new ListBuilder<GStatusWhere>())

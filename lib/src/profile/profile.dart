@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:socialnetwork/graphql/profile_user.req.gql.dart';
+import 'package:socialnetwork/graphql/sign_in.req.gql.dart';
 import 'package:socialnetwork/src/Profile/profile_music_list.dart';
 import 'package:socialnetwork/src/profile/profile_image.dart';
+import 'package:socialnetwork/src/settings/seetings_account.dart';
 import 'package:socialnetwork/src/settings/settings.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  Profile({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return ProfileState();
+    return _ProfileState();
   }
 }
 
-class ProfileState extends State<Profile> {
+class _ProfileState extends State<Profile> {
   int currentIndex = 0;
+  String bio = " ";
 
   void _setProfileIndex(index) {
     setState(() {
@@ -21,9 +26,22 @@ class ProfileState extends State<Profile> {
     });
   }
 
+  void requestData(FlutterSecureStorage storage) async {
+    bio = (await storage.read(key: "bio"))!;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    const storage = FlutterSecureStorage();
+    requestData(storage);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
+    final createReviewReq = GProfileReq((b) => b);
 
     return Column(
       children: [
@@ -45,7 +63,8 @@ class ProfileState extends State<Profile> {
                   color: Colors.white,
                 ),
                 onTap: () => {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingsPage())),
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => SettingsPage())),
                 },
               ),
             ),
@@ -90,12 +109,19 @@ class ProfileState extends State<Profile> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("John Doe", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 25)),
+                              Text("John Doe",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 25)),
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 child: Text(
-                                  "Web developper, fan of bike",
-                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 12),
+                                  (bio),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12),
                                 ),
                               ),
                               Padding(
@@ -107,7 +133,9 @@ class ProfileState extends State<Profile> {
                                     style: ElevatedButton.styleFrom(
                                         primary: const Color(0xffFD5F00),
                                         onPrimary: Colors.white,
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(32.0)),
                                         minimumSize: Size(150, 25)),
                                     child: Text(
                                       "S'abonner",
@@ -131,8 +159,11 @@ class ProfileState extends State<Profile> {
                       children: [
                         RichText(
                             textAlign: TextAlign.center,
-                            text: TextSpan(
-                                children: const <TextSpan>[TextSpan(text: "3", style: TextStyle(fontSize: 25)), TextSpan(text: "\nPublications")]))
+                            text: TextSpan(children: const <TextSpan>[
+                              TextSpan(
+                                  text: "3", style: TextStyle(fontSize: 25)),
+                              TextSpan(text: "\nPublications")
+                            ]))
                       ],
                     ),
                     SizedBox(
@@ -142,8 +173,11 @@ class ProfileState extends State<Profile> {
                       children: [
                         RichText(
                             textAlign: TextAlign.center,
-                            text: TextSpan(
-                                children: const <TextSpan>[TextSpan(text: "908k", style: TextStyle(fontSize: 25)), TextSpan(text: "\nAbonnés")]))
+                            text: TextSpan(children: const <TextSpan>[
+                              TextSpan(
+                                  text: "908k", style: TextStyle(fontSize: 25)),
+                              TextSpan(text: "\nAbonnés")
+                            ]))
                       ],
                     ),
                     SizedBox(
@@ -153,8 +187,11 @@ class ProfileState extends State<Profile> {
                       children: [
                         RichText(
                             textAlign: TextAlign.center,
-                            text: TextSpan(
-                                children: const <TextSpan>[TextSpan(text: "1", style: TextStyle(fontSize: 25)), TextSpan(text: "\nAbonnements")]))
+                            text: TextSpan(children: const <TextSpan>[
+                              TextSpan(
+                                  text: "1", style: TextStyle(fontSize: 25)),
+                              TextSpan(text: "\nAbonnements")
+                            ]))
                       ],
                     ),
                   ],
@@ -171,7 +208,8 @@ class ProfileState extends State<Profile> {
                   IconButton(
                     icon: Icon(
                       Icons.grid_on,
-                      color: currentIndex == 0 ? Color(0xffFD5F00) : Colors.black,
+                      color:
+                          currentIndex == 0 ? Color(0xffFD5F00) : Colors.black,
                     ),
                     onPressed: () {
                       _setProfileIndex(0);
@@ -182,7 +220,8 @@ class ProfileState extends State<Profile> {
                   IconButton(
                     icon: Icon(
                       Icons.library_music,
-                      color: currentIndex == 1 ? Color(0xffFD5F00) : Colors.black,
+                      color:
+                          currentIndex == 1 ? Color(0xffFD5F00) : Colors.black,
                     ),
                     onPressed: () {
                       _setProfileIndex(1);
@@ -193,7 +232,8 @@ class ProfileState extends State<Profile> {
                   IconButton(
                     icon: Icon(
                       Icons.person_pin,
-                      color: currentIndex == 2 ? Color(0xffFD5F00) : Colors.black,
+                      color:
+                          currentIndex == 2 ? Color(0xffFD5F00) : Colors.black,
                     ),
                     onPressed: () {
                       _setProfileIndex(2);
@@ -221,7 +261,6 @@ class ProfileState extends State<Profile> {
   }
 }
 
-//Copy this CustomPainter code to the Bottom of the File
 class RPSCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -230,10 +269,22 @@ class RPSCustomPainter extends CustomPainter {
     path_0.lineTo(size.width * 0.02172505, size.height * -0.01829268);
     path_0.lineTo(size.width * -0.01401867, size.height * 0);
     path_0.lineTo(0, size.height * 0.9984756);
-    path_0.cubicTo(0, size.height * 0.8353659, size.width * 0.1004673, size.height * 0.7621951, size.width * 0.1623832, size.height * 0.7621951);
-    path_0.cubicTo(size.width * 0.2242991, size.height * 0.7621951, size.width * 0.8367640, size.height * 0.7638750, size.width * 0.8367640,
+    path_0.cubicTo(
+        0,
+        size.height * 0.8353659,
+        size.width * 0.1004673,
+        size.height * 0.7621951,
+        size.width * 0.1623832,
+        size.height * 0.7621951);
+    path_0.cubicTo(
+        size.width * 0.2242991,
+        size.height * 0.7621951,
+        size.width * 0.8367640,
+        size.height * 0.7638750,
+        size.width * 0.8367640,
         size.height * 0.7638750);
-    path_0.cubicTo(size.width * 0.9100467, size.height * 0.7638750, size.width, size.height * 0.6875000, size.width, size.height * 0.5518293);
+    path_0.cubicTo(size.width * 0.9100467, size.height * 0.7638750, size.width,
+        size.height * 0.6875000, size.width, size.height * 0.5518293);
     path_0.lineTo(size.width, size.height * -0.01829250);
     path_0.close();
 

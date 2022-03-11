@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socialnetwork/src/Profile/profile.dart';
+import 'package:socialnetwork/src/chat/chat_manager.dart';
 import 'package:socialnetwork/src/feed/post/posts_list.dart';
 import 'package:socialnetwork/src/map.dart';
 
@@ -73,7 +74,11 @@ class LayoutState extends State<Layout> {
                       ),
                       Center(
                         heightFactor: 0.65,
-                        child: FloatingActionButton(backgroundColor: Color(0xffFD5F00), child: Icon(Icons.add), elevation: 0.1, onPressed: () {}),
+                        child: FloatingActionButton(
+                            backgroundColor: Color(0xffFD5F00),
+                            child: Icon(Icons.add),
+                            elevation: 0.1,
+                            onPressed: () {}),
                       ),
                       SizedBox(
                         width: size.width,
@@ -84,7 +89,9 @@ class LayoutState extends State<Layout> {
                             IconButton(
                               icon: Icon(
                                 Icons.home,
-                                color: currentIndex == 0 ? Color(0xffFD5F00) : Colors.white,
+                                color: currentIndex == 0
+                                    ? Color(0xffFD5F00)
+                                    : Colors.white,
                               ),
                               onPressed: () {
                                 _setBottomBarIndex(0);
@@ -95,7 +102,9 @@ class LayoutState extends State<Layout> {
                             IconButton(
                               icon: Icon(
                                 Icons.location_on,
-                                color: currentIndex == 1 ? Color(0xffFD5F00) : Colors.white,
+                                color: currentIndex == 1
+                                    ? Color(0xffFD5F00)
+                                    : Colors.white,
                               ),
                               onPressed: () {
                                 _setBottomBarIndex(1);
@@ -108,7 +117,9 @@ class LayoutState extends State<Layout> {
                             IconButton(
                               icon: Icon(
                                 Icons.chat_bubble,
-                                color: currentIndex == 2 ? Color(0xffFD5F00) : Colors.white,
+                                color: currentIndex == 2
+                                    ? Color(0xffFD5F00)
+                                    : Colors.white,
                               ),
                               onPressed: () {
                                 _setBottomBarIndex(2);
@@ -118,7 +129,9 @@ class LayoutState extends State<Layout> {
                             IconButton(
                               icon: Icon(
                                 Icons.account_circle,
-                                color: currentIndex == 3 ? Color(0xffFD5F00) : Colors.white,
+                                color: currentIndex == 3
+                                    ? Color(0xffFD5F00)
+                                    : Colors.white,
                               ),
                               onPressed: () {
                                 _setBottomBarIndex(3);
@@ -139,10 +152,13 @@ class LayoutState extends State<Layout> {
     );
   }
 
+  int value = 3;
   Widget _getChildByIndex() {
     switch (currentIndex) {
       case 1:
         return CustomMarker();
+      case 2:
+        return ChatManager();
       case 3:
         return Profile();
       default:
@@ -157,7 +173,9 @@ class LayoutState extends State<Layout> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20, left: 0),
-                child: PostsList(controller: _controller, callback: () => _updateNavWidget()),
+                child: PostsList(
+                    controller: _controller,
+                    callback: () => _updateNavWidget()),
               ),
             ],
           ),
@@ -178,7 +196,8 @@ class LayoutState extends State<Layout> {
       } else {
         setState(() {
           _navBarWidget = GestureDetector(
-            onTap: () => _controller.position.animateTo(0, duration: Duration(seconds: 1), curve: Curves.ease),
+            onTap: () => _controller.position.animateTo(0,
+                duration: Duration(seconds: 1), curve: Curves.ease),
             child: Container(
               height: 60,
               decoration: BoxDecoration(color: Color(0xff13334C)),
@@ -239,20 +258,25 @@ class NavCustomPainter extends CustomPainter {
 
     Path path = Path();
     path.moveTo(0, size.height * 0.2027027);
-    path.cubicTo(0, size.height * 0.09075311, size.width * 0.01569096, 0, size.width * 0.03504673, 0);
+    path.cubicTo(0, size.height * 0.09075311, size.width * 0.01569096, 0,
+        size.width * 0.03504673, 0);
     path.lineTo(size.width * 0.9649533, 0);
-    path.cubicTo(size.width * 0.9843084, 0, size.width, size.height * 0.09075311, size.width, size.height * 0.2027027);
+    path.cubicTo(size.width * 0.9843084, 0, size.width,
+        size.height * 0.09075311, size.width, size.height * 0.2027027);
     path.lineTo(size.width, size.height * 0.8648649);
-    path.cubicTo(size.width, size.height * 0.9394973, size.width * 0.9895397, size.height, size.width * 0.9766355, size.height);
+    path.cubicTo(size.width, size.height * 0.9394973, size.width * 0.9895397,
+        size.height, size.width * 0.9766355, size.height);
     path.lineTo(size.width * 0.02336449, size.height);
 
-    path.cubicTo(size.width * 0.01046063, size.height, 0, size.height * 0.9394973, 0, size.height * 0.8648649);
+    path.cubicTo(size.width * 0.01046063, size.height, 0,
+        size.height * 0.9394973, 0, size.height * 0.8648649);
     path.lineTo(0, size.height * 0.2027027);
 
     path.moveTo(size.width / 2 - 60, size.height - 80);
 
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 15);
-    path.arcToPoint(Offset(size.width * 0.60, 20), radius: Radius.circular(20.0), clockwise: false);
+    path.arcToPoint(Offset(size.width * 0.60, 20),
+        radius: Radius.circular(20.0), clockwise: false);
     path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
 
     path.close();
