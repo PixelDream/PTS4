@@ -3,10 +3,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:socialnetwork/src/utils/SaveData.dart';
 
 import './forgetPwd.dart';
 import '../../graphql/sign_in.req.gql.dart';
 import '../../layout.dart';
+import '../utils/ClientManager.dart';
 import 'signUp.dart';
 
 class SignIn extends StatefulWidget {
@@ -35,7 +37,7 @@ class SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     const storage = FlutterSecureStorage();
-    final client = GetIt.I<Client>();
+    final Client client = GetIt.I<Client>();
 
     void _signIn() async {
       setState(() {
@@ -48,12 +50,13 @@ class SignInState extends State<SignIn> {
           ..vars.password = _passwordField.text,
       );
 
-      final result = await client.request(createReviewReq).firstWhere(
-          (response) => response.dataSource != DataSource.Optimistic);
+      final result = await client.request(createReviewReq).firstWhere((response) => response.dataSource != DataSource.Optimistic);
 
       if (!result.hasErrors) {
         if (result.data?.signIn.token != null) {
           await storage.write(key: "jwt", value: result.data?.signIn.token);
+          await storage.write(key: "id", value: result.data?.signIn.user.id);
+          SaveData().setId(result.data?.signIn.user.id);
 
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const Layout()),
@@ -69,12 +72,16 @@ class SignInState extends State<SignIn> {
         print(element.message);
       });
 
+      final newClient = await initClient();
+      GetIt.I.registerLazySingleton<Client>(() => newClient);
+
       setState(() {
         _isLoading = false;
       });
     }
 
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: const Color(0xff13334C),
         body: SingleChildScrollView(
           child: Column(
@@ -100,31 +107,29 @@ class SignInState extends State<SignIn> {
                 child: Column(
                   children: [
                     Container(
-                        margin: const EdgeInsets.only(top: 30),
-                        width: 290,
-                        child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter some email';
-                              }
+                      margin: const EdgeInsets.only(top: 30),
+                      width: 290,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some email';
+                          }
 
-                              return null;
-                            },
-                            controller: _emailField,
-                            style: const TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                              hintText: "Adresse mail ou nom d'utilisateur",
-                              hintStyle: const TextStyle(
-                                  color: Colors.white, fontSize: 12),
-                              filled: true,
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(100),
-                                  borderSide: BorderSide.none),
-                              fillColor: const Color(0xff1c4969),
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 12),
-                              isDense: true,
-                            ))),
+                          return null;
+                        },
+                        controller: _emailField,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          hintText: "Adresse mail ou nom d'utilisateur",
+                          hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                          filled: true,
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(100), borderSide: BorderSide.none),
+                          fillColor: const Color(0xff1c4969),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                          isDense: true,
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -143,25 +148,18 @@ class SignInState extends State<SignIn> {
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               hintText: "Mot de passe",
-                              hintStyle: const TextStyle(
-                                  color: Colors.white, fontSize: 12),
+                              hintStyle: const TextStyle(color: Colors.white, fontSize: 12),
                               filled: true,
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(100),
-                                  borderSide: BorderSide.none),
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(100), borderSide: BorderSide.none),
                               fillColor: const Color(0xff1c4969),
-                              contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 12),
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                               isDense: true,
-                              suffixIconConstraints:
-                                  BoxConstraints.loose(Size(50, 15)),
+                              suffixIconConstraints: BoxConstraints.loose(Size(50, 15)),
                               suffixIcon: IconButton(
                                 splashRadius: 1,
                                 icon: Icon(
                                   // Based on passwordVisible state choose the icon
-                                  _passwordVisible
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
+                                  _passwordVisible ? Icons.visibility_off : Icons.visibility,
                                   color: Color(0xffFD5F00),
                                 ),
                                 padding: EdgeInsets.all(0),
@@ -179,8 +177,7 @@ class SignInState extends State<SignIn> {
                           onTap: () => {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ForgetPwd()),
+                              MaterialPageRoute(builder: (context) => const ForgetPwd()),
                             )
                           },
                           child: const Text(
@@ -196,20 +193,16 @@ class SignInState extends State<SignIn> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate() &&
-                                !_isLoading) _signIn();
+                            if (_formKey.currentState!.validate() && !_isLoading) _signIn();
                           },
                           style: ElevatedButton.styleFrom(
                             primary: const Color(0xffFD5F00),
                             onPrimary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32.0)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                           ),
                           child: !_isLoading
-                              ? const Text("SE CONNECTER",
-                                  style: TextStyle(color: Colors.white))
-                              : const Text("Chargement...",
-                                  style: TextStyle(color: Colors.white)),
+                              ? const Text("SE CONNECTER", style: TextStyle(color: Colors.white))
+                              : const Text("Chargement...", style: TextStyle(color: Colors.white)),
                         ),
                         const SizedBox(
                           height: 20,
@@ -228,14 +221,10 @@ class SignInState extends State<SignIn> {
                                         ..onTap = () {
                                           Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const SignUP()),
+                                            MaterialPageRoute(builder: (context) => const SignUP()),
                                           );
                                         },
-                                      style: const TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          color: Color(0xffFD5F00)))
+                                      style: const TextStyle(fontStyle: FontStyle.italic, color: Color(0xffFD5F00)))
                                 ])),
                       ],
                     )
@@ -244,7 +233,9 @@ class SignInState extends State<SignIn> {
               ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   @override

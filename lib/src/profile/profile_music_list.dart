@@ -5,7 +5,9 @@ import 'package:socialnetwork/src/Profile/profile_music_item.dart';
 typedef ControllerCallback = void Function();
 
 class ProfileMusicList extends StatefulWidget {
-  const ProfileMusicList({Key? key}) : super(key: key);
+  final String? userId;
+
+  const ProfileMusicList({Key? key, this.userId}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {

@@ -3,12 +3,122 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart' show StandardJsonPlugin;
 import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
+import 'package:socialnetwork/graphql/create_commentary.data.gql.dart'
+    show
+        GCreateCommentaryData,
+        GCreateCommentaryData_createComments,
+        GCreateCommentaryData_createComments_info;
+import 'package:socialnetwork/graphql/create_commentary.req.gql.dart'
+    show GCreateCommentaryReq;
+import 'package:socialnetwork/graphql/create_commentary.var.gql.dart'
+    show GCreateCommentaryVars;
+import 'package:socialnetwork/graphql/create_post.data.gql.dart'
+    show
+        GCreatePostData,
+        GCreatePostData_createPosts,
+        GCreatePostData_createPosts_info;
+import 'package:socialnetwork/graphql/create_post.req.gql.dart'
+    show GCreatePostReq;
+import 'package:socialnetwork/graphql/create_post.var.gql.dart'
+    show GCreatePostVars;
+import 'package:socialnetwork/graphql/create_story.data.gql.dart'
+    show
+        GCreateStoriesData,
+        GCreateStoriesData_createStories,
+        GCreateStoriesData_createStories_info;
+import 'package:socialnetwork/graphql/create_story.req.gql.dart'
+    show GCreateStoriesReq;
+import 'package:socialnetwork/graphql/create_story.var.gql.dart'
+    show GCreateStoriesVars;
+import 'package:socialnetwork/graphql/dislike_post.data.gql.dart'
+    show
+        GDislikePostData,
+        GDislikePostData_updateUsers,
+        GDislikePostData_updateUsers_info;
+import 'package:socialnetwork/graphql/dislike_post.req.gql.dart'
+    show GDislikePostReq;
+import 'package:socialnetwork/graphql/dislike_post.var.gql.dart'
+    show GDislikePostVars;
+import 'package:socialnetwork/graphql/feed.data.gql.dart'
+    show
+        GFeedData,
+        GFeedData_users,
+        GFeedData_users_friends,
+        GFeedData_users_friends_posts,
+        GFeedData_users_friends_posts_commentsConnection,
+        GFeedData_users_friends_posts_creator,
+        GFeedData_users_friends_posts_likesConnection,
+        GFeedData_users_friends_storiesConnection,
+        GFeedData_users_postLikes;
+import 'package:socialnetwork/graphql/feed.req.gql.dart' show GFeedReq;
+import 'package:socialnetwork/graphql/feed.var.gql.dart' show GFeedVars;
+import 'package:socialnetwork/graphql/feed_info.data.gql.dart'
+    show
+        GFeedInfoData,
+        GFeedInfoData_users,
+        GFeedInfoData_users_friendsConnection,
+        GFeedInfoData_users_postsConnection,
+        GFeedInfoData_users_storiesConnection;
+import 'package:socialnetwork/graphql/feed_info.req.gql.dart' show GFeedInfoReq;
+import 'package:socialnetwork/graphql/feed_info.var.gql.dart'
+    show GFeedInfoVars;
+import 'package:socialnetwork/graphql/like_post.data.gql.dart'
+    show
+        GLikePostData,
+        GLikePostData_updateUsers,
+        GLikePostData_updateUsers_info;
+import 'package:socialnetwork/graphql/like_post.req.gql.dart' show GLikePostReq;
+import 'package:socialnetwork/graphql/like_post.var.gql.dart'
+    show GLikePostVars;
+import 'package:socialnetwork/graphql/load_comments.data.gql.dart'
+    show
+        GLoadCommentsData,
+        GLoadCommentsData_comments,
+        GLoadCommentsData_comments_creator;
+import 'package:socialnetwork/graphql/load_comments.req.gql.dart'
+    show GLoadCommentsReq;
+import 'package:socialnetwork/graphql/load_comments.var.gql.dart'
+    show GLoadCommentsVars;
+import 'package:socialnetwork/graphql/load_story.data.gql.dart'
+    show
+        GloadStoriesData,
+        GloadStoriesData_users,
+        GloadStoriesData_users_stories,
+        GloadStoriesData_users_stories_creator;
+import 'package:socialnetwork/graphql/load_story.req.gql.dart'
+    show GloadStoriesReq;
+import 'package:socialnetwork/graphql/load_story.var.gql.dart'
+    show GloadStoriesVars;
+import 'package:socialnetwork/graphql/profile_posts.data.gql.dart'
+    show
+        GProfilePostsData,
+        GProfilePostsData_users,
+        GProfilePostsData_users_postLikes,
+        GProfilePostsData_users_posts,
+        GProfilePostsData_users_posts_commentsConnection,
+        GProfilePostsData_users_posts_creator,
+        GProfilePostsData_users_posts_likesConnection;
+import 'package:socialnetwork/graphql/profile_posts.req.gql.dart'
+    show GProfilePostsReq;
+import 'package:socialnetwork/graphql/profile_posts.var.gql.dart'
+    show GProfilePostsVars;
 import 'package:socialnetwork/graphql/profile_user.data.gql.dart'
     show GProfileData, GProfileData_users;
 import 'package:socialnetwork/graphql/profile_user.req.gql.dart'
     show GProfileReq;
 import 'package:socialnetwork/graphql/profile_user.var.gql.dart'
     show GProfileVars;
+import 'package:socialnetwork/graphql/request_localisation.data.gql.dart'
+    show
+        GFriendsLocalisationData,
+        GFriendsLocalisationData_users,
+        GFriendsLocalisationData_users_friends,
+        GFriendsLocalisationData_users_friends_location,
+        GFriendsLocalisationData_users_location;
+import 'package:socialnetwork/graphql/request_localisation.req.gql.dart'
+    show GFriendsLocalisationReq;
+import 'package:socialnetwork/graphql/request_localisation.var.gql.dart'
+    show GFriendsLocalisationVars;
 import 'package:socialnetwork/graphql/RequestResetPassword.data.gql.dart'
     show GRequestResetPasswordData;
 import 'package:socialnetwork/graphql/RequestResetPassword.req.gql.dart'
@@ -122,6 +232,45 @@ import 'package:socialnetwork/graphql/schema.schema.gql.dart'
         GStatusSort,
         GStatusUpdateInput,
         GStatusWhere,
+        GStoryConnectInput,
+        GStoryConnectOrCreateInput,
+        GStoryConnectOrCreateWhere,
+        GStoryConnectWhere,
+        GStoryCreateInput,
+        GStoryCreatorAggregateInput,
+        GStoryCreatorConnectFieldInput,
+        GStoryCreatorConnectOrCreateFieldInput,
+        GStoryCreatorConnectOrCreateFieldInputOnCreate,
+        GStoryCreatorConnectionSort,
+        GStoryCreatorConnectionWhere,
+        GStoryCreatorCreateFieldInput,
+        GStoryCreatorDeleteFieldInput,
+        GStoryCreatorDisconnectFieldInput,
+        GStoryCreatorFieldInput,
+        GStoryCreatorNodeAggregationWhereInput,
+        GStoryCreatorUpdateConnectionInput,
+        GStoryCreatorUpdateFieldInput,
+        GStoryDeleteInput,
+        GStoryDisconnectInput,
+        GStoryLikesAggregateInput,
+        GStoryLikesConnectFieldInput,
+        GStoryLikesConnectOrCreateFieldInput,
+        GStoryLikesConnectOrCreateFieldInputOnCreate,
+        GStoryLikesConnectionSort,
+        GStoryLikesConnectionWhere,
+        GStoryLikesCreateFieldInput,
+        GStoryLikesDeleteFieldInput,
+        GStoryLikesDisconnectFieldInput,
+        GStoryLikesFieldInput,
+        GStoryLikesNodeAggregationWhereInput,
+        GStoryLikesUpdateConnectionInput,
+        GStoryLikesUpdateFieldInput,
+        GStoryOptions,
+        GStoryRelationInput,
+        GStorySort,
+        GStoryUniqueWhere,
+        GStoryUpdateInput,
+        GStoryWhere,
         GUserCommentLikesAggregateInput,
         GUserCommentLikesConnectFieldInput,
         GUserCommentLikesConnectOrCreateFieldInput,
@@ -184,17 +333,59 @@ import 'package:socialnetwork/graphql/schema.schema.gql.dart'
         GUserPostsUpdateFieldInput,
         GUserRelationInput,
         GUserSort,
+        GUserStoriesAggregateInput,
+        GUserStoriesConnectFieldInput,
+        GUserStoriesConnectOrCreateFieldInput,
+        GUserStoriesConnectOrCreateFieldInputOnCreate,
+        GUserStoriesConnectionSort,
+        GUserStoriesConnectionWhere,
+        GUserStoriesCreateFieldInput,
+        GUserStoriesDeleteFieldInput,
+        GUserStoriesDisconnectFieldInput,
+        GUserStoriesFieldInput,
+        GUserStoriesNodeAggregationWhereInput,
+        GUserStoriesUpdateConnectionInput,
+        GUserStoriesUpdateFieldInput,
+        GUserStoryLikesAggregateInput,
+        GUserStoryLikesConnectFieldInput,
+        GUserStoryLikesConnectOrCreateFieldInput,
+        GUserStoryLikesConnectOrCreateFieldInputOnCreate,
+        GUserStoryLikesConnectionSort,
+        GUserStoryLikesConnectionWhere,
+        GUserStoryLikesCreateFieldInput,
+        GUserStoryLikesDeleteFieldInput,
+        GUserStoryLikesDisconnectFieldInput,
+        GUserStoryLikesFieldInput,
+        GUserStoryLikesNodeAggregationWhereInput,
+        GUserStoryLikesUpdateConnectionInput,
+        GUserStoryLikesUpdateFieldInput,
         GUserUniqueWhere,
         GUserUpdateInput,
         GUserWhere;
 import 'package:socialnetwork/graphql/sign_in.data.gql.dart'
-    show GSignInData, GSignInData_signIn;
+    show GSignInData, GSignInData_signIn, GSignInData_signIn_user;
 import 'package:socialnetwork/graphql/sign_in.req.gql.dart' show GSignInReq;
 import 'package:socialnetwork/graphql/sign_in.var.gql.dart' show GSignInVars;
 import 'package:socialnetwork/graphql/sign_up.data.gql.dart'
-    show GSignUpData, GSignUpData_signUp;
+    show GSignUpData, GSignUpData_signUp, GSignUpData_signUp_user;
 import 'package:socialnetwork/graphql/sign_up.req.gql.dart' show GSignUpReq;
 import 'package:socialnetwork/graphql/sign_up.var.gql.dart' show GSignUpVars;
+import 'package:socialnetwork/graphql/update_location.data.gql.dart'
+    show
+        GUpdateLocationData,
+        GUpdateLocationData_updateUsers,
+        GUpdateLocationData_updateUsers_users,
+        GUpdateLocationData_updateUsers_users_location;
+import 'package:socialnetwork/graphql/update_location.req.gql.dart'
+    show GUpdateLocationReq;
+import 'package:socialnetwork/graphql/update_location.var.gql.dart'
+    show GUpdateLocationVars;
+import 'package:socialnetwork/graphql/upload_files.data.gql.dart'
+    show GUploadFilesData;
+import 'package:socialnetwork/graphql/upload_files.req.gql.dart'
+    show GUploadFilesReq;
+import 'package:socialnetwork/graphql/upload_files.var.gql.dart'
+    show GUploadFilesVars;
 
 part 'serializers.gql.g.dart';
 
@@ -241,12 +432,67 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCommentUniqueWhere,
   GCommentUpdateInput,
   GCommentWhere,
+  GCreateCommentaryData,
+  GCreateCommentaryData_createComments,
+  GCreateCommentaryData_createComments_info,
+  GCreateCommentaryReq,
+  GCreateCommentaryVars,
+  GCreatePostData,
+  GCreatePostData_createPosts,
+  GCreatePostData_createPosts_info,
+  GCreatePostReq,
+  GCreatePostVars,
+  GCreateStoriesData,
+  GCreateStoriesData_createStories,
+  GCreateStoriesData_createStories_info,
+  GCreateStoriesReq,
+  GCreateStoriesVars,
   GDateTime,
+  GDislikePostData,
+  GDislikePostData_updateUsers,
+  GDislikePostData_updateUsers_info,
+  GDislikePostReq,
+  GDislikePostVars,
+  GFeedData,
+  GFeedData_users,
+  GFeedData_users_friends,
+  GFeedData_users_friends_posts,
+  GFeedData_users_friends_posts_commentsConnection,
+  GFeedData_users_friends_posts_creator,
+  GFeedData_users_friends_posts_likesConnection,
+  GFeedData_users_friends_storiesConnection,
+  GFeedData_users_postLikes,
+  GFeedInfoData,
+  GFeedInfoData_users,
+  GFeedInfoData_users_friendsConnection,
+  GFeedInfoData_users_postsConnection,
+  GFeedInfoData_users_storiesConnection,
+  GFeedInfoReq,
+  GFeedInfoVars,
+  GFeedReq,
+  GFeedVars,
+  GFriendsLocalisationData,
+  GFriendsLocalisationData_users,
+  GFriendsLocalisationData_users_friends,
+  GFriendsLocalisationData_users_friends_location,
+  GFriendsLocalisationData_users_location,
+  GFriendsLocalisationReq,
+  GFriendsLocalisationVars,
   GHashtagCreateInput,
   GHashtagOptions,
   GHashtagSort,
   GHashtagUpdateInput,
   GHashtagWhere,
+  GLikePostData,
+  GLikePostData_updateUsers,
+  GLikePostData_updateUsers_info,
+  GLikePostReq,
+  GLikePostVars,
+  GLoadCommentsData,
+  GLoadCommentsData_comments,
+  GLoadCommentsData_comments_creator,
+  GLoadCommentsReq,
+  GLoadCommentsVars,
   GPointDistance,
   GPointInput,
   GPostCommentsAggregateInput,
@@ -303,6 +549,15 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GPostWhere,
   GProfileData,
   GProfileData_users,
+  GProfilePostsData,
+  GProfilePostsData_users,
+  GProfilePostsData_users_postLikes,
+  GProfilePostsData_users_posts,
+  GProfilePostsData_users_posts_commentsConnection,
+  GProfilePostsData_users_posts_creator,
+  GProfilePostsData_users_posts_likesConnection,
+  GProfilePostsReq,
+  GProfilePostsVars,
   GProfileReq,
   GProfileVars,
   GRequestResetPasswordData,
@@ -311,10 +566,12 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GRequestStatus,
   GSignInData,
   GSignInData_signIn,
+  GSignInData_signIn_user,
   GSignInReq,
   GSignInVars,
   GSignUpData,
   GSignUpData_signUp,
+  GSignUpData_signUp_user,
   GSignUpReq,
   GSignUpVars,
   GSortDirection,
@@ -322,6 +579,54 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GStatusSort,
   GStatusUpdateInput,
   GStatusWhere,
+  GStoryConnectInput,
+  GStoryConnectOrCreateInput,
+  GStoryConnectOrCreateWhere,
+  GStoryConnectWhere,
+  GStoryCreateInput,
+  GStoryCreatorAggregateInput,
+  GStoryCreatorConnectFieldInput,
+  GStoryCreatorConnectOrCreateFieldInput,
+  GStoryCreatorConnectOrCreateFieldInputOnCreate,
+  GStoryCreatorConnectionSort,
+  GStoryCreatorConnectionWhere,
+  GStoryCreatorCreateFieldInput,
+  GStoryCreatorDeleteFieldInput,
+  GStoryCreatorDisconnectFieldInput,
+  GStoryCreatorFieldInput,
+  GStoryCreatorNodeAggregationWhereInput,
+  GStoryCreatorUpdateConnectionInput,
+  GStoryCreatorUpdateFieldInput,
+  GStoryDeleteInput,
+  GStoryDisconnectInput,
+  GStoryLikesAggregateInput,
+  GStoryLikesConnectFieldInput,
+  GStoryLikesConnectOrCreateFieldInput,
+  GStoryLikesConnectOrCreateFieldInputOnCreate,
+  GStoryLikesConnectionSort,
+  GStoryLikesConnectionWhere,
+  GStoryLikesCreateFieldInput,
+  GStoryLikesDeleteFieldInput,
+  GStoryLikesDisconnectFieldInput,
+  GStoryLikesFieldInput,
+  GStoryLikesNodeAggregationWhereInput,
+  GStoryLikesUpdateConnectionInput,
+  GStoryLikesUpdateFieldInput,
+  GStoryOptions,
+  GStoryRelationInput,
+  GStorySort,
+  GStoryUniqueWhere,
+  GStoryUpdateInput,
+  GStoryWhere,
+  GUpdateLocationData,
+  GUpdateLocationData_updateUsers,
+  GUpdateLocationData_updateUsers_users,
+  GUpdateLocationData_updateUsers_users_location,
+  GUpdateLocationReq,
+  GUpdateLocationVars,
+  GUploadFilesData,
+  GUploadFilesReq,
+  GUploadFilesVars,
   GUserCommentLikesAggregateInput,
   GUserCommentLikesConnectFieldInput,
   GUserCommentLikesConnectOrCreateFieldInput,
@@ -384,8 +689,40 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GUserPostsUpdateFieldInput,
   GUserRelationInput,
   GUserSort,
+  GUserStoriesAggregateInput,
+  GUserStoriesConnectFieldInput,
+  GUserStoriesConnectOrCreateFieldInput,
+  GUserStoriesConnectOrCreateFieldInputOnCreate,
+  GUserStoriesConnectionSort,
+  GUserStoriesConnectionWhere,
+  GUserStoriesCreateFieldInput,
+  GUserStoriesDeleteFieldInput,
+  GUserStoriesDisconnectFieldInput,
+  GUserStoriesFieldInput,
+  GUserStoriesNodeAggregationWhereInput,
+  GUserStoriesUpdateConnectionInput,
+  GUserStoriesUpdateFieldInput,
+  GUserStoryLikesAggregateInput,
+  GUserStoryLikesConnectFieldInput,
+  GUserStoryLikesConnectOrCreateFieldInput,
+  GUserStoryLikesConnectOrCreateFieldInputOnCreate,
+  GUserStoryLikesConnectionSort,
+  GUserStoryLikesConnectionWhere,
+  GUserStoryLikesCreateFieldInput,
+  GUserStoryLikesDeleteFieldInput,
+  GUserStoryLikesDisconnectFieldInput,
+  GUserStoryLikesFieldInput,
+  GUserStoryLikesNodeAggregationWhereInput,
+  GUserStoryLikesUpdateConnectionInput,
+  GUserStoryLikesUpdateFieldInput,
   GUserUniqueWhere,
   GUserUpdateInput,
-  GUserWhere
+  GUserWhere,
+  GloadStoriesData,
+  GloadStoriesData_users,
+  GloadStoriesData_users_stories,
+  GloadStoriesData_users_stories_creator,
+  GloadStoriesReq,
+  GloadStoriesVars
 ])
 final Serializers serializers = _serializersBuilder.build();

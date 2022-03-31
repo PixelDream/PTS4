@@ -1,0 +1,3 @@
+mutation UploadFiles($files: [String!]!, $type: String!) {
+    uploadFiles(files: $files, type: $type)
+}

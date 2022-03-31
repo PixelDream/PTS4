@@ -1,0 +1,7 @@
+mutation DislikePost($disconnect: UserDisconnectInput, $user: UserWhere) {
+    updateUsers(disconnect: $disconnect, where: $user) {
+        info {
+            relationshipsDeleted
+        }
+    }
+}

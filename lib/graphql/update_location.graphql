@@ -1,0 +1,10 @@
+mutation UpdateLocation($location: UserUpdateInput, $user: UserWhere) {
+    updateUsers(update: $location, where: $user) {
+        users {
+            location {
+                latitude,
+                longitude
+            }
+        }
+    }
+}

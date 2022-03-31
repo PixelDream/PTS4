@@ -9,6 +9,8 @@ part of 'sign_in.data.gql.dart';
 Serializer<GSignInData> _$gSignInDataSerializer = new _$GSignInDataSerializer();
 Serializer<GSignInData_signIn> _$gSignInDataSignInSerializer =
     new _$GSignInData_signInSerializer();
+Serializer<GSignInData_signIn_user> _$gSignInDataSignInUserSerializer =
+    new _$GSignInData_signIn_userSerializer();
 
 class _$GSignInDataSerializer implements StructuredSerializer<GSignInData> {
   @override
@@ -76,6 +78,9 @@ class _$GSignInData_signInSerializer
       'token',
       serializers.serialize(object.token,
           specifiedType: const FullType(String)),
+      'user',
+      serializers.serialize(object.user,
+          specifiedType: const FullType(GSignInData_signIn_user)),
     ];
 
     return result;
@@ -99,6 +104,63 @@ class _$GSignInData_signInSerializer
           break;
         case 'token':
           result.token = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'user':
+          result.user.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(GSignInData_signIn_user))!
+              as GSignInData_signIn_user);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GSignInData_signIn_userSerializer
+    implements StructuredSerializer<GSignInData_signIn_user> {
+  @override
+  final Iterable<Type> types = const [
+    GSignInData_signIn_user,
+    _$GSignInData_signIn_user
+  ];
+  @override
+  final String wireName = 'GSignInData_signIn_user';
+
+  @override
+  Iterable<Object?> serialize(
+      Serializers serializers, GSignInData_signIn_user object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      '__typename',
+      serializers.serialize(object.G__typename,
+          specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  GSignInData_signIn_user deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GSignInData_signIn_userBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case '__typename':
+          result.G__typename = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -220,16 +282,20 @@ class _$GSignInData_signIn extends GSignInData_signIn {
   final String G__typename;
   @override
   final String token;
+  @override
+  final GSignInData_signIn_user user;
 
   factory _$GSignInData_signIn(
           [void Function(GSignInData_signInBuilder)? updates]) =>
       (new GSignInData_signInBuilder()..update(updates)).build();
 
-  _$GSignInData_signIn._({required this.G__typename, required this.token})
+  _$GSignInData_signIn._(
+      {required this.G__typename, required this.token, required this.user})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, 'GSignInData_signIn', 'G__typename');
     BuiltValueNullFieldError.checkNotNull(token, 'GSignInData_signIn', 'token');
+    BuiltValueNullFieldError.checkNotNull(user, 'GSignInData_signIn', 'user');
   }
 
   @override
@@ -246,19 +312,22 @@ class _$GSignInData_signIn extends GSignInData_signIn {
     if (identical(other, this)) return true;
     return other is GSignInData_signIn &&
         G__typename == other.G__typename &&
-        token == other.token;
+        token == other.token &&
+        user == other.user;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, G__typename.hashCode), token.hashCode));
+    return $jf(
+        $jc($jc($jc(0, G__typename.hashCode), token.hashCode), user.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GSignInData_signIn')
           ..add('G__typename', G__typename)
-          ..add('token', token))
+          ..add('token', token)
+          ..add('user', user))
         .toString();
   }
 }
@@ -275,6 +344,11 @@ class GSignInData_signInBuilder
   String? get token => _$this._token;
   set token(String? token) => _$this._token = token;
 
+  GSignInData_signIn_userBuilder? _user;
+  GSignInData_signIn_userBuilder get user =>
+      _$this._user ??= new GSignInData_signIn_userBuilder();
+  set user(GSignInData_signIn_userBuilder? user) => _$this._user = user;
+
   GSignInData_signInBuilder() {
     GSignInData_signIn._initializeBuilder(this);
   }
@@ -284,6 +358,7 @@ class GSignInData_signInBuilder
     if ($v != null) {
       _G__typename = $v.G__typename;
       _token = $v.token;
+      _user = $v.user.toBuilder();
       _$v = null;
     }
     return this;
@@ -302,12 +377,125 @@ class GSignInData_signInBuilder
 
   @override
   _$GSignInData_signIn build() {
+    _$GSignInData_signIn _$result;
+    try {
+      _$result = _$v ??
+          new _$GSignInData_signIn._(
+              G__typename: BuiltValueNullFieldError.checkNotNull(
+                  G__typename, 'GSignInData_signIn', 'G__typename'),
+              token: BuiltValueNullFieldError.checkNotNull(
+                  token, 'GSignInData_signIn', 'token'),
+              user: user.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'user';
+        user.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'GSignInData_signIn', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GSignInData_signIn_user extends GSignInData_signIn_user {
+  @override
+  final String G__typename;
+  @override
+  final String id;
+
+  factory _$GSignInData_signIn_user(
+          [void Function(GSignInData_signIn_userBuilder)? updates]) =>
+      (new GSignInData_signIn_userBuilder()..update(updates)).build();
+
+  _$GSignInData_signIn_user._({required this.G__typename, required this.id})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        G__typename, 'GSignInData_signIn_user', 'G__typename');
+    BuiltValueNullFieldError.checkNotNull(id, 'GSignInData_signIn_user', 'id');
+  }
+
+  @override
+  GSignInData_signIn_user rebuild(
+          void Function(GSignInData_signIn_userBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GSignInData_signIn_userBuilder toBuilder() =>
+      new GSignInData_signIn_userBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GSignInData_signIn_user &&
+        G__typename == other.G__typename &&
+        id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, G__typename.hashCode), id.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GSignInData_signIn_user')
+          ..add('G__typename', G__typename)
+          ..add('id', id))
+        .toString();
+  }
+}
+
+class GSignInData_signIn_userBuilder
+    implements
+        Builder<GSignInData_signIn_user, GSignInData_signIn_userBuilder> {
+  _$GSignInData_signIn_user? _$v;
+
+  String? _G__typename;
+  String? get G__typename => _$this._G__typename;
+  set G__typename(String? G__typename) => _$this._G__typename = G__typename;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GSignInData_signIn_userBuilder() {
+    GSignInData_signIn_user._initializeBuilder(this);
+  }
+
+  GSignInData_signIn_userBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _G__typename = $v.G__typename;
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GSignInData_signIn_user other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GSignInData_signIn_user;
+  }
+
+  @override
+  void update(void Function(GSignInData_signIn_userBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GSignInData_signIn_user build() {
     final _$result = _$v ??
-        new _$GSignInData_signIn._(
+        new _$GSignInData_signIn_user._(
             G__typename: BuiltValueNullFieldError.checkNotNull(
-                G__typename, 'GSignInData_signIn', 'G__typename'),
-            token: BuiltValueNullFieldError.checkNotNull(
-                token, 'GSignInData_signIn', 'token'));
+                G__typename, 'GSignInData_signIn_user', 'G__typename'),
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'GSignInData_signIn_user', 'id'));
     replace(_$result);
     return _$result;
   }

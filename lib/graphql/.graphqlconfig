@@ -1,0 +1,16 @@
+{
+  "name": "SocialNetwork GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://cloud-549579146.onetsolutions.network/",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InN1YiI6IjVjNjBkY2Q4LWI2OTUtNDM3MS1iNWVhLTU3YmVlNTA5MDE2NiJ9LCJpYXQiOjE2NDcyMTc3MzAsImV4cCI6MTY1NDk5MzczMH0.2Senzx8Oz7BFLjFjkZ6GCfxpMBWgQanMGvlYeFRBz_w"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

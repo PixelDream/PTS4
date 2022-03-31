@@ -1,0 +1,7 @@
+mutation LikePost($connect: UserConnectInput, $user: UserWhere) {
+    updateUsers(connect: $connect, where: $user) {
+        info {
+            relationshipsCreated
+        }
+    }
+}

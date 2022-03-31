@@ -51,11 +51,32 @@ dependencies:
   # Secure data like JWT
   flutter_secure_storage: ^4.2.1
 
-  # Use MapBox features : https://pub.dev/packages/mapbox_gl
+  # Use MapBox feature : https://pub.dev/packages/mapbox_gl
   mapbox_gl: any
+  background_fetch: any
+  location: any
 
   # use Carousel feature : https://pub.dev/packages/carousel_slider
   carousel_slider: any
+
+  # use Camera features cross-platform API : https://pub.dev/packages/camera
+  camera: ^0.8.1+7
+  video_player: ^2.1.14
+  path_provider: ^2.0.2
+  permission_handler: any
+
+  # use Gallery picker feature : https://pub.dev/packages/image_picker
+  image_picker: any
+
+  # use PhotoFiltering feature : https://pub.dev/packages/photofilters
+  photofilters: any
+
+  # use Spotify web API : https://pub.dev/packages/spotify | https://pub.dev/packages/audioplayers
+  spotify: any
+  audioplayers: any
+
+  # use cache directory on import : https://pub.dev/packages/cached_network_image
+  cached_network_image: any
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +91,7 @@ dev_dependencies:
 
   # Use Ferry features: https://pub.dev/packages/ferry
   ### Byspass ISSUE https://github.com/gql-dart/gql/issues/222 -  Should add "update" in C:\tools\flutter\.pub-cache\hosted\pub.dartlang.org\gql_code_builder-0.2.0\lib\src\common.dart
+  ## NOT Fixed 22/02/2022
   ferry_generator: any
   build_runner: any
   analyzer: any

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:lottie/lottie.dart';
 import 'package:socialnetwork/layout.dart';
-import 'package:socialnetwork/src/Profile/profile.dart';
 import 'package:socialnetwork/src/authentification/signIn.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -34,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }
 
     Timer(
-      const Duration(seconds: kReleaseMode ? 6 : 0), // 6s by default
+      const Duration(seconds: 5), // 5s by default
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (BuildContext context) => _router(isConnected),

@@ -52,14 +52,14 @@ class CommentItemState extends State<CommentItem> {
                               height: 50,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
+                                child: Image.network(
                                   widget.image,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                           ),
-                          GestureDetector(
+                          /*GestureDetector(
                             child: Padding(
                               padding: const EdgeInsets.only(top: 5),
                               child: Row(
@@ -72,7 +72,7 @@ class CommentItemState extends State<CommentItem> {
                                 ],
                               ),
                             ),
-                          )
+                          )*/
                         ],
                       ),
                     ],

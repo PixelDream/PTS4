@@ -1,0 +1,25 @@
+query ProfilePosts($user: UserWhere, $options: PostOptions) {
+    users(where: $user) {
+        postLikes {
+            id
+        }
+        posts(options: $options) {
+            id
+            music
+            media
+            creator {
+                id
+                firstName
+                lastName
+                image
+                pseudo
+            }
+            likesConnection {
+                totalCount
+            }
+            commentsConnection {
+                totalCount
+            }
+        }
+    }
+}

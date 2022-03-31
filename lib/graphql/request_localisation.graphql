@@ -1,0 +1,22 @@
+query FriendsLocalisation($user: UserWhere) {
+    users(where: $user) {
+        id
+        image
+        location {
+            latitude,
+            longitude,
+            crs
+        }
+        friends {
+            id
+            image
+            firstName
+            lastName
+            location {
+                longitude
+                latitude
+                crs
+            }
+        }
+    }
+}

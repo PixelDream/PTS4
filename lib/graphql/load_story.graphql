@@ -1,0 +1,15 @@
+query loadStories($where: UserWhere) {
+    users(where: $where) {
+        stories {
+            id
+            music
+            media
+            createdAt
+            creator {
+                firstName,
+                lastName,
+                image
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+mutation CreatePost($post: [PostCreateInput!]!) {
+    createPosts(input: $post) {
+        info {
+            nodesCreated
+            relationshipsCreated
+        }
+    }
+}

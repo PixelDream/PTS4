@@ -1,20 +1,22 @@
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:lottie/lottie.dart';
 import 'package:socialnetwork/src/feed/post/post.dart';
+import 'package:socialnetwork/src/profile/profile.dart';
 import 'package:socialnetwork/src/transition/size_transition.dart';
 
-final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-];
+import '../../../graphql/dislike_post.req.gql.dart';
+import '../../../graphql/like_post.req.gql.dart';
+import '../../../graphql/schema.schema.gql.dart';
+import '../../utils/SaveData.dart';
 
 class PostItem extends StatefulWidget {
+  final String id;
+  final String userId;
   final String image;
   final String fullName;
   final String pseudo;
@@ -25,6 +27,8 @@ class PostItem extends StatefulWidget {
 
   const PostItem(
       {Key? key,
+      required this.id,
+      required this.userId,
       required this.image,
       required this.fullName,
       required this.pseudo,
@@ -44,75 +48,130 @@ class PostItemState extends State<PostItem> with TickerProviderStateMixin {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
+  late final AnimationController _animationController;
+  final GlobalKey<PostState> _keyPostState = GlobalKey();
+
+  final Client client = GetIt.I<Client>();
+
+  bool _likeVisible = false;
+  late bool _isLiked;
+  late int _commentCount;
+
+  @override
+  void initState() {
+    _animationController = AnimationController(vsync: this);
+
+    _isLiked = widget.isLiked;
+    _commentCount = widget.commentCount;
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.forward) setState(() => _likeVisible = true);
+      if (status == AnimationStatus.completed) setState(() => _likeVisible = false);
+    });
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 5),
-      child: GestureDetector(
-        onTap: () => Navigator.of(context).push(
-          SizeRoute(
-            page: Post(
-              image: widget.image,
-              fullName: widget.fullName,
-              pseudo: widget.pseudo,
-              posts: widget.posts,
-              commentCount: widget.commentCount,
-              likeCount: widget.likeCount,
-              isLiked: widget.isLiked,
-            ),
-          ),
+      child: Card(
+        elevation: 4,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Card(
-          elevation: 4,
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                widget.image,
-                                fit: BoxFit.cover,
-                              ),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(SizeRoute(page: Profile(userId: widget.userId)));
+                    },
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              widget.image,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(widget.fullName, style: TextStyle(color: Color(0xff13334C), fontWeight: FontWeight.w700, fontSize: 16)),
-                                SizedBox(height: 3),
-                                Text(widget.pseudo, style: TextStyle(color: Color(0xff13334C), fontWeight: FontWeight.w400, fontSize: 12)),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(widget.fullName, style: TextStyle(color: Color(0xff13334C), fontWeight: FontWeight.w700, fontSize: 16)),
+                              SizedBox(height: 3),
+                              Text(widget.pseudo, style: TextStyle(color: Color(0xff13334C), fontWeight: FontWeight.w400, fontSize: 12)),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    GestureDetector(
-                      child: Icon(Icons.more_vert),
-                    )
-                  ],
-                ),
+                  ),
+/*                  GestureDetector(
+                    child: Icon(Icons.more_vert),
+                  )*/
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 15, right: 15, left: 15),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, right: 15, left: 15),
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () => Navigator.of(context).push(
+                  SizeRoute(
+                    page: Post(
+                      key: _keyPostState,
+                      id: widget.id,
+                      image: widget.image,
+                      fullName: widget.fullName,
+                      pseudo: widget.pseudo,
+                      posts: widget.posts,
+                      commentCount: widget.commentCount,
+                      likeCount: widget.likeCount,
+                      isLiked: widget.isLiked,
+                      notifyParentLike: () => setState(() {
+                        _isLiked = !_isLiked;
+                      }),
+                      notifyParentComment: () => setState(() {
+                        _commentCount += 1;
+                        _keyPostState.currentState?.incCommentCount();
+                      }),
+                    ),
+                  ),
+                ),
+                onDoubleTap: () {
+                  if (!_isLiked) {
+                    _toggleLike();
+                    setState(() {
+                      _isLiked = !_isLiked;
+                    });
+                  }
+
+                  _animationController
+                    ..reset()
+                    ..forward();
+                },
                 child: SizedBox(
                   height: 250,
                   child: Stack(
@@ -124,7 +183,7 @@ class PostItemState extends State<PostItem> with TickerProviderStateMixin {
                             carouselController: _controller,
                             options: CarouselOptions(
                               viewportFraction: 1.0,
-                              autoPlay: true,
+                              autoPlay: false,
                               enableInfiniteScroll: false,
                               pauseAutoPlayInFiniteScroll: true,
                               pauseAutoPlayOnTouch: true,
@@ -145,17 +204,33 @@ class PostItemState extends State<PostItem> with TickerProviderStateMixin {
                         right: 0,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: imgList.asMap().entries.map((entry) {
+                          children: widget.posts.map((entry) {
                             return Container(
                               width: 10,
                               height: 10,
                               margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: _current == entry.key ? Colors.white.withOpacity(0.85) : Colors.grey.withOpacity(0.85),
+                                color: _current == widget.posts.indexOf(entry) ? Colors.white.withOpacity(0.85) : Colors.grey.withOpacity(0.85),
                               ),
                             );
                           }).toList(),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 80,
+                        top: 80,
+                        right: 130,
+                        left: 130,
+                        child: Visibility(
+                          visible: _likeVisible && _isLiked,
+                          maintainState: true,
+                          child: Lottie.asset(
+                            "assets/lottie/like.json",
+                            fit: BoxFit.fill,
+                            controller: _animationController,
+                            onLoaded: (composition) => _animationController.duration = composition.duration,
+                          ),
                         ),
                       ),
                       Positioned(
@@ -169,38 +244,61 @@ class PostItemState extends State<PostItem> with TickerProviderStateMixin {
                             child: Container(
                               decoration: BoxDecoration(color: Colors.white.withOpacity(0.4)),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                padding: EdgeInsets.symmetric(horizontal: 10),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(right: 15),
+                                          padding: EdgeInsets.only(right: 15),
                                           child: Row(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(right: 5),
+                                                padding: EdgeInsets.only(right: 5),
                                                 child: Icon(Icons.messenger, color: Colors.white.withOpacity(0.85), size: 27),
                                               ),
                                               Text(
-                                                widget.commentCount.toString(),
+                                                _getCommentCount().toString(),
                                                 style: TextStyle(color: Colors.white.withOpacity(0.85)),
                                               ),
                                             ],
                                           ),
                                         ),
-                                        Row(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(right: 5),
-                                              child: Icon(Icons.favorite, color: Colors.white.withOpacity(0.85), size: 27),
-                                            ),
-                                            Text(
-                                              (widget.likeCount > 1000 ? (widget.likeCount / 1000).toString() + 'K' : widget.likeCount.toString()),
-                                              style: TextStyle(color: Colors.white.withOpacity(0.85)),
-                                            ),
-                                          ],
+                                        GestureDetector(
+                                          behavior: HitTestBehavior.translucent,
+                                          onTap: () {
+                                            _toggleLike();
+                                            setState(() {
+                                              _isLiked = !_isLiked;
+                                            });
+
+                                            _animationController
+                                              ..reset()
+                                              ..forward();
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(right: 5),
+                                                child: Icon(Icons.favorite, color: _isLiked ? Colors.redAccent : Colors.white, size: 27),
+                                              ),
+                                              AnimatedSwitcher(
+                                                duration: Duration(milliseconds: 200),
+                                                transitionBuilder: (Widget child, Animation<double> animation) {
+                                                  return SlideTransition(
+                                                    child: child,
+                                                    position: Tween<Offset>(begin: Offset(0.0, -0.5), end: Offset(0.0, 0.0)).animate(animation),
+                                                  );
+                                                },
+                                                child: Text(
+                                                  (_getLikedData() > 1000 ? (_getLikedData() / 1000).toString() + 'K' : _getLikedData().toString()),
+                                                  key: ValueKey<String>(_isLiked.toString()),
+                                                  style: TextStyle(color: Colors.white),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -217,11 +315,55 @@ class PostItemState extends State<PostItem> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
+  }
+
+  int _getLikedData() {
+    if (widget.isLiked == _isLiked) {
+      return widget.likeCount;
+    }
+
+    if (_isLiked) {
+      return widget.likeCount + 1;
+    }
+
+    return widget.likeCount - 1;
+  }
+
+  int _getCommentCount() {
+    if (widget.commentCount != _commentCount) {
+      return _commentCount;
+    }
+
+    return widget.commentCount;
+  }
+
+  void _toggleLike() async {
+    if (_isLiked) {
+      final dislikePost = GDislikePostReq((b) {
+        b.vars.user.id = SaveData.id;
+        b.vars.disconnect.postLikes.add(GUserPostLikesDisconnectFieldInput((b) {
+          b.where.node.id = widget.id;
+        }));
+      });
+
+      await client.request(dislikePost).firstWhere((response) => response.dataSource != DataSource.Optimistic);
+    } else {
+      final likePost = GLikePostReq((b) {
+        b.vars.user.id = SaveData.id;
+        b.vars.connect.postLikes.add(GUserPostLikesConnectFieldInput((b) {
+          b.where.node.id = widget.id;
+        }));
+      });
+
+      await client.request(likePost).firstWhere((response) => response.dataSource != DataSource.Optimistic);
+    }
+
+    _keyPostState.currentState?.toggleLiked();
   }
 }

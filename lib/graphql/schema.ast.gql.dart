@@ -29,6 +29,14 @@ const Query = _i1.ObjectTypeDefinitionNode(
                   name: _i1.NameNode(value: 'Post'), isNonNull: true),
               isNonNull: true)),
       _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'story'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Story'), isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'users'),
           directives: [],
           args: [
@@ -181,6 +189,55 @@ const Query = _i1.ObjectTypeDefinitionNode(
               name: _i1.NameNode(value: 'PostAggregateSelection'),
               isNonNull: true)),
       _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'options'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryOptions'),
+                    isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Story'), isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storiesCount'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storiesAggregate'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'usersCount'),
           directives: [],
           args: [
@@ -301,6 +358,29 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
           ],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'Boolean'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'uploadFiles'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'files'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name: _i1.NameNode(value: 'String'), isNonNull: true),
+                    isNonNull: true),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'type'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: true),
+                defaultValue: null)
+          ],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: true),
+              isNonNull: true)),
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'createComments'),
           directives: [],
@@ -541,6 +621,99 @@ const Mutation = _i1.ObjectTypeDefinitionNode(
           ],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'UpdatePostsMutationResponse'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createStories'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'input'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name: _i1.NameNode(value: 'StoryCreateInput'),
+                        isNonNull: true),
+                    isNonNull: true),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'CreateStoriesMutationResponse'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'deleteStories'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'delete'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryDeleteInput'),
+                    isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DeleteInfo'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updateStories'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'update'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryUpdateInput'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'connect'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryConnectInput'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'disconnect'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryDisconnectInput'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'create'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryRelationInput'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'delete'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryDeleteInput'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'connectOrCreate'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryConnectOrCreateInput'),
+                    isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UpdateStoriesMutationResponse'),
               isNonNull: true)),
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'createUsers'),
@@ -1244,6 +1417,26 @@ const CreatePostsMutationResponse = _i1.ObjectTypeDefinitionNode(
                   name: _i1.NameNode(value: 'Post'), isNonNull: true),
               isNonNull: true))
     ]);
+const CreateStoriesMutationResponse = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'CreateStoriesMutationResponse'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'info'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'CreateInfo'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Story'), isNonNull: true),
+              isNonNull: true))
+    ]);
 const CreateUsersMutationResponse = _i1.ObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'CreateUsersMutationResponse'),
     directives: [],
@@ -1483,6 +1676,14 @@ const Post = _i1.ObjectTypeDefinitionNode(
           args: [],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'String'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: true),
+              isNonNull: true)),
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'hashtag'),
           directives: [],
@@ -2174,6 +2375,538 @@ const PostUserLikesNodeAggregateSelection = _i1.ObjectTypeDefinitionNode(
               name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
               isNonNull: true))
     ]);
+const Story = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'Story'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'options'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserOptions'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'User'), isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'creatorAggregate'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryUserCreatorAggregationSelection'),
+              isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'options'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserOptions'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'User'), isNonNull: false),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'likesAggregate'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryUserLikesAggregationSelection'),
+              isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'creatorConnection'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'sort'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name: _i1.NameNode(value: 'StoryCreatorConnectionSort'),
+                        isNonNull: true),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'first'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'Int'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'after'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'likesConnection'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'sort'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name: _i1.NameNode(value: 'StoryLikesConnectionSort'),
+                        isNonNull: true),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'first'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'Int'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'after'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesConnection'),
+              isNonNull: true))
+    ]);
+const StoryAggregateSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryAggregateSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'IDAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true))
+    ]);
+const StoryCreatorConnection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorConnection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'edges'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryCreatorRelationship'),
+                  isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'totalCount'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'pageInfo'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'PageInfo'), isNonNull: true))
+    ]);
+const StoryCreatorRelationship = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorRelationship'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'cursor'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'User'), isNonNull: true))
+    ]);
+const StoryLikesConnection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesConnection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'edges'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesRelationship'),
+                  isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'totalCount'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'pageInfo'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'PageInfo'), isNonNull: true))
+    ]);
+const StoryLikesRelationship = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesRelationship'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'cursor'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'User'), isNonNull: true))
+    ]);
+const StoryUserCreatorAggregationSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryUserCreatorAggregationSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name:
+                  _i1.NameNode(value: 'StoryUserCreatorNodeAggregateSelection'),
+              isNonNull: false))
+    ]);
+const StoryUserCreatorNodeAggregateSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryUserCreatorNodeAggregateSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'IDAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'email'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'firstName'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'lastName'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'password'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'biography'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'image'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true))
+    ]);
+const StoryUserLikesAggregationSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryUserLikesAggregationSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryUserLikesNodeAggregateSelection'),
+              isNonNull: false))
+    ]);
+const StoryUserLikesNodeAggregateSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryUserLikesNodeAggregateSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'IDAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'email'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'firstName'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'lastName'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'password'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'biography'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'image'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true))
+    ]);
 const StringAggregateSelection = _i1.ObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'StringAggregateSelection'),
     directives: [],
@@ -2286,6 +3019,26 @@ const UpdatePostsMutationResponse = _i1.ObjectTypeDefinitionNode(
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(value: 'Post'), isNonNull: true),
+              isNonNull: true))
+    ]);
+const UpdateStoriesMutationResponse = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UpdateStoriesMutationResponse'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'info'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UpdateInfo'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Story'), isNonNull: true),
               isNonNull: true))
     ]);
 const UpdateUsersMutationResponse = _i1.ObjectTypeDefinitionNode(
@@ -2463,6 +3216,79 @@ const User = _i1.ObjectTypeDefinitionNode(
                   _i1.NameNode(value: 'UserPostPostLikesAggregationSelection'),
               isNonNull: false)),
       _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'options'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryOptions'),
+                    isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Story'), isNonNull: false),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storiesAggregate'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryStoriesAggregationSelection'),
+              isNonNull: false)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'options'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryOptions'),
+                    isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'Story'), isNonNull: false),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikesAggregate'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'UserStoryStoryLikesAggregationSelection'),
+              isNonNull: false)),
+      _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'commentLikes'),
           directives: [],
           args: [
@@ -2608,6 +3434,79 @@ const User = _i1.ObjectTypeDefinitionNode(
           ],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'UserPostLikesConnection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storiesConnection'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'sort'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name: _i1.NameNode(value: 'UserStoriesConnectionSort'),
+                        isNonNull: true),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'first'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'Int'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'after'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesConnection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikesConnection'),
+          directives: [],
+          args: [
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'where'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'sort'),
+                directives: [],
+                type: _i1.ListTypeNode(
+                    type: _i1.NamedTypeNode(
+                        name:
+                            _i1.NameNode(value: 'UserStoryLikesConnectionSort'),
+                        isNonNull: true),
+                    isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'first'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'Int'), isNonNull: false),
+                defaultValue: null),
+            _i1.InputValueDefinitionNode(
+                name: _i1.NameNode(value: 'after'),
+                directives: [],
+                type: _i1.NamedTypeNode(
+                    name: _i1.NameNode(value: 'String'), isNonNull: false),
+                defaultValue: null)
+          ],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesConnection'),
               isNonNull: true)),
       _i1.FieldDefinitionNode(
           name: _i1.NameNode(value: 'commentLikesConnection'),
@@ -3146,6 +4045,218 @@ const UserPostsRelationship = _i1.ObjectTypeDefinitionNode(
           args: [],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'Post'), isNonNull: true))
+    ]);
+const UserStoriesConnection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesConnection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'edges'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesRelationship'),
+                  isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'totalCount'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'pageInfo'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'PageInfo'), isNonNull: true))
+    ]);
+const UserStoriesRelationship = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesRelationship'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'cursor'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Story'), isNonNull: true))
+    ]);
+const UserStoryLikesConnection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesConnection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'edges'),
+          directives: [],
+          args: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesRelationship'),
+                  isNonNull: true),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'totalCount'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'pageInfo'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'PageInfo'), isNonNull: true))
+    ]);
+const UserStoryLikesRelationship = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesRelationship'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'cursor'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Story'), isNonNull: true))
+    ]);
+const UserStoryStoriesAggregationSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryStoriesAggregationSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name:
+                  _i1.NameNode(value: 'UserStoryStoriesNodeAggregateSelection'),
+              isNonNull: false))
+    ]);
+const UserStoryStoriesNodeAggregateSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryStoriesNodeAggregateSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'IDAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true))
+    ]);
+const UserStoryStoryLikesAggregationSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryStoryLikesAggregationSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'UserStoryStoryLikesNodeAggregateSelection'),
+              isNonNull: false))
+    ]);
+const UserStoryStoryLikesNodeAggregateSelection = _i1.ObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryStoryLikesNodeAggregateSelection'),
+    directives: [],
+    interfaces: [],
+    fields: [
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'IDAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StringAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true)),
+      _i1.FieldDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          args: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTimeAggregateSelection'),
+              isNonNull: true))
     ]);
 const UserUserFriendsAggregationSelection = _i1.ObjectTypeDefinitionNode(
     name: _i1.NameNode(value: 'UserUserFriendsAggregationSelection'),
@@ -7237,6 +8348,14 @@ const PostCreateInput = _i1.InputObjectTypeDefinitionNode(
               name: _i1.NameNode(value: 'String'), isNonNull: true),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: true),
+              isNonNull: true),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'creator'),
           directives: [],
           type: _i1.NamedTypeNode(
@@ -10568,6 +11687,14 @@ const PostUpdateInput = _i1.InputObjectTypeDefinitionNode(
               name: _i1.NameNode(value: 'String'), isNonNull: false),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'creator'),
           directives: [],
           type: _i1.NamedTypeNode(
@@ -10801,6 +11928,34 @@ const PostWhere = _i1.InputObjectTypeDefinitionNode(
           defaultValue: null),
       _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'description_NOT_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_INCLUDES'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT_INCLUDES'),
           directives: [],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'String'), isNonNull: false),
@@ -11088,6 +12243,3789 @@ const StatusWhere = _i1.InputObjectTypeDefinitionNode(
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(value: 'RequestStatus'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryConnectInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryConnectInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryConnectOrCreateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryConnectOrCreateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name:
+                  _i1.NameNode(value: 'StoryCreatorConnectOrCreateFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryLikesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryConnectOrCreateWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryConnectOrCreateWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryUniqueWhere'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryConnectWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryConnectWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryCreateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: true),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesFieldInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorAggregateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorAggregateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryCreatorAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryCreatorAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name:
+                  _i1.NameNode(value: 'StoryCreatorNodeAggregationWhereInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorConnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorConnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserConnectWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserConnectInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorConnectionSort = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorConnectionSort'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserSort'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorConnectionWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorConnectOrCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorConnectOrCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserConnectOrCreateWhere'),
+              isNonNull: true),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'onCreate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'StoryCreatorConnectOrCreateFieldInputOnCreate'),
+              isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryCreatorConnectOrCreateFieldInputOnCreate =
+    _i1.InputObjectTypeDefinitionNode(
+        name: _i1.NameNode(
+            value: 'StoryCreatorConnectOrCreateFieldInputOnCreate'),
+        directives: [],
+        fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryCreatorCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryCreatorDeleteFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorDeleteFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserDeleteInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorDisconnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorDisconnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserDisconnectInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorCreateFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name:
+                  _i1.NameNode(value: 'StoryCreatorConnectOrCreateFieldInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorNodeAggregationWhereInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorNodeAggregationWhereInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryCreatorNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryCreatorNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorUpdateConnectionInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorUpdateConnectionInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserUpdateInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryCreatorUpdateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryCreatorUpdateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'update'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorUpdateConnectionInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorDisconnectFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorCreateFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorDeleteFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name:
+                  _i1.NameNode(value: 'StoryCreatorConnectOrCreateFieldInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryDeleteInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryDeleteInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorDeleteFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesDeleteFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryDisconnectInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryDisconnectInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorDisconnectFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesDisconnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesAggregateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesAggregateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesNodeAggregationWhereInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesConnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesConnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserConnectWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserConnectInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesConnectionSort = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesConnectionSort'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserSort'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesConnectionWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesConnectOrCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesConnectOrCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserConnectOrCreateWhere'),
+              isNonNull: true),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'onCreate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'StoryLikesConnectOrCreateFieldInputOnCreate'),
+              isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryLikesConnectOrCreateFieldInputOnCreate =
+    _i1.InputObjectTypeDefinitionNode(
+        name:
+            _i1.NameNode(value: 'StoryLikesConnectOrCreateFieldInputOnCreate'),
+        directives: [],
+        fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryLikesCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const StoryLikesDeleteFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesDeleteFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserDeleteInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesDisconnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesDisconnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserDisconnectInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryLikesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesNodeAggregationWhereInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesNodeAggregationWhereInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryLikesNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryLikesNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'email_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'pseudo_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'firstName_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'lastName_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'password_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'biography_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'image_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetToken_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'resetTokenExpiry_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesUpdateConnectionInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesUpdateConnectionInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserUpdateInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryLikesUpdateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryLikesUpdateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'update'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesUpdateConnectionInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesDisconnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesDeleteFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'StoryLikesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryOptions = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryOptions'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'sort'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StorySort'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'limit'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'offset'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryRelationInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryRelationInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorCreateFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StorySort = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StorySort'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'SortDirection'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'SortDirection'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'SortDirection'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'SortDirection'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'SortDirection'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryUniqueWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryUniqueWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryUpdateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryUpdateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorUpdateFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryLikesUpdateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const StoryWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'StoryWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryWhere'), isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryWhere'), isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'ID'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_NOT_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'ID'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_CONTAINS'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_NOT_CONTAINS'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_STARTS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_NOT_STARTS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_NOT_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_NOT_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_CONTAINS'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_NOT_CONTAINS'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_STARTS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_NOT_STARTS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_NOT_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'String'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_CONTAINS'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT_CONTAINS'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_STARTS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT_STARTS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_NOT_ENDS_WITH'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_NOT_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_NOT_IN'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creator_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creatorAggregate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorAggregateInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likes_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likesAggregate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesAggregateInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creatorConnection'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'creatorConnection_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreatorConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likesConnection'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'likesConnection_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryLikesConnectionWhere'),
               isNonNull: false),
           defaultValue: null)
     ]);
@@ -11771,6 +16709,24 @@ const UserConnectInput = _i1.InputObjectTypeDefinitionNode(
               isNonNull: false),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'commentLikes'),
           directives: [],
           type: _i1.ListTypeNode(
@@ -11811,6 +16767,26 @@ const UserConnectOrCreateInput = _i1.InputObjectTypeDefinitionNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(
                       value: 'UserPostLikesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoriesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoryLikesConnectOrCreateFieldInput'),
                   isNonNull: true),
               isNonNull: false),
           defaultValue: null),
@@ -11940,6 +16916,20 @@ const UserCreateInput = _i1.InputObjectTypeDefinitionNode(
               isNonNull: false),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesFieldInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'commentLikes'),
           directives: [],
           type: _i1.NamedTypeNode(
@@ -11973,6 +16963,24 @@ const UserDeleteInput = _i1.InputObjectTypeDefinitionNode(
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(value: 'UserPostLikesDeleteFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesDeleteFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesDeleteFieldInput'),
                   isNonNull: true),
               isNonNull: false),
           defaultValue: null),
@@ -12015,6 +17023,25 @@ const UserDisconnectInput = _i1.InputObjectTypeDefinitionNode(
               type: _i1.NamedTypeNode(
                   name:
                       _i1.NameNode(value: 'UserPostLikesDisconnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesDisconnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name:
+                      _i1.NameNode(value: 'UserStoryLikesDisconnectFieldInput'),
                   isNonNull: true),
               isNonNull: false),
           defaultValue: null),
@@ -15242,6 +20269,24 @@ const UserRelationInput = _i1.InputObjectTypeDefinitionNode(
               isNonNull: false),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'commentLikes'),
           directives: [],
           type: _i1.ListTypeNode(
@@ -15341,6 +20386,1544 @@ const UserSort = _i1.InputObjectTypeDefinitionNode(
           directives: [],
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'SortDirection'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesAggregateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesAggregateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesNodeAggregationWhereInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesConnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesConnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryConnectWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryConnectInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesConnectionSort = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesConnectionSort'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StorySort'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesConnectionWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesConnectOrCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesConnectOrCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryConnectOrCreateWhere'),
+              isNonNull: true),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'onCreate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'UserStoriesConnectOrCreateFieldInputOnCreate'),
+              isNonNull: true),
+          defaultValue: null)
+    ]);
+const UserStoriesConnectOrCreateFieldInputOnCreate =
+    _i1.InputObjectTypeDefinitionNode(
+        name:
+            _i1.NameNode(value: 'UserStoriesConnectOrCreateFieldInputOnCreate'),
+        directives: [],
+        fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const UserStoriesCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const UserStoriesDeleteFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesDeleteFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryDeleteInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesDisconnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesDisconnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryDisconnectInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoriesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesNodeAggregationWhereInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesNodeAggregationWhereInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoriesNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoriesNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesUpdateConnectionInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesUpdateConnectionInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryUpdateInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoriesUpdateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoriesUpdateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'update'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesUpdateConnectionInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesDisconnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesDeleteFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoriesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesAggregateInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesAggregateInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'count_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesAggregateInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'UserStoryLikesNodeAggregationWhereInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesConnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesConnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryConnectWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'StoryConnectInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesConnectionSort = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesConnectionSort'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StorySort'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesConnectionWhere = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesConnectOrCreateFieldInput =
+    _i1.InputObjectTypeDefinitionNode(
+        name: _i1.NameNode(value: 'UserStoryLikesConnectOrCreateFieldInput'),
+        directives: [],
+        fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryConnectOrCreateWhere'),
+              isNonNull: true),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'onCreate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(
+                  value: 'UserStoryLikesConnectOrCreateFieldInputOnCreate'),
+              isNonNull: true),
+          defaultValue: null)
+    ]);
+const UserStoryLikesConnectOrCreateFieldInputOnCreate =
+    _i1.InputObjectTypeDefinitionNode(
+        name: _i1.NameNode(
+            value: 'UserStoryLikesConnectOrCreateFieldInputOnCreate'),
+        directives: [],
+        fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const UserStoryLikesCreateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesCreateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryCreateInput'), isNonNull: true),
+          defaultValue: null)
+    ]);
+const UserStoryLikesDeleteFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesDeleteFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryDeleteInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesDisconnectFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesDisconnectFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryDisconnectInput'),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoryLikesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesNodeAggregationWhereInput =
+    _i1.InputObjectTypeDefinitionNode(
+        name: _i1.NameNode(value: 'UserStoryLikesNodeAggregationWhereInput'),
+        directives: [],
+        fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'AND'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoryLikesNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'OR'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoryLikesNodeAggregationWhereInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'id_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'ID'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'music_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_AVERAGE_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Float'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_LONGEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'media_SHORTEST_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Int'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'createdAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_EQUAL'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_GTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MIN_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'updatedAt_MAX_LTE'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'DateTime'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesUpdateConnectionInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesUpdateConnectionInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'node'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryUpdateInput'), isNonNull: false),
+          defaultValue: null)
+    ]);
+const UserStoryLikesUpdateFieldInput = _i1.InputObjectTypeDefinitionNode(
+    name: _i1.NameNode(value: 'UserStoryLikesUpdateFieldInput'),
+    directives: [],
+    fields: [
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'where'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'update'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesUpdateConnectionInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesConnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'disconnect'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name:
+                      _i1.NameNode(value: 'UserStoryLikesDisconnectFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'create'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'delete'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesDeleteFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'connectOrCreate'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(
+                      value: 'UserStoryLikesConnectOrCreateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
           defaultValue: null)
     ]);
 const UserUniqueWhere = _i1.InputObjectTypeDefinitionNode(
@@ -15445,6 +22028,24 @@ const UserUpdateInput = _i1.InputObjectTypeDefinitionNode(
           type: _i1.ListTypeNode(
               type: _i1.NamedTypeNode(
                   name: _i1.NameNode(value: 'UserPostLikesUpdateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoriesUpdateFieldInput'),
+                  isNonNull: true),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.ListTypeNode(
+              type: _i1.NamedTypeNode(
+                  name: _i1.NameNode(value: 'UserStoryLikesUpdateFieldInput'),
                   isNonNull: true),
               isNonNull: false),
           defaultValue: null),
@@ -16316,6 +22917,44 @@ const UserWhere = _i1.InputObjectTypeDefinitionNode(
               isNonNull: false),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'stories_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storiesAggregate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesAggregateInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikes_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'StoryWhere'), isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikesAggregate'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesAggregateInput'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'commentLikes'),
           directives: [],
           type: _i1.NamedTypeNode(
@@ -16382,6 +23021,34 @@ const UserWhere = _i1.InputObjectTypeDefinitionNode(
               isNonNull: false),
           defaultValue: null),
       _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storiesConnection'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storiesConnection_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoriesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikesConnection'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
+          name: _i1.NameNode(value: 'storyLikesConnection_NOT'),
+          directives: [],
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'UserStoryLikesConnectionWhere'),
+              isNonNull: false),
+          defaultValue: null),
+      _i1.InputValueDefinitionNode(
           name: _i1.NameNode(value: 'commentLikesConnection'),
           directives: [],
           type: _i1.NamedTypeNode(
@@ -16432,6 +23099,7 @@ const document = _i1.DocumentNode(definitions: [
   CreateHashtagsMutationResponse,
   CreateInfo,
   CreatePostsMutationResponse,
+  CreateStoriesMutationResponse,
   CreateUsersMutationResponse,
   DateTimeAggregateSelection,
   DeleteInfo,
@@ -16454,11 +23122,22 @@ const document = _i1.DocumentNode(definitions: [
   PostUserCreatorNodeAggregateSelection,
   PostUserLikesAggregationSelection,
   PostUserLikesNodeAggregateSelection,
+  Story,
+  StoryAggregateSelection,
+  StoryCreatorConnection,
+  StoryCreatorRelationship,
+  StoryLikesConnection,
+  StoryLikesRelationship,
+  StoryUserCreatorAggregationSelection,
+  StoryUserCreatorNodeAggregateSelection,
+  StoryUserLikesAggregationSelection,
+  StoryUserLikesNodeAggregateSelection,
   StringAggregateSelection,
   UpdateCommentsMutationResponse,
   UpdateHashtagsMutationResponse,
   UpdateInfo,
   UpdatePostsMutationResponse,
+  UpdateStoriesMutationResponse,
   UpdateUsersMutationResponse,
   User,
   UserAggregateSelection,
@@ -16476,6 +23155,14 @@ const document = _i1.DocumentNode(definitions: [
   UserPostPostsNodeAggregateSelection,
   UserPostsConnection,
   UserPostsRelationship,
+  UserStoriesConnection,
+  UserStoriesRelationship,
+  UserStoryLikesConnection,
+  UserStoryLikesRelationship,
+  UserStoryStoriesAggregationSelection,
+  UserStoryStoriesNodeAggregateSelection,
+  UserStoryStoryLikesAggregationSelection,
+  UserStoryStoryLikesNodeAggregateSelection,
   UserUserFriendsAggregationSelection,
   UserUserFriendsNodeAggregateSelection,
   CommentConnectInput,
@@ -16580,6 +23267,45 @@ const document = _i1.DocumentNode(definitions: [
   StatusSort,
   StatusUpdateInput,
   StatusWhere,
+  StoryConnectInput,
+  StoryConnectOrCreateInput,
+  StoryConnectOrCreateWhere,
+  StoryConnectWhere,
+  StoryCreateInput,
+  StoryCreatorAggregateInput,
+  StoryCreatorConnectFieldInput,
+  StoryCreatorConnectionSort,
+  StoryCreatorConnectionWhere,
+  StoryCreatorConnectOrCreateFieldInput,
+  StoryCreatorConnectOrCreateFieldInputOnCreate,
+  StoryCreatorCreateFieldInput,
+  StoryCreatorDeleteFieldInput,
+  StoryCreatorDisconnectFieldInput,
+  StoryCreatorFieldInput,
+  StoryCreatorNodeAggregationWhereInput,
+  StoryCreatorUpdateConnectionInput,
+  StoryCreatorUpdateFieldInput,
+  StoryDeleteInput,
+  StoryDisconnectInput,
+  StoryLikesAggregateInput,
+  StoryLikesConnectFieldInput,
+  StoryLikesConnectionSort,
+  StoryLikesConnectionWhere,
+  StoryLikesConnectOrCreateFieldInput,
+  StoryLikesConnectOrCreateFieldInputOnCreate,
+  StoryLikesCreateFieldInput,
+  StoryLikesDeleteFieldInput,
+  StoryLikesDisconnectFieldInput,
+  StoryLikesFieldInput,
+  StoryLikesNodeAggregationWhereInput,
+  StoryLikesUpdateConnectionInput,
+  StoryLikesUpdateFieldInput,
+  StoryOptions,
+  StoryRelationInput,
+  StorySort,
+  StoryUniqueWhere,
+  StoryUpdateInput,
+  StoryWhere,
   UserCommentLikesAggregateInput,
   UserCommentLikesConnectFieldInput,
   UserCommentLikesConnectionSort,
@@ -16642,6 +23368,32 @@ const document = _i1.DocumentNode(definitions: [
   UserPostsUpdateFieldInput,
   UserRelationInput,
   UserSort,
+  UserStoriesAggregateInput,
+  UserStoriesConnectFieldInput,
+  UserStoriesConnectionSort,
+  UserStoriesConnectionWhere,
+  UserStoriesConnectOrCreateFieldInput,
+  UserStoriesConnectOrCreateFieldInputOnCreate,
+  UserStoriesCreateFieldInput,
+  UserStoriesDeleteFieldInput,
+  UserStoriesDisconnectFieldInput,
+  UserStoriesFieldInput,
+  UserStoriesNodeAggregationWhereInput,
+  UserStoriesUpdateConnectionInput,
+  UserStoriesUpdateFieldInput,
+  UserStoryLikesAggregateInput,
+  UserStoryLikesConnectFieldInput,
+  UserStoryLikesConnectionSort,
+  UserStoryLikesConnectionWhere,
+  UserStoryLikesConnectOrCreateFieldInput,
+  UserStoryLikesConnectOrCreateFieldInputOnCreate,
+  UserStoryLikesCreateFieldInput,
+  UserStoryLikesDeleteFieldInput,
+  UserStoryLikesDisconnectFieldInput,
+  UserStoryLikesFieldInput,
+  UserStoryLikesNodeAggregationWhereInput,
+  UserStoryLikesUpdateConnectionInput,
+  UserStoryLikesUpdateFieldInput,
   UserUniqueWhere,
   UserUpdateInput,
   UserWhere

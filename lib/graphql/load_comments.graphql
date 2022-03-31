@@ -1,0 +1,12 @@
+query LoadComments($post: CommentWhere, $options: CommentOptions) {
+    comments(where: $post, options: $options) {
+        id
+        commentary
+        creator {
+            firstName
+            lastName
+            id
+            image
+        }
+    }
+}

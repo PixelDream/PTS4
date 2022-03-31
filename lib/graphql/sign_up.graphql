@@ -1,5 +1,8 @@
 mutation SignUp($firstName: String!, $lastName: String!, $pseudo: String!, $email: String!, $password: String!) {
     signUp(firstName: $firstName, lastName: $lastName, pseudo: $pseudo, email: $email, password: $password) {
-        token
+        token,
+        user {
+            id
+        }
     }
 }

@@ -1,0 +1,7 @@
+mutation CreateCommentary($input: [CommentCreateInput!]!) {
+    createComments(input: $input) {
+        info {
+            nodesCreated
+        }
+    }
+}

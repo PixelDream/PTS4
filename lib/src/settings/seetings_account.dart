@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:socialnetwork/src/profile/profile.dart';
-import 'package:socialnetwork/src/profile/profile_image.dart';
-import 'package:socialnetwork/src/profile/profile_music_list.dart';
-import 'package:socialnetwork/src/settings/settings.dart';
 
 class settingsAccount extends StatefulWidget {
   @override

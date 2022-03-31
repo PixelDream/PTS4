@@ -1,0 +1,7 @@
+mutation CreateStories($story: [StoryCreateInput!]!) {
+    createStories(input: $story) {
+        info {
+            nodesCreated
+        }
+    }
+}

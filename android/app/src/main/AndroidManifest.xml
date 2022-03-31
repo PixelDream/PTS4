@@ -1,6 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.iut.socialnetwork">
+    package="fr.iut.socialnetwork"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+
    <application
+        tools:replace="android:label"
         android:label="socialnetwork"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

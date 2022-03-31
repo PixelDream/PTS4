@@ -1,0 +1,34 @@
+query Feed($user: UserWhere, $friend: UserWhere $options: PostOptions) {
+    users(where: $user) {
+        postLikes {
+            id
+        }
+        friends(where: $friend) {
+            id
+            firstName
+            lastName
+            image
+            storiesConnection {
+                totalCount
+            }
+            posts(options: $options) {
+                id
+                music
+                media
+                creator {
+                    id
+                    firstName
+                    lastName
+                    image
+                    pseudo
+                }
+                likesConnection {
+                    totalCount
+                }
+                commentsConnection {
+                    totalCount
+                }
+            }
+        }
+    }
+}

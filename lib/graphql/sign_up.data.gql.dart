@@ -36,6 +36,7 @@ abstract class GSignUpData_signUp
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
   String get token;
+  GSignUpData_signUp_user get user;
   static Serializer<GSignUpData_signUp> get serializer =>
       _$gSignUpDataSignUpSerializer;
   Map<String, dynamic> toJson() =>
@@ -43,4 +44,26 @@ abstract class GSignUpData_signUp
           as Map<String, dynamic>);
   static GSignUpData_signUp? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GSignUpData_signUp.serializer, json);
+}
+
+abstract class GSignUpData_signUp_user
+    implements Built<GSignUpData_signUp_user, GSignUpData_signUp_userBuilder> {
+  GSignUpData_signUp_user._();
+
+  factory GSignUpData_signUp_user(
+          [Function(GSignUpData_signUp_userBuilder b) updates]) =
+      _$GSignUpData_signUp_user;
+
+  static void _initializeBuilder(GSignUpData_signUp_userBuilder b) =>
+      b..G__typename = 'User';
+  @BuiltValueField(wireName: '__typename')
+  String get G__typename;
+  String get id;
+  static Serializer<GSignUpData_signUp_user> get serializer =>
+      _$gSignUpDataSignUpUserSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GSignUpData_signUp_user.serializer, this)
+          as Map<String, dynamic>);
+  static GSignUpData_signUp_user? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GSignUpData_signUp_user.serializer, json);
 }

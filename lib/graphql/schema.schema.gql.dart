@@ -638,7 +638,8 @@ abstract class GCommentCreatorUpdateFieldInput
       _$GCommentCreatorUpdateFieldInput;
 
   GCommentCreatorConnectionWhere? get where;
-  GCommentCreatorUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GCommentCreatorUpdateConnectionInput? get Gupdate;
   GCommentCreatorConnectFieldInput? get connect;
   GCommentCreatorDisconnectFieldInput? get disconnect;
   GCommentCreatorCreateFieldInput? get create;
@@ -1055,7 +1056,8 @@ abstract class GCommentPostUpdateFieldInput
       _$GCommentPostUpdateFieldInput;
 
   GCommentPostConnectionWhere? get where;
-  GCommentPostUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GCommentPostUpdateConnectionInput? get Gupdate;
   GCommentPostConnectFieldInput? get connect;
   GCommentPostDisconnectFieldInput? get disconnect;
   GCommentPostCreateFieldInput? get create;
@@ -1692,7 +1694,8 @@ abstract class GPostCommentsUpdateFieldInput
       _$GPostCommentsUpdateFieldInput;
 
   GPostCommentsConnectionWhere? get where;
-  GPostCommentsUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GPostCommentsUpdateConnectionInput? get Gupdate;
   BuiltList<GPostCommentsConnectFieldInput>? get connect;
   BuiltList<GPostCommentsDisconnectFieldInput>? get disconnect;
   BuiltList<GPostCommentsCreateFieldInput>? get create;
@@ -1794,6 +1797,7 @@ abstract class GPostCreateInput
 
   String? get music;
   String get description;
+  BuiltList<String> get media;
   GPostCreatorFieldInput? get creator;
   GPostLikesFieldInput? get likes;
   GPostCommentsFieldInput? get comments;
@@ -2286,7 +2290,8 @@ abstract class GPostCreatorUpdateFieldInput
       _$GPostCreatorUpdateFieldInput;
 
   GPostCreatorConnectionWhere? get where;
-  GPostCreatorUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GPostCreatorUpdateConnectionInput? get Gupdate;
   GPostCreatorConnectFieldInput? get connect;
   GPostCreatorDisconnectFieldInput? get disconnect;
   GPostCreatorCreateFieldInput? get create;
@@ -2815,7 +2820,8 @@ abstract class GPostLikesUpdateFieldInput
       _$GPostLikesUpdateFieldInput;
 
   GPostLikesConnectionWhere? get where;
-  GPostLikesUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GPostLikesUpdateConnectionInput? get Gupdate;
   BuiltList<GPostLikesConnectFieldInput>? get connect;
   BuiltList<GPostLikesDisconnectFieldInput>? get disconnect;
   BuiltList<GPostLikesCreateFieldInput>? get create;
@@ -2911,6 +2917,7 @@ abstract class GPostUpdateInput
 
   String? get music;
   String? get description;
+  BuiltList<String>? get media;
   GPostCreatorUpdateFieldInput? get creator;
   BuiltList<GPostLikesUpdateFieldInput>? get likes;
   BuiltList<GPostCommentsUpdateFieldInput>? get comments;
@@ -2960,6 +2967,10 @@ abstract class GPostWhere implements Built<GPostWhere, GPostWhereBuilder> {
   String? get description_NOT_STARTS_WITH;
   String? get description_ENDS_WITH;
   String? get description_NOT_ENDS_WITH;
+  BuiltList<String>? get media;
+  BuiltList<String>? get media_NOT;
+  String? get media_INCLUDES;
+  String? get media_NOT_INCLUDES;
   GDateTime? get createdAt;
   GDateTime? get createdAt_NOT;
   BuiltList<GDateTime>? get createdAt_IN;
@@ -3066,6 +3077,1290 @@ abstract class GStatusWhere
           as Map<String, dynamic>);
   static GStatusWhere? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GStatusWhere.serializer, json);
+}
+
+abstract class GStoryConnectInput
+    implements Built<GStoryConnectInput, GStoryConnectInputBuilder> {
+  GStoryConnectInput._();
+
+  factory GStoryConnectInput([Function(GStoryConnectInputBuilder b) updates]) =
+      _$GStoryConnectInput;
+
+  GStoryCreatorConnectFieldInput? get creator;
+  BuiltList<GStoryLikesConnectFieldInput>? get likes;
+  static Serializer<GStoryConnectInput> get serializer =>
+      _$gStoryConnectInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryConnectInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryConnectInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryConnectInput.serializer, json);
+}
+
+abstract class GStoryConnectOrCreateInput
+    implements
+        Built<GStoryConnectOrCreateInput, GStoryConnectOrCreateInputBuilder> {
+  GStoryConnectOrCreateInput._();
+
+  factory GStoryConnectOrCreateInput(
+          [Function(GStoryConnectOrCreateInputBuilder b) updates]) =
+      _$GStoryConnectOrCreateInput;
+
+  GStoryCreatorConnectOrCreateFieldInput? get creator;
+  BuiltList<GStoryLikesConnectOrCreateFieldInput>? get likes;
+  static Serializer<GStoryConnectOrCreateInput> get serializer =>
+      _$gStoryConnectOrCreateInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryConnectOrCreateInput.serializer, this) as Map<String, dynamic>);
+  static GStoryConnectOrCreateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryConnectOrCreateInput.serializer, json);
+}
+
+abstract class GStoryConnectOrCreateWhere
+    implements
+        Built<GStoryConnectOrCreateWhere, GStoryConnectOrCreateWhereBuilder> {
+  GStoryConnectOrCreateWhere._();
+
+  factory GStoryConnectOrCreateWhere(
+          [Function(GStoryConnectOrCreateWhereBuilder b) updates]) =
+      _$GStoryConnectOrCreateWhere;
+
+  GStoryUniqueWhere get node;
+  static Serializer<GStoryConnectOrCreateWhere> get serializer =>
+      _$gStoryConnectOrCreateWhereSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryConnectOrCreateWhere.serializer, this) as Map<String, dynamic>);
+  static GStoryConnectOrCreateWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryConnectOrCreateWhere.serializer, json);
+}
+
+abstract class GStoryConnectWhere
+    implements Built<GStoryConnectWhere, GStoryConnectWhereBuilder> {
+  GStoryConnectWhere._();
+
+  factory GStoryConnectWhere([Function(GStoryConnectWhereBuilder b) updates]) =
+      _$GStoryConnectWhere;
+
+  GStoryWhere get node;
+  static Serializer<GStoryConnectWhere> get serializer =>
+      _$gStoryConnectWhereSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryConnectWhere.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryConnectWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryConnectWhere.serializer, json);
+}
+
+abstract class GStoryCreateInput
+    implements Built<GStoryCreateInput, GStoryCreateInputBuilder> {
+  GStoryCreateInput._();
+
+  factory GStoryCreateInput([Function(GStoryCreateInputBuilder b) updates]) =
+      _$GStoryCreateInput;
+
+  String? get music;
+  String get media;
+  GStoryCreatorFieldInput? get creator;
+  GStoryLikesFieldInput? get likes;
+  static Serializer<GStoryCreateInput> get serializer =>
+      _$gStoryCreateInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryCreateInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryCreateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryCreateInput.serializer, json);
+}
+
+abstract class GStoryCreatorAggregateInput
+    implements
+        Built<GStoryCreatorAggregateInput, GStoryCreatorAggregateInputBuilder> {
+  GStoryCreatorAggregateInput._();
+
+  factory GStoryCreatorAggregateInput(
+          [Function(GStoryCreatorAggregateInputBuilder b) updates]) =
+      _$GStoryCreatorAggregateInput;
+
+  int? get count;
+  int? get count_LT;
+  int? get count_LTE;
+  int? get count_GT;
+  int? get count_GTE;
+  BuiltList<GStoryCreatorAggregateInput>? get AND;
+  BuiltList<GStoryCreatorAggregateInput>? get OR;
+  GStoryCreatorNodeAggregationWhereInput? get node;
+  static Serializer<GStoryCreatorAggregateInput> get serializer =>
+      _$gStoryCreatorAggregateInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorAggregateInput.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorAggregateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorAggregateInput.serializer, json);
+}
+
+abstract class GStoryCreatorConnectFieldInput
+    implements
+        Built<GStoryCreatorConnectFieldInput,
+            GStoryCreatorConnectFieldInputBuilder> {
+  GStoryCreatorConnectFieldInput._();
+
+  factory GStoryCreatorConnectFieldInput(
+          [Function(GStoryCreatorConnectFieldInputBuilder b) updates]) =
+      _$GStoryCreatorConnectFieldInput;
+
+  GUserConnectWhere? get where;
+  GUserConnectInput? get connect;
+  static Serializer<GStoryCreatorConnectFieldInput> get serializer =>
+      _$gStoryCreatorConnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorConnectFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorConnectFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorConnectFieldInput.serializer, json);
+}
+
+abstract class GStoryCreatorConnectionSort
+    implements
+        Built<GStoryCreatorConnectionSort, GStoryCreatorConnectionSortBuilder> {
+  GStoryCreatorConnectionSort._();
+
+  factory GStoryCreatorConnectionSort(
+          [Function(GStoryCreatorConnectionSortBuilder b) updates]) =
+      _$GStoryCreatorConnectionSort;
+
+  GUserSort? get node;
+  static Serializer<GStoryCreatorConnectionSort> get serializer =>
+      _$gStoryCreatorConnectionSortSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorConnectionSort.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorConnectionSort? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorConnectionSort.serializer, json);
+}
+
+abstract class GStoryCreatorConnectionWhere
+    implements
+        Built<GStoryCreatorConnectionWhere,
+            GStoryCreatorConnectionWhereBuilder> {
+  GStoryCreatorConnectionWhere._();
+
+  factory GStoryCreatorConnectionWhere(
+          [Function(GStoryCreatorConnectionWhereBuilder b) updates]) =
+      _$GStoryCreatorConnectionWhere;
+
+  BuiltList<GStoryCreatorConnectionWhere>? get AND;
+  BuiltList<GStoryCreatorConnectionWhere>? get OR;
+  GUserWhere? get node;
+  GUserWhere? get node_NOT;
+  static Serializer<GStoryCreatorConnectionWhere> get serializer =>
+      _$gStoryCreatorConnectionWhereSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorConnectionWhere.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorConnectionWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorConnectionWhere.serializer, json);
+}
+
+abstract class GStoryCreatorConnectOrCreateFieldInput
+    implements
+        Built<GStoryCreatorConnectOrCreateFieldInput,
+            GStoryCreatorConnectOrCreateFieldInputBuilder> {
+  GStoryCreatorConnectOrCreateFieldInput._();
+
+  factory GStoryCreatorConnectOrCreateFieldInput(
+          [Function(GStoryCreatorConnectOrCreateFieldInputBuilder b) updates]) =
+      _$GStoryCreatorConnectOrCreateFieldInput;
+
+  GUserConnectOrCreateWhere get where;
+  GStoryCreatorConnectOrCreateFieldInputOnCreate get onCreate;
+  static Serializer<GStoryCreatorConnectOrCreateFieldInput> get serializer =>
+      _$gStoryCreatorConnectOrCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GStoryCreatorConnectOrCreateFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryCreatorConnectOrCreateFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GStoryCreatorConnectOrCreateFieldInput.serializer, json);
+}
+
+abstract class GStoryCreatorConnectOrCreateFieldInputOnCreate
+    implements
+        Built<GStoryCreatorConnectOrCreateFieldInputOnCreate,
+            GStoryCreatorConnectOrCreateFieldInputOnCreateBuilder> {
+  GStoryCreatorConnectOrCreateFieldInputOnCreate._();
+
+  factory GStoryCreatorConnectOrCreateFieldInputOnCreate(
+      [Function(GStoryCreatorConnectOrCreateFieldInputOnCreateBuilder b)
+          updates]) = _$GStoryCreatorConnectOrCreateFieldInputOnCreate;
+
+  GUserCreateInput get node;
+  static Serializer<GStoryCreatorConnectOrCreateFieldInputOnCreate>
+      get serializer =>
+          _$gStoryCreatorConnectOrCreateFieldInputOnCreateSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GStoryCreatorConnectOrCreateFieldInputOnCreate.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryCreatorConnectOrCreateFieldInputOnCreate? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GStoryCreatorConnectOrCreateFieldInputOnCreate.serializer, json);
+}
+
+abstract class GStoryCreatorCreateFieldInput
+    implements
+        Built<GStoryCreatorCreateFieldInput,
+            GStoryCreatorCreateFieldInputBuilder> {
+  GStoryCreatorCreateFieldInput._();
+
+  factory GStoryCreatorCreateFieldInput(
+          [Function(GStoryCreatorCreateFieldInputBuilder b) updates]) =
+      _$GStoryCreatorCreateFieldInput;
+
+  GUserCreateInput get node;
+  static Serializer<GStoryCreatorCreateFieldInput> get serializer =>
+      _$gStoryCreatorCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorCreateFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorCreateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorCreateFieldInput.serializer, json);
+}
+
+abstract class GStoryCreatorDeleteFieldInput
+    implements
+        Built<GStoryCreatorDeleteFieldInput,
+            GStoryCreatorDeleteFieldInputBuilder> {
+  GStoryCreatorDeleteFieldInput._();
+
+  factory GStoryCreatorDeleteFieldInput(
+          [Function(GStoryCreatorDeleteFieldInputBuilder b) updates]) =
+      _$GStoryCreatorDeleteFieldInput;
+
+  GStoryCreatorConnectionWhere? get where;
+  GUserDeleteInput? get delete;
+  static Serializer<GStoryCreatorDeleteFieldInput> get serializer =>
+      _$gStoryCreatorDeleteFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorDeleteFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorDeleteFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorDeleteFieldInput.serializer, json);
+}
+
+abstract class GStoryCreatorDisconnectFieldInput
+    implements
+        Built<GStoryCreatorDisconnectFieldInput,
+            GStoryCreatorDisconnectFieldInputBuilder> {
+  GStoryCreatorDisconnectFieldInput._();
+
+  factory GStoryCreatorDisconnectFieldInput(
+          [Function(GStoryCreatorDisconnectFieldInputBuilder b) updates]) =
+      _$GStoryCreatorDisconnectFieldInput;
+
+  GStoryCreatorConnectionWhere? get where;
+  GUserDisconnectInput? get disconnect;
+  static Serializer<GStoryCreatorDisconnectFieldInput> get serializer =>
+      _$gStoryCreatorDisconnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GStoryCreatorDisconnectFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryCreatorDisconnectFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorDisconnectFieldInput.serializer, json);
+}
+
+abstract class GStoryCreatorFieldInput
+    implements Built<GStoryCreatorFieldInput, GStoryCreatorFieldInputBuilder> {
+  GStoryCreatorFieldInput._();
+
+  factory GStoryCreatorFieldInput(
+          [Function(GStoryCreatorFieldInputBuilder b) updates]) =
+      _$GStoryCreatorFieldInput;
+
+  GStoryCreatorCreateFieldInput? get create;
+  GStoryCreatorConnectFieldInput? get connect;
+  GStoryCreatorConnectOrCreateFieldInput? get connectOrCreate;
+  static Serializer<GStoryCreatorFieldInput> get serializer =>
+      _$gStoryCreatorFieldInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryCreatorFieldInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryCreatorFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryCreatorFieldInput.serializer, json);
+}
+
+abstract class GStoryCreatorNodeAggregationWhereInput
+    implements
+        Built<GStoryCreatorNodeAggregationWhereInput,
+            GStoryCreatorNodeAggregationWhereInputBuilder> {
+  GStoryCreatorNodeAggregationWhereInput._();
+
+  factory GStoryCreatorNodeAggregationWhereInput(
+          [Function(GStoryCreatorNodeAggregationWhereInputBuilder b) updates]) =
+      _$GStoryCreatorNodeAggregationWhereInput;
+
+  BuiltList<GStoryCreatorNodeAggregationWhereInput>? get AND;
+  BuiltList<GStoryCreatorNodeAggregationWhereInput>? get OR;
+  String? get id_EQUAL;
+  String? get email_EQUAL;
+  double? get email_AVERAGE_EQUAL;
+  int? get email_LONGEST_EQUAL;
+  int? get email_SHORTEST_EQUAL;
+  int? get email_GT;
+  double? get email_AVERAGE_GT;
+  int? get email_LONGEST_GT;
+  int? get email_SHORTEST_GT;
+  int? get email_GTE;
+  double? get email_AVERAGE_GTE;
+  int? get email_LONGEST_GTE;
+  int? get email_SHORTEST_GTE;
+  int? get email_LT;
+  double? get email_AVERAGE_LT;
+  int? get email_LONGEST_LT;
+  int? get email_SHORTEST_LT;
+  int? get email_LTE;
+  double? get email_AVERAGE_LTE;
+  int? get email_LONGEST_LTE;
+  int? get email_SHORTEST_LTE;
+  String? get pseudo_EQUAL;
+  double? get pseudo_AVERAGE_EQUAL;
+  int? get pseudo_LONGEST_EQUAL;
+  int? get pseudo_SHORTEST_EQUAL;
+  int? get pseudo_GT;
+  double? get pseudo_AVERAGE_GT;
+  int? get pseudo_LONGEST_GT;
+  int? get pseudo_SHORTEST_GT;
+  int? get pseudo_GTE;
+  double? get pseudo_AVERAGE_GTE;
+  int? get pseudo_LONGEST_GTE;
+  int? get pseudo_SHORTEST_GTE;
+  int? get pseudo_LT;
+  double? get pseudo_AVERAGE_LT;
+  int? get pseudo_LONGEST_LT;
+  int? get pseudo_SHORTEST_LT;
+  int? get pseudo_LTE;
+  double? get pseudo_AVERAGE_LTE;
+  int? get pseudo_LONGEST_LTE;
+  int? get pseudo_SHORTEST_LTE;
+  String? get firstName_EQUAL;
+  double? get firstName_AVERAGE_EQUAL;
+  int? get firstName_LONGEST_EQUAL;
+  int? get firstName_SHORTEST_EQUAL;
+  int? get firstName_GT;
+  double? get firstName_AVERAGE_GT;
+  int? get firstName_LONGEST_GT;
+  int? get firstName_SHORTEST_GT;
+  int? get firstName_GTE;
+  double? get firstName_AVERAGE_GTE;
+  int? get firstName_LONGEST_GTE;
+  int? get firstName_SHORTEST_GTE;
+  int? get firstName_LT;
+  double? get firstName_AVERAGE_LT;
+  int? get firstName_LONGEST_LT;
+  int? get firstName_SHORTEST_LT;
+  int? get firstName_LTE;
+  double? get firstName_AVERAGE_LTE;
+  int? get firstName_LONGEST_LTE;
+  int? get firstName_SHORTEST_LTE;
+  String? get lastName_EQUAL;
+  double? get lastName_AVERAGE_EQUAL;
+  int? get lastName_LONGEST_EQUAL;
+  int? get lastName_SHORTEST_EQUAL;
+  int? get lastName_GT;
+  double? get lastName_AVERAGE_GT;
+  int? get lastName_LONGEST_GT;
+  int? get lastName_SHORTEST_GT;
+  int? get lastName_GTE;
+  double? get lastName_AVERAGE_GTE;
+  int? get lastName_LONGEST_GTE;
+  int? get lastName_SHORTEST_GTE;
+  int? get lastName_LT;
+  double? get lastName_AVERAGE_LT;
+  int? get lastName_LONGEST_LT;
+  int? get lastName_SHORTEST_LT;
+  int? get lastName_LTE;
+  double? get lastName_AVERAGE_LTE;
+  int? get lastName_LONGEST_LTE;
+  int? get lastName_SHORTEST_LTE;
+  String? get password_EQUAL;
+  double? get password_AVERAGE_EQUAL;
+  int? get password_LONGEST_EQUAL;
+  int? get password_SHORTEST_EQUAL;
+  int? get password_GT;
+  double? get password_AVERAGE_GT;
+  int? get password_LONGEST_GT;
+  int? get password_SHORTEST_GT;
+  int? get password_GTE;
+  double? get password_AVERAGE_GTE;
+  int? get password_LONGEST_GTE;
+  int? get password_SHORTEST_GTE;
+  int? get password_LT;
+  double? get password_AVERAGE_LT;
+  int? get password_LONGEST_LT;
+  int? get password_SHORTEST_LT;
+  int? get password_LTE;
+  double? get password_AVERAGE_LTE;
+  int? get password_LONGEST_LTE;
+  int? get password_SHORTEST_LTE;
+  String? get biography_EQUAL;
+  double? get biography_AVERAGE_EQUAL;
+  int? get biography_LONGEST_EQUAL;
+  int? get biography_SHORTEST_EQUAL;
+  int? get biography_GT;
+  double? get biography_AVERAGE_GT;
+  int? get biography_LONGEST_GT;
+  int? get biography_SHORTEST_GT;
+  int? get biography_GTE;
+  double? get biography_AVERAGE_GTE;
+  int? get biography_LONGEST_GTE;
+  int? get biography_SHORTEST_GTE;
+  int? get biography_LT;
+  double? get biography_AVERAGE_LT;
+  int? get biography_LONGEST_LT;
+  int? get biography_SHORTEST_LT;
+  int? get biography_LTE;
+  double? get biography_AVERAGE_LTE;
+  int? get biography_LONGEST_LTE;
+  int? get biography_SHORTEST_LTE;
+  String? get image_EQUAL;
+  double? get image_AVERAGE_EQUAL;
+  int? get image_LONGEST_EQUAL;
+  int? get image_SHORTEST_EQUAL;
+  int? get image_GT;
+  double? get image_AVERAGE_GT;
+  int? get image_LONGEST_GT;
+  int? get image_SHORTEST_GT;
+  int? get image_GTE;
+  double? get image_AVERAGE_GTE;
+  int? get image_LONGEST_GTE;
+  int? get image_SHORTEST_GTE;
+  int? get image_LT;
+  double? get image_AVERAGE_LT;
+  int? get image_LONGEST_LT;
+  int? get image_SHORTEST_LT;
+  int? get image_LTE;
+  double? get image_AVERAGE_LTE;
+  int? get image_LONGEST_LTE;
+  int? get image_SHORTEST_LTE;
+  String? get resetToken_EQUAL;
+  double? get resetToken_AVERAGE_EQUAL;
+  int? get resetToken_LONGEST_EQUAL;
+  int? get resetToken_SHORTEST_EQUAL;
+  int? get resetToken_GT;
+  double? get resetToken_AVERAGE_GT;
+  int? get resetToken_LONGEST_GT;
+  int? get resetToken_SHORTEST_GT;
+  int? get resetToken_GTE;
+  double? get resetToken_AVERAGE_GTE;
+  int? get resetToken_LONGEST_GTE;
+  int? get resetToken_SHORTEST_GTE;
+  int? get resetToken_LT;
+  double? get resetToken_AVERAGE_LT;
+  int? get resetToken_LONGEST_LT;
+  int? get resetToken_SHORTEST_LT;
+  int? get resetToken_LTE;
+  double? get resetToken_AVERAGE_LTE;
+  int? get resetToken_LONGEST_LTE;
+  int? get resetToken_SHORTEST_LTE;
+  GDateTime? get createdAt_EQUAL;
+  GDateTime? get createdAt_MIN_EQUAL;
+  GDateTime? get createdAt_MAX_EQUAL;
+  GDateTime? get createdAt_GT;
+  GDateTime? get createdAt_MIN_GT;
+  GDateTime? get createdAt_MAX_GT;
+  GDateTime? get createdAt_GTE;
+  GDateTime? get createdAt_MIN_GTE;
+  GDateTime? get createdAt_MAX_GTE;
+  GDateTime? get createdAt_LT;
+  GDateTime? get createdAt_MIN_LT;
+  GDateTime? get createdAt_MAX_LT;
+  GDateTime? get createdAt_LTE;
+  GDateTime? get createdAt_MIN_LTE;
+  GDateTime? get createdAt_MAX_LTE;
+  GDateTime? get updatedAt_EQUAL;
+  GDateTime? get updatedAt_MIN_EQUAL;
+  GDateTime? get updatedAt_MAX_EQUAL;
+  GDateTime? get updatedAt_GT;
+  GDateTime? get updatedAt_MIN_GT;
+  GDateTime? get updatedAt_MAX_GT;
+  GDateTime? get updatedAt_GTE;
+  GDateTime? get updatedAt_MIN_GTE;
+  GDateTime? get updatedAt_MAX_GTE;
+  GDateTime? get updatedAt_LT;
+  GDateTime? get updatedAt_MIN_LT;
+  GDateTime? get updatedAt_MAX_LT;
+  GDateTime? get updatedAt_LTE;
+  GDateTime? get updatedAt_MIN_LTE;
+  GDateTime? get updatedAt_MAX_LTE;
+  GDateTime? get resetTokenExpiry_EQUAL;
+  GDateTime? get resetTokenExpiry_MIN_EQUAL;
+  GDateTime? get resetTokenExpiry_MAX_EQUAL;
+  GDateTime? get resetTokenExpiry_GT;
+  GDateTime? get resetTokenExpiry_MIN_GT;
+  GDateTime? get resetTokenExpiry_MAX_GT;
+  GDateTime? get resetTokenExpiry_GTE;
+  GDateTime? get resetTokenExpiry_MIN_GTE;
+  GDateTime? get resetTokenExpiry_MAX_GTE;
+  GDateTime? get resetTokenExpiry_LT;
+  GDateTime? get resetTokenExpiry_MIN_LT;
+  GDateTime? get resetTokenExpiry_MAX_LT;
+  GDateTime? get resetTokenExpiry_LTE;
+  GDateTime? get resetTokenExpiry_MIN_LTE;
+  GDateTime? get resetTokenExpiry_MAX_LTE;
+  static Serializer<GStoryCreatorNodeAggregationWhereInput> get serializer =>
+      _$gStoryCreatorNodeAggregationWhereInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GStoryCreatorNodeAggregationWhereInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryCreatorNodeAggregationWhereInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GStoryCreatorNodeAggregationWhereInput.serializer, json);
+}
+
+abstract class GStoryCreatorUpdateConnectionInput
+    implements
+        Built<GStoryCreatorUpdateConnectionInput,
+            GStoryCreatorUpdateConnectionInputBuilder> {
+  GStoryCreatorUpdateConnectionInput._();
+
+  factory GStoryCreatorUpdateConnectionInput(
+          [Function(GStoryCreatorUpdateConnectionInputBuilder b) updates]) =
+      _$GStoryCreatorUpdateConnectionInput;
+
+  GUserUpdateInput? get node;
+  static Serializer<GStoryCreatorUpdateConnectionInput> get serializer =>
+      _$gStoryCreatorUpdateConnectionInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GStoryCreatorUpdateConnectionInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryCreatorUpdateConnectionInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorUpdateConnectionInput.serializer, json);
+}
+
+abstract class GStoryCreatorUpdateFieldInput
+    implements
+        Built<GStoryCreatorUpdateFieldInput,
+            GStoryCreatorUpdateFieldInputBuilder> {
+  GStoryCreatorUpdateFieldInput._();
+
+  factory GStoryCreatorUpdateFieldInput(
+          [Function(GStoryCreatorUpdateFieldInputBuilder b) updates]) =
+      _$GStoryCreatorUpdateFieldInput;
+
+  GStoryCreatorConnectionWhere? get where;
+  @BuiltValueField(wireName: 'update')
+  GStoryCreatorUpdateConnectionInput? get Gupdate;
+  GStoryCreatorConnectFieldInput? get connect;
+  GStoryCreatorDisconnectFieldInput? get disconnect;
+  GStoryCreatorCreateFieldInput? get create;
+  GStoryCreatorDeleteFieldInput? get delete;
+  GStoryCreatorConnectOrCreateFieldInput? get connectOrCreate;
+  static Serializer<GStoryCreatorUpdateFieldInput> get serializer =>
+      _$gStoryCreatorUpdateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryCreatorUpdateFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryCreatorUpdateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryCreatorUpdateFieldInput.serializer, json);
+}
+
+abstract class GStoryDeleteInput
+    implements Built<GStoryDeleteInput, GStoryDeleteInputBuilder> {
+  GStoryDeleteInput._();
+
+  factory GStoryDeleteInput([Function(GStoryDeleteInputBuilder b) updates]) =
+      _$GStoryDeleteInput;
+
+  GStoryCreatorDeleteFieldInput? get creator;
+  BuiltList<GStoryLikesDeleteFieldInput>? get likes;
+  static Serializer<GStoryDeleteInput> get serializer =>
+      _$gStoryDeleteInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryDeleteInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryDeleteInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryDeleteInput.serializer, json);
+}
+
+abstract class GStoryDisconnectInput
+    implements Built<GStoryDisconnectInput, GStoryDisconnectInputBuilder> {
+  GStoryDisconnectInput._();
+
+  factory GStoryDisconnectInput(
+          [Function(GStoryDisconnectInputBuilder b) updates]) =
+      _$GStoryDisconnectInput;
+
+  GStoryCreatorDisconnectFieldInput? get creator;
+  BuiltList<GStoryLikesDisconnectFieldInput>? get likes;
+  static Serializer<GStoryDisconnectInput> get serializer =>
+      _$gStoryDisconnectInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryDisconnectInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryDisconnectInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryDisconnectInput.serializer, json);
+}
+
+abstract class GStoryLikesAggregateInput
+    implements
+        Built<GStoryLikesAggregateInput, GStoryLikesAggregateInputBuilder> {
+  GStoryLikesAggregateInput._();
+
+  factory GStoryLikesAggregateInput(
+          [Function(GStoryLikesAggregateInputBuilder b) updates]) =
+      _$GStoryLikesAggregateInput;
+
+  int? get count;
+  int? get count_LT;
+  int? get count_LTE;
+  int? get count_GT;
+  int? get count_GTE;
+  BuiltList<GStoryLikesAggregateInput>? get AND;
+  BuiltList<GStoryLikesAggregateInput>? get OR;
+  GStoryLikesNodeAggregationWhereInput? get node;
+  static Serializer<GStoryLikesAggregateInput> get serializer =>
+      _$gStoryLikesAggregateInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryLikesAggregateInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryLikesAggregateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesAggregateInput.serializer, json);
+}
+
+abstract class GStoryLikesConnectFieldInput
+    implements
+        Built<GStoryLikesConnectFieldInput,
+            GStoryLikesConnectFieldInputBuilder> {
+  GStoryLikesConnectFieldInput._();
+
+  factory GStoryLikesConnectFieldInput(
+          [Function(GStoryLikesConnectFieldInputBuilder b) updates]) =
+      _$GStoryLikesConnectFieldInput;
+
+  GUserConnectWhere? get where;
+  BuiltList<GUserConnectInput>? get connect;
+  static Serializer<GStoryLikesConnectFieldInput> get serializer =>
+      _$gStoryLikesConnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryLikesConnectFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryLikesConnectFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesConnectFieldInput.serializer, json);
+}
+
+abstract class GStoryLikesConnectionSort
+    implements
+        Built<GStoryLikesConnectionSort, GStoryLikesConnectionSortBuilder> {
+  GStoryLikesConnectionSort._();
+
+  factory GStoryLikesConnectionSort(
+          [Function(GStoryLikesConnectionSortBuilder b) updates]) =
+      _$GStoryLikesConnectionSort;
+
+  GUserSort? get node;
+  static Serializer<GStoryLikesConnectionSort> get serializer =>
+      _$gStoryLikesConnectionSortSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryLikesConnectionSort.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryLikesConnectionSort? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesConnectionSort.serializer, json);
+}
+
+abstract class GStoryLikesConnectionWhere
+    implements
+        Built<GStoryLikesConnectionWhere, GStoryLikesConnectionWhereBuilder> {
+  GStoryLikesConnectionWhere._();
+
+  factory GStoryLikesConnectionWhere(
+          [Function(GStoryLikesConnectionWhereBuilder b) updates]) =
+      _$GStoryLikesConnectionWhere;
+
+  BuiltList<GStoryLikesConnectionWhere>? get AND;
+  BuiltList<GStoryLikesConnectionWhere>? get OR;
+  GUserWhere? get node;
+  GUserWhere? get node_NOT;
+  static Serializer<GStoryLikesConnectionWhere> get serializer =>
+      _$gStoryLikesConnectionWhereSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryLikesConnectionWhere.serializer, this) as Map<String, dynamic>);
+  static GStoryLikesConnectionWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesConnectionWhere.serializer, json);
+}
+
+abstract class GStoryLikesConnectOrCreateFieldInput
+    implements
+        Built<GStoryLikesConnectOrCreateFieldInput,
+            GStoryLikesConnectOrCreateFieldInputBuilder> {
+  GStoryLikesConnectOrCreateFieldInput._();
+
+  factory GStoryLikesConnectOrCreateFieldInput(
+          [Function(GStoryLikesConnectOrCreateFieldInputBuilder b) updates]) =
+      _$GStoryLikesConnectOrCreateFieldInput;
+
+  GUserConnectOrCreateWhere get where;
+  GStoryLikesConnectOrCreateFieldInputOnCreate get onCreate;
+  static Serializer<GStoryLikesConnectOrCreateFieldInput> get serializer =>
+      _$gStoryLikesConnectOrCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GStoryLikesConnectOrCreateFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryLikesConnectOrCreateFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GStoryLikesConnectOrCreateFieldInput.serializer, json);
+}
+
+abstract class GStoryLikesConnectOrCreateFieldInputOnCreate
+    implements
+        Built<GStoryLikesConnectOrCreateFieldInputOnCreate,
+            GStoryLikesConnectOrCreateFieldInputOnCreateBuilder> {
+  GStoryLikesConnectOrCreateFieldInputOnCreate._();
+
+  factory GStoryLikesConnectOrCreateFieldInputOnCreate(
+      [Function(GStoryLikesConnectOrCreateFieldInputOnCreateBuilder b)
+          updates]) = _$GStoryLikesConnectOrCreateFieldInputOnCreate;
+
+  GUserCreateInput get node;
+  static Serializer<GStoryLikesConnectOrCreateFieldInputOnCreate>
+      get serializer =>
+          _$gStoryLikesConnectOrCreateFieldInputOnCreateSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GStoryLikesConnectOrCreateFieldInputOnCreate.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryLikesConnectOrCreateFieldInputOnCreate? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GStoryLikesConnectOrCreateFieldInputOnCreate.serializer, json);
+}
+
+abstract class GStoryLikesCreateFieldInput
+    implements
+        Built<GStoryLikesCreateFieldInput, GStoryLikesCreateFieldInputBuilder> {
+  GStoryLikesCreateFieldInput._();
+
+  factory GStoryLikesCreateFieldInput(
+          [Function(GStoryLikesCreateFieldInputBuilder b) updates]) =
+      _$GStoryLikesCreateFieldInput;
+
+  GUserCreateInput get node;
+  static Serializer<GStoryLikesCreateFieldInput> get serializer =>
+      _$gStoryLikesCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryLikesCreateFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryLikesCreateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesCreateFieldInput.serializer, json);
+}
+
+abstract class GStoryLikesDeleteFieldInput
+    implements
+        Built<GStoryLikesDeleteFieldInput, GStoryLikesDeleteFieldInputBuilder> {
+  GStoryLikesDeleteFieldInput._();
+
+  factory GStoryLikesDeleteFieldInput(
+          [Function(GStoryLikesDeleteFieldInputBuilder b) updates]) =
+      _$GStoryLikesDeleteFieldInput;
+
+  GStoryLikesConnectionWhere? get where;
+  GUserDeleteInput? get delete;
+  static Serializer<GStoryLikesDeleteFieldInput> get serializer =>
+      _$gStoryLikesDeleteFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryLikesDeleteFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryLikesDeleteFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesDeleteFieldInput.serializer, json);
+}
+
+abstract class GStoryLikesDisconnectFieldInput
+    implements
+        Built<GStoryLikesDisconnectFieldInput,
+            GStoryLikesDisconnectFieldInputBuilder> {
+  GStoryLikesDisconnectFieldInput._();
+
+  factory GStoryLikesDisconnectFieldInput(
+          [Function(GStoryLikesDisconnectFieldInputBuilder b) updates]) =
+      _$GStoryLikesDisconnectFieldInput;
+
+  GStoryLikesConnectionWhere? get where;
+  GUserDisconnectInput? get disconnect;
+  static Serializer<GStoryLikesDisconnectFieldInput> get serializer =>
+      _$gStoryLikesDisconnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GStoryLikesDisconnectFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryLikesDisconnectFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesDisconnectFieldInput.serializer, json);
+}
+
+abstract class GStoryLikesFieldInput
+    implements Built<GStoryLikesFieldInput, GStoryLikesFieldInputBuilder> {
+  GStoryLikesFieldInput._();
+
+  factory GStoryLikesFieldInput(
+          [Function(GStoryLikesFieldInputBuilder b) updates]) =
+      _$GStoryLikesFieldInput;
+
+  BuiltList<GStoryLikesCreateFieldInput>? get create;
+  BuiltList<GStoryLikesConnectFieldInput>? get connect;
+  BuiltList<GStoryLikesConnectOrCreateFieldInput>? get connectOrCreate;
+  static Serializer<GStoryLikesFieldInput> get serializer =>
+      _$gStoryLikesFieldInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryLikesFieldInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryLikesFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryLikesFieldInput.serializer, json);
+}
+
+abstract class GStoryLikesNodeAggregationWhereInput
+    implements
+        Built<GStoryLikesNodeAggregationWhereInput,
+            GStoryLikesNodeAggregationWhereInputBuilder> {
+  GStoryLikesNodeAggregationWhereInput._();
+
+  factory GStoryLikesNodeAggregationWhereInput(
+          [Function(GStoryLikesNodeAggregationWhereInputBuilder b) updates]) =
+      _$GStoryLikesNodeAggregationWhereInput;
+
+  BuiltList<GStoryLikesNodeAggregationWhereInput>? get AND;
+  BuiltList<GStoryLikesNodeAggregationWhereInput>? get OR;
+  String? get id_EQUAL;
+  String? get email_EQUAL;
+  double? get email_AVERAGE_EQUAL;
+  int? get email_LONGEST_EQUAL;
+  int? get email_SHORTEST_EQUAL;
+  int? get email_GT;
+  double? get email_AVERAGE_GT;
+  int? get email_LONGEST_GT;
+  int? get email_SHORTEST_GT;
+  int? get email_GTE;
+  double? get email_AVERAGE_GTE;
+  int? get email_LONGEST_GTE;
+  int? get email_SHORTEST_GTE;
+  int? get email_LT;
+  double? get email_AVERAGE_LT;
+  int? get email_LONGEST_LT;
+  int? get email_SHORTEST_LT;
+  int? get email_LTE;
+  double? get email_AVERAGE_LTE;
+  int? get email_LONGEST_LTE;
+  int? get email_SHORTEST_LTE;
+  String? get pseudo_EQUAL;
+  double? get pseudo_AVERAGE_EQUAL;
+  int? get pseudo_LONGEST_EQUAL;
+  int? get pseudo_SHORTEST_EQUAL;
+  int? get pseudo_GT;
+  double? get pseudo_AVERAGE_GT;
+  int? get pseudo_LONGEST_GT;
+  int? get pseudo_SHORTEST_GT;
+  int? get pseudo_GTE;
+  double? get pseudo_AVERAGE_GTE;
+  int? get pseudo_LONGEST_GTE;
+  int? get pseudo_SHORTEST_GTE;
+  int? get pseudo_LT;
+  double? get pseudo_AVERAGE_LT;
+  int? get pseudo_LONGEST_LT;
+  int? get pseudo_SHORTEST_LT;
+  int? get pseudo_LTE;
+  double? get pseudo_AVERAGE_LTE;
+  int? get pseudo_LONGEST_LTE;
+  int? get pseudo_SHORTEST_LTE;
+  String? get firstName_EQUAL;
+  double? get firstName_AVERAGE_EQUAL;
+  int? get firstName_LONGEST_EQUAL;
+  int? get firstName_SHORTEST_EQUAL;
+  int? get firstName_GT;
+  double? get firstName_AVERAGE_GT;
+  int? get firstName_LONGEST_GT;
+  int? get firstName_SHORTEST_GT;
+  int? get firstName_GTE;
+  double? get firstName_AVERAGE_GTE;
+  int? get firstName_LONGEST_GTE;
+  int? get firstName_SHORTEST_GTE;
+  int? get firstName_LT;
+  double? get firstName_AVERAGE_LT;
+  int? get firstName_LONGEST_LT;
+  int? get firstName_SHORTEST_LT;
+  int? get firstName_LTE;
+  double? get firstName_AVERAGE_LTE;
+  int? get firstName_LONGEST_LTE;
+  int? get firstName_SHORTEST_LTE;
+  String? get lastName_EQUAL;
+  double? get lastName_AVERAGE_EQUAL;
+  int? get lastName_LONGEST_EQUAL;
+  int? get lastName_SHORTEST_EQUAL;
+  int? get lastName_GT;
+  double? get lastName_AVERAGE_GT;
+  int? get lastName_LONGEST_GT;
+  int? get lastName_SHORTEST_GT;
+  int? get lastName_GTE;
+  double? get lastName_AVERAGE_GTE;
+  int? get lastName_LONGEST_GTE;
+  int? get lastName_SHORTEST_GTE;
+  int? get lastName_LT;
+  double? get lastName_AVERAGE_LT;
+  int? get lastName_LONGEST_LT;
+  int? get lastName_SHORTEST_LT;
+  int? get lastName_LTE;
+  double? get lastName_AVERAGE_LTE;
+  int? get lastName_LONGEST_LTE;
+  int? get lastName_SHORTEST_LTE;
+  String? get password_EQUAL;
+  double? get password_AVERAGE_EQUAL;
+  int? get password_LONGEST_EQUAL;
+  int? get password_SHORTEST_EQUAL;
+  int? get password_GT;
+  double? get password_AVERAGE_GT;
+  int? get password_LONGEST_GT;
+  int? get password_SHORTEST_GT;
+  int? get password_GTE;
+  double? get password_AVERAGE_GTE;
+  int? get password_LONGEST_GTE;
+  int? get password_SHORTEST_GTE;
+  int? get password_LT;
+  double? get password_AVERAGE_LT;
+  int? get password_LONGEST_LT;
+  int? get password_SHORTEST_LT;
+  int? get password_LTE;
+  double? get password_AVERAGE_LTE;
+  int? get password_LONGEST_LTE;
+  int? get password_SHORTEST_LTE;
+  String? get biography_EQUAL;
+  double? get biography_AVERAGE_EQUAL;
+  int? get biography_LONGEST_EQUAL;
+  int? get biography_SHORTEST_EQUAL;
+  int? get biography_GT;
+  double? get biography_AVERAGE_GT;
+  int? get biography_LONGEST_GT;
+  int? get biography_SHORTEST_GT;
+  int? get biography_GTE;
+  double? get biography_AVERAGE_GTE;
+  int? get biography_LONGEST_GTE;
+  int? get biography_SHORTEST_GTE;
+  int? get biography_LT;
+  double? get biography_AVERAGE_LT;
+  int? get biography_LONGEST_LT;
+  int? get biography_SHORTEST_LT;
+  int? get biography_LTE;
+  double? get biography_AVERAGE_LTE;
+  int? get biography_LONGEST_LTE;
+  int? get biography_SHORTEST_LTE;
+  String? get image_EQUAL;
+  double? get image_AVERAGE_EQUAL;
+  int? get image_LONGEST_EQUAL;
+  int? get image_SHORTEST_EQUAL;
+  int? get image_GT;
+  double? get image_AVERAGE_GT;
+  int? get image_LONGEST_GT;
+  int? get image_SHORTEST_GT;
+  int? get image_GTE;
+  double? get image_AVERAGE_GTE;
+  int? get image_LONGEST_GTE;
+  int? get image_SHORTEST_GTE;
+  int? get image_LT;
+  double? get image_AVERAGE_LT;
+  int? get image_LONGEST_LT;
+  int? get image_SHORTEST_LT;
+  int? get image_LTE;
+  double? get image_AVERAGE_LTE;
+  int? get image_LONGEST_LTE;
+  int? get image_SHORTEST_LTE;
+  String? get resetToken_EQUAL;
+  double? get resetToken_AVERAGE_EQUAL;
+  int? get resetToken_LONGEST_EQUAL;
+  int? get resetToken_SHORTEST_EQUAL;
+  int? get resetToken_GT;
+  double? get resetToken_AVERAGE_GT;
+  int? get resetToken_LONGEST_GT;
+  int? get resetToken_SHORTEST_GT;
+  int? get resetToken_GTE;
+  double? get resetToken_AVERAGE_GTE;
+  int? get resetToken_LONGEST_GTE;
+  int? get resetToken_SHORTEST_GTE;
+  int? get resetToken_LT;
+  double? get resetToken_AVERAGE_LT;
+  int? get resetToken_LONGEST_LT;
+  int? get resetToken_SHORTEST_LT;
+  int? get resetToken_LTE;
+  double? get resetToken_AVERAGE_LTE;
+  int? get resetToken_LONGEST_LTE;
+  int? get resetToken_SHORTEST_LTE;
+  GDateTime? get createdAt_EQUAL;
+  GDateTime? get createdAt_MIN_EQUAL;
+  GDateTime? get createdAt_MAX_EQUAL;
+  GDateTime? get createdAt_GT;
+  GDateTime? get createdAt_MIN_GT;
+  GDateTime? get createdAt_MAX_GT;
+  GDateTime? get createdAt_GTE;
+  GDateTime? get createdAt_MIN_GTE;
+  GDateTime? get createdAt_MAX_GTE;
+  GDateTime? get createdAt_LT;
+  GDateTime? get createdAt_MIN_LT;
+  GDateTime? get createdAt_MAX_LT;
+  GDateTime? get createdAt_LTE;
+  GDateTime? get createdAt_MIN_LTE;
+  GDateTime? get createdAt_MAX_LTE;
+  GDateTime? get updatedAt_EQUAL;
+  GDateTime? get updatedAt_MIN_EQUAL;
+  GDateTime? get updatedAt_MAX_EQUAL;
+  GDateTime? get updatedAt_GT;
+  GDateTime? get updatedAt_MIN_GT;
+  GDateTime? get updatedAt_MAX_GT;
+  GDateTime? get updatedAt_GTE;
+  GDateTime? get updatedAt_MIN_GTE;
+  GDateTime? get updatedAt_MAX_GTE;
+  GDateTime? get updatedAt_LT;
+  GDateTime? get updatedAt_MIN_LT;
+  GDateTime? get updatedAt_MAX_LT;
+  GDateTime? get updatedAt_LTE;
+  GDateTime? get updatedAt_MIN_LTE;
+  GDateTime? get updatedAt_MAX_LTE;
+  GDateTime? get resetTokenExpiry_EQUAL;
+  GDateTime? get resetTokenExpiry_MIN_EQUAL;
+  GDateTime? get resetTokenExpiry_MAX_EQUAL;
+  GDateTime? get resetTokenExpiry_GT;
+  GDateTime? get resetTokenExpiry_MIN_GT;
+  GDateTime? get resetTokenExpiry_MAX_GT;
+  GDateTime? get resetTokenExpiry_GTE;
+  GDateTime? get resetTokenExpiry_MIN_GTE;
+  GDateTime? get resetTokenExpiry_MAX_GTE;
+  GDateTime? get resetTokenExpiry_LT;
+  GDateTime? get resetTokenExpiry_MIN_LT;
+  GDateTime? get resetTokenExpiry_MAX_LT;
+  GDateTime? get resetTokenExpiry_LTE;
+  GDateTime? get resetTokenExpiry_MIN_LTE;
+  GDateTime? get resetTokenExpiry_MAX_LTE;
+  static Serializer<GStoryLikesNodeAggregationWhereInput> get serializer =>
+      _$gStoryLikesNodeAggregationWhereInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GStoryLikesNodeAggregationWhereInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryLikesNodeAggregationWhereInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GStoryLikesNodeAggregationWhereInput.serializer, json);
+}
+
+abstract class GStoryLikesUpdateConnectionInput
+    implements
+        Built<GStoryLikesUpdateConnectionInput,
+            GStoryLikesUpdateConnectionInputBuilder> {
+  GStoryLikesUpdateConnectionInput._();
+
+  factory GStoryLikesUpdateConnectionInput(
+          [Function(GStoryLikesUpdateConnectionInputBuilder b) updates]) =
+      _$GStoryLikesUpdateConnectionInput;
+
+  GUserUpdateInput? get node;
+  static Serializer<GStoryLikesUpdateConnectionInput> get serializer =>
+      _$gStoryLikesUpdateConnectionInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GStoryLikesUpdateConnectionInput.serializer, this)
+      as Map<String, dynamic>);
+  static GStoryLikesUpdateConnectionInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesUpdateConnectionInput.serializer, json);
+}
+
+abstract class GStoryLikesUpdateFieldInput
+    implements
+        Built<GStoryLikesUpdateFieldInput, GStoryLikesUpdateFieldInputBuilder> {
+  GStoryLikesUpdateFieldInput._();
+
+  factory GStoryLikesUpdateFieldInput(
+          [Function(GStoryLikesUpdateFieldInputBuilder b) updates]) =
+      _$GStoryLikesUpdateFieldInput;
+
+  GStoryLikesConnectionWhere? get where;
+  @BuiltValueField(wireName: 'update')
+  GStoryLikesUpdateConnectionInput? get Gupdate;
+  BuiltList<GStoryLikesConnectFieldInput>? get connect;
+  BuiltList<GStoryLikesDisconnectFieldInput>? get disconnect;
+  BuiltList<GStoryLikesCreateFieldInput>? get create;
+  BuiltList<GStoryLikesDeleteFieldInput>? get delete;
+  BuiltList<GStoryLikesConnectOrCreateFieldInput>? get connectOrCreate;
+  static Serializer<GStoryLikesUpdateFieldInput> get serializer =>
+      _$gStoryLikesUpdateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GStoryLikesUpdateFieldInput.serializer, this) as Map<String, dynamic>);
+  static GStoryLikesUpdateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GStoryLikesUpdateFieldInput.serializer, json);
+}
+
+abstract class GStoryOptions
+    implements Built<GStoryOptions, GStoryOptionsBuilder> {
+  GStoryOptions._();
+
+  factory GStoryOptions([Function(GStoryOptionsBuilder b) updates]) =
+      _$GStoryOptions;
+
+  BuiltList<GStorySort>? get sort;
+  int? get limit;
+  int? get offset;
+  static Serializer<GStoryOptions> get serializer => _$gStoryOptionsSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryOptions.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryOptions? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryOptions.serializer, json);
+}
+
+abstract class GStoryRelationInput
+    implements Built<GStoryRelationInput, GStoryRelationInputBuilder> {
+  GStoryRelationInput._();
+
+  factory GStoryRelationInput(
+      [Function(GStoryRelationInputBuilder b) updates]) = _$GStoryRelationInput;
+
+  GStoryCreatorCreateFieldInput? get creator;
+  BuiltList<GStoryLikesCreateFieldInput>? get likes;
+  static Serializer<GStoryRelationInput> get serializer =>
+      _$gStoryRelationInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryRelationInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryRelationInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryRelationInput.serializer, json);
+}
+
+abstract class GStorySort implements Built<GStorySort, GStorySortBuilder> {
+  GStorySort._();
+
+  factory GStorySort([Function(GStorySortBuilder b) updates]) = _$GStorySort;
+
+  GSortDirection? get id;
+  GSortDirection? get music;
+  GSortDirection? get media;
+  GSortDirection? get createdAt;
+  GSortDirection? get updatedAt;
+  static Serializer<GStorySort> get serializer => _$gStorySortSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStorySort.serializer, this)
+          as Map<String, dynamic>);
+  static GStorySort? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStorySort.serializer, json);
+}
+
+abstract class GStoryUniqueWhere
+    implements Built<GStoryUniqueWhere, GStoryUniqueWhereBuilder> {
+  GStoryUniqueWhere._();
+
+  factory GStoryUniqueWhere([Function(GStoryUniqueWhereBuilder b) updates]) =
+      _$GStoryUniqueWhere;
+
+  String? get id;
+  static Serializer<GStoryUniqueWhere> get serializer =>
+      _$gStoryUniqueWhereSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryUniqueWhere.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryUniqueWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryUniqueWhere.serializer, json);
+}
+
+abstract class GStoryUpdateInput
+    implements Built<GStoryUpdateInput, GStoryUpdateInputBuilder> {
+  GStoryUpdateInput._();
+
+  factory GStoryUpdateInput([Function(GStoryUpdateInputBuilder b) updates]) =
+      _$GStoryUpdateInput;
+
+  String? get music;
+  String? get media;
+  GStoryCreatorUpdateFieldInput? get creator;
+  BuiltList<GStoryLikesUpdateFieldInput>? get likes;
+  static Serializer<GStoryUpdateInput> get serializer =>
+      _$gStoryUpdateInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryUpdateInput.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryUpdateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryUpdateInput.serializer, json);
+}
+
+abstract class GStoryWhere implements Built<GStoryWhere, GStoryWhereBuilder> {
+  GStoryWhere._();
+
+  factory GStoryWhere([Function(GStoryWhereBuilder b) updates]) = _$GStoryWhere;
+
+  BuiltList<GStoryWhere>? get OR;
+  BuiltList<GStoryWhere>? get AND;
+  String? get id;
+  String? get id_NOT;
+  BuiltList<String>? get id_IN;
+  BuiltList<String>? get id_NOT_IN;
+  String? get id_CONTAINS;
+  String? get id_NOT_CONTAINS;
+  String? get id_STARTS_WITH;
+  String? get id_NOT_STARTS_WITH;
+  String? get id_ENDS_WITH;
+  String? get id_NOT_ENDS_WITH;
+  String? get music;
+  String? get music_NOT;
+  BuiltList<String>? get music_IN;
+  BuiltList<String>? get music_NOT_IN;
+  String? get music_CONTAINS;
+  String? get music_NOT_CONTAINS;
+  String? get music_STARTS_WITH;
+  String? get music_NOT_STARTS_WITH;
+  String? get music_ENDS_WITH;
+  String? get music_NOT_ENDS_WITH;
+  String? get media;
+  String? get media_NOT;
+  BuiltList<String>? get media_IN;
+  BuiltList<String>? get media_NOT_IN;
+  String? get media_CONTAINS;
+  String? get media_NOT_CONTAINS;
+  String? get media_STARTS_WITH;
+  String? get media_NOT_STARTS_WITH;
+  String? get media_ENDS_WITH;
+  String? get media_NOT_ENDS_WITH;
+  GDateTime? get createdAt;
+  GDateTime? get createdAt_NOT;
+  BuiltList<GDateTime>? get createdAt_IN;
+  BuiltList<GDateTime>? get createdAt_NOT_IN;
+  GDateTime? get createdAt_LT;
+  GDateTime? get createdAt_LTE;
+  GDateTime? get createdAt_GT;
+  GDateTime? get createdAt_GTE;
+  GDateTime? get updatedAt;
+  GDateTime? get updatedAt_NOT;
+  BuiltList<GDateTime>? get updatedAt_IN;
+  BuiltList<GDateTime>? get updatedAt_NOT_IN;
+  GDateTime? get updatedAt_LT;
+  GDateTime? get updatedAt_LTE;
+  GDateTime? get updatedAt_GT;
+  GDateTime? get updatedAt_GTE;
+  GUserWhere? get creator;
+  GUserWhere? get creator_NOT;
+  GStoryCreatorAggregateInput? get creatorAggregate;
+  GUserWhere? get likes;
+  GUserWhere? get likes_NOT;
+  GStoryLikesAggregateInput? get likesAggregate;
+  GStoryCreatorConnectionWhere? get creatorConnection;
+  GStoryCreatorConnectionWhere? get creatorConnection_NOT;
+  GStoryLikesConnectionWhere? get likesConnection;
+  GStoryLikesConnectionWhere? get likesConnection_NOT;
+  static Serializer<GStoryWhere> get serializer => _$gStoryWhereSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GStoryWhere.serializer, this)
+          as Map<String, dynamic>);
+  static GStoryWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GStoryWhere.serializer, json);
 }
 
 abstract class GUserCommentLikesAggregateInput
@@ -3407,7 +4702,8 @@ abstract class GUserCommentLikesUpdateFieldInput
       _$GUserCommentLikesUpdateFieldInput;
 
   GUserCommentLikesConnectionWhere? get where;
-  GUserCommentLikesUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GUserCommentLikesUpdateConnectionInput? get Gupdate;
   BuiltList<GUserCommentLikesConnectFieldInput>? get connect;
   BuiltList<GUserCommentLikesDisconnectFieldInput>? get disconnect;
   BuiltList<GUserCommentLikesCreateFieldInput>? get create;
@@ -3433,6 +4729,8 @@ abstract class GUserConnectInput
 
   BuiltList<GUserPostsConnectFieldInput>? get posts;
   BuiltList<GUserPostLikesConnectFieldInput>? get postLikes;
+  BuiltList<GUserStoriesConnectFieldInput>? get stories;
+  BuiltList<GUserStoryLikesConnectFieldInput>? get storyLikes;
   BuiltList<GUserCommentLikesConnectFieldInput>? get commentLikes;
   BuiltList<GUserFriendsConnectFieldInput>? get friends;
   static Serializer<GUserConnectInput> get serializer =>
@@ -3455,6 +4753,8 @@ abstract class GUserConnectOrCreateInput
 
   BuiltList<GUserPostsConnectOrCreateFieldInput>? get posts;
   BuiltList<GUserPostLikesConnectOrCreateFieldInput>? get postLikes;
+  BuiltList<GUserStoriesConnectOrCreateFieldInput>? get stories;
+  BuiltList<GUserStoryLikesConnectOrCreateFieldInput>? get storyLikes;
   BuiltList<GUserCommentLikesConnectOrCreateFieldInput>? get commentLikes;
   BuiltList<GUserFriendsConnectOrCreateFieldInput>? get friends;
   static Serializer<GUserConnectOrCreateInput> get serializer =>
@@ -3523,6 +4823,8 @@ abstract class GUserCreateInput
   GPointInput? get location;
   GUserPostsFieldInput? get posts;
   GUserPostLikesFieldInput? get postLikes;
+  GUserStoriesFieldInput? get stories;
+  GUserStoryLikesFieldInput? get storyLikes;
   GUserCommentLikesFieldInput? get commentLikes;
   GUserFriendsFieldInput? get friends;
   static Serializer<GUserCreateInput> get serializer =>
@@ -3543,6 +4845,8 @@ abstract class GUserDeleteInput
 
   BuiltList<GUserPostsDeleteFieldInput>? get posts;
   BuiltList<GUserPostLikesDeleteFieldInput>? get postLikes;
+  BuiltList<GUserStoriesDeleteFieldInput>? get stories;
+  BuiltList<GUserStoryLikesDeleteFieldInput>? get storyLikes;
   BuiltList<GUserCommentLikesDeleteFieldInput>? get commentLikes;
   BuiltList<GUserFriendsDeleteFieldInput>? get friends;
   static Serializer<GUserDeleteInput> get serializer =>
@@ -3564,6 +4868,8 @@ abstract class GUserDisconnectInput
 
   BuiltList<GUserPostsDisconnectFieldInput>? get posts;
   BuiltList<GUserPostLikesDisconnectFieldInput>? get postLikes;
+  BuiltList<GUserStoriesDisconnectFieldInput>? get stories;
+  BuiltList<GUserStoryLikesDisconnectFieldInput>? get storyLikes;
   BuiltList<GUserCommentLikesDisconnectFieldInput>? get commentLikes;
   BuiltList<GUserFriendsDisconnectFieldInput>? get friends;
   static Serializer<GUserDisconnectInput> get serializer =>
@@ -4062,7 +5368,8 @@ abstract class GUserFriendsUpdateFieldInput
       _$GUserFriendsUpdateFieldInput;
 
   GUserFriendsConnectionWhere? get where;
-  GUserFriendsUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GUserFriendsUpdateConnectionInput? get Gupdate;
   BuiltList<GUserFriendsConnectFieldInput>? get connect;
   BuiltList<GUserFriendsDisconnectFieldInput>? get disconnect;
   BuiltList<GUserFriendsCreateFieldInput>? get create;
@@ -4446,7 +5753,8 @@ abstract class GUserPostLikesUpdateFieldInput
       _$GUserPostLikesUpdateFieldInput;
 
   GUserPostLikesConnectionWhere? get where;
-  GUserPostLikesUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GUserPostLikesUpdateConnectionInput? get Gupdate;
   BuiltList<GUserPostLikesConnectFieldInput>? get connect;
   BuiltList<GUserPostLikesDisconnectFieldInput>? get disconnect;
   BuiltList<GUserPostLikesCreateFieldInput>? get create;
@@ -4801,7 +6109,8 @@ abstract class GUserPostsUpdateFieldInput
       _$GUserPostsUpdateFieldInput;
 
   GUserPostsConnectionWhere? get where;
-  GUserPostsUpdateConnectionInput? get update;
+  @BuiltValueField(wireName: 'update')
+  GUserPostsUpdateConnectionInput? get Gupdate;
   BuiltList<GUserPostsConnectFieldInput>? get connect;
   BuiltList<GUserPostsDisconnectFieldInput>? get disconnect;
   BuiltList<GUserPostsCreateFieldInput>? get create;
@@ -4825,6 +6134,8 @@ abstract class GUserRelationInput
 
   BuiltList<GUserPostsCreateFieldInput>? get posts;
   BuiltList<GUserPostLikesCreateFieldInput>? get postLikes;
+  BuiltList<GUserStoriesCreateFieldInput>? get stories;
+  BuiltList<GUserStoryLikesCreateFieldInput>? get storyLikes;
   BuiltList<GUserCommentLikesCreateFieldInput>? get commentLikes;
   BuiltList<GUserFriendsCreateFieldInput>? get friends;
   static Serializer<GUserRelationInput> get serializer =>
@@ -4860,6 +6171,738 @@ abstract class GUserSort implements Built<GUserSort, GUserSortBuilder> {
           as Map<String, dynamic>);
   static GUserSort? fromJson(Map<String, dynamic> json) =>
       _i2.serializers.deserializeWith(GUserSort.serializer, json);
+}
+
+abstract class GUserStoriesAggregateInput
+    implements
+        Built<GUserStoriesAggregateInput, GUserStoriesAggregateInputBuilder> {
+  GUserStoriesAggregateInput._();
+
+  factory GUserStoriesAggregateInput(
+          [Function(GUserStoriesAggregateInputBuilder b) updates]) =
+      _$GUserStoriesAggregateInput;
+
+  int? get count;
+  int? get count_LT;
+  int? get count_LTE;
+  int? get count_GT;
+  int? get count_GTE;
+  BuiltList<GUserStoriesAggregateInput>? get AND;
+  BuiltList<GUserStoriesAggregateInput>? get OR;
+  GUserStoriesNodeAggregationWhereInput? get node;
+  static Serializer<GUserStoriesAggregateInput> get serializer =>
+      _$gUserStoriesAggregateInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesAggregateInput.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesAggregateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesAggregateInput.serializer, json);
+}
+
+abstract class GUserStoriesConnectFieldInput
+    implements
+        Built<GUserStoriesConnectFieldInput,
+            GUserStoriesConnectFieldInputBuilder> {
+  GUserStoriesConnectFieldInput._();
+
+  factory GUserStoriesConnectFieldInput(
+          [Function(GUserStoriesConnectFieldInputBuilder b) updates]) =
+      _$GUserStoriesConnectFieldInput;
+
+  GStoryConnectWhere? get where;
+  BuiltList<GStoryConnectInput>? get connect;
+  static Serializer<GUserStoriesConnectFieldInput> get serializer =>
+      _$gUserStoriesConnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesConnectFieldInput.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesConnectFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesConnectFieldInput.serializer, json);
+}
+
+abstract class GUserStoriesConnectionSort
+    implements
+        Built<GUserStoriesConnectionSort, GUserStoriesConnectionSortBuilder> {
+  GUserStoriesConnectionSort._();
+
+  factory GUserStoriesConnectionSort(
+          [Function(GUserStoriesConnectionSortBuilder b) updates]) =
+      _$GUserStoriesConnectionSort;
+
+  GStorySort? get node;
+  static Serializer<GUserStoriesConnectionSort> get serializer =>
+      _$gUserStoriesConnectionSortSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesConnectionSort.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesConnectionSort? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesConnectionSort.serializer, json);
+}
+
+abstract class GUserStoriesConnectionWhere
+    implements
+        Built<GUserStoriesConnectionWhere, GUserStoriesConnectionWhereBuilder> {
+  GUserStoriesConnectionWhere._();
+
+  factory GUserStoriesConnectionWhere(
+          [Function(GUserStoriesConnectionWhereBuilder b) updates]) =
+      _$GUserStoriesConnectionWhere;
+
+  BuiltList<GUserStoriesConnectionWhere>? get AND;
+  BuiltList<GUserStoriesConnectionWhere>? get OR;
+  GStoryWhere? get node;
+  GStoryWhere? get node_NOT;
+  static Serializer<GUserStoriesConnectionWhere> get serializer =>
+      _$gUserStoriesConnectionWhereSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesConnectionWhere.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesConnectionWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesConnectionWhere.serializer, json);
+}
+
+abstract class GUserStoriesConnectOrCreateFieldInput
+    implements
+        Built<GUserStoriesConnectOrCreateFieldInput,
+            GUserStoriesConnectOrCreateFieldInputBuilder> {
+  GUserStoriesConnectOrCreateFieldInput._();
+
+  factory GUserStoriesConnectOrCreateFieldInput(
+          [Function(GUserStoriesConnectOrCreateFieldInputBuilder b) updates]) =
+      _$GUserStoriesConnectOrCreateFieldInput;
+
+  GStoryConnectOrCreateWhere get where;
+  GUserStoriesConnectOrCreateFieldInputOnCreate get onCreate;
+  static Serializer<GUserStoriesConnectOrCreateFieldInput> get serializer =>
+      _$gUserStoriesConnectOrCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoriesConnectOrCreateFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoriesConnectOrCreateFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoriesConnectOrCreateFieldInput.serializer, json);
+}
+
+abstract class GUserStoriesConnectOrCreateFieldInputOnCreate
+    implements
+        Built<GUserStoriesConnectOrCreateFieldInputOnCreate,
+            GUserStoriesConnectOrCreateFieldInputOnCreateBuilder> {
+  GUserStoriesConnectOrCreateFieldInputOnCreate._();
+
+  factory GUserStoriesConnectOrCreateFieldInputOnCreate(
+      [Function(GUserStoriesConnectOrCreateFieldInputOnCreateBuilder b)
+          updates]) = _$GUserStoriesConnectOrCreateFieldInputOnCreate;
+
+  GStoryCreateInput get node;
+  static Serializer<GUserStoriesConnectOrCreateFieldInputOnCreate>
+      get serializer =>
+          _$gUserStoriesConnectOrCreateFieldInputOnCreateSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GUserStoriesConnectOrCreateFieldInputOnCreate.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoriesConnectOrCreateFieldInputOnCreate? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoriesConnectOrCreateFieldInputOnCreate.serializer, json);
+}
+
+abstract class GUserStoriesCreateFieldInput
+    implements
+        Built<GUserStoriesCreateFieldInput,
+            GUserStoriesCreateFieldInputBuilder> {
+  GUserStoriesCreateFieldInput._();
+
+  factory GUserStoriesCreateFieldInput(
+          [Function(GUserStoriesCreateFieldInputBuilder b) updates]) =
+      _$GUserStoriesCreateFieldInput;
+
+  GStoryCreateInput get node;
+  static Serializer<GUserStoriesCreateFieldInput> get serializer =>
+      _$gUserStoriesCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesCreateFieldInput.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesCreateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesCreateFieldInput.serializer, json);
+}
+
+abstract class GUserStoriesDeleteFieldInput
+    implements
+        Built<GUserStoriesDeleteFieldInput,
+            GUserStoriesDeleteFieldInputBuilder> {
+  GUserStoriesDeleteFieldInput._();
+
+  factory GUserStoriesDeleteFieldInput(
+          [Function(GUserStoriesDeleteFieldInputBuilder b) updates]) =
+      _$GUserStoriesDeleteFieldInput;
+
+  GUserStoriesConnectionWhere? get where;
+  GStoryDeleteInput? get delete;
+  static Serializer<GUserStoriesDeleteFieldInput> get serializer =>
+      _$gUserStoriesDeleteFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesDeleteFieldInput.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesDeleteFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesDeleteFieldInput.serializer, json);
+}
+
+abstract class GUserStoriesDisconnectFieldInput
+    implements
+        Built<GUserStoriesDisconnectFieldInput,
+            GUserStoriesDisconnectFieldInputBuilder> {
+  GUserStoriesDisconnectFieldInput._();
+
+  factory GUserStoriesDisconnectFieldInput(
+          [Function(GUserStoriesDisconnectFieldInputBuilder b) updates]) =
+      _$GUserStoriesDisconnectFieldInput;
+
+  GUserStoriesConnectionWhere? get where;
+  GStoryDisconnectInput? get disconnect;
+  static Serializer<GUserStoriesDisconnectFieldInput> get serializer =>
+      _$gUserStoriesDisconnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoriesDisconnectFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoriesDisconnectFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesDisconnectFieldInput.serializer, json);
+}
+
+abstract class GUserStoriesFieldInput
+    implements Built<GUserStoriesFieldInput, GUserStoriesFieldInputBuilder> {
+  GUserStoriesFieldInput._();
+
+  factory GUserStoriesFieldInput(
+          [Function(GUserStoriesFieldInputBuilder b) updates]) =
+      _$GUserStoriesFieldInput;
+
+  BuiltList<GUserStoriesCreateFieldInput>? get create;
+  BuiltList<GUserStoriesConnectFieldInput>? get connect;
+  BuiltList<GUserStoriesConnectOrCreateFieldInput>? get connectOrCreate;
+  static Serializer<GUserStoriesFieldInput> get serializer =>
+      _$gUserStoriesFieldInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GUserStoriesFieldInput.serializer, this)
+          as Map<String, dynamic>);
+  static GUserStoriesFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(GUserStoriesFieldInput.serializer, json);
+}
+
+abstract class GUserStoriesNodeAggregationWhereInput
+    implements
+        Built<GUserStoriesNodeAggregationWhereInput,
+            GUserStoriesNodeAggregationWhereInputBuilder> {
+  GUserStoriesNodeAggregationWhereInput._();
+
+  factory GUserStoriesNodeAggregationWhereInput(
+          [Function(GUserStoriesNodeAggregationWhereInputBuilder b) updates]) =
+      _$GUserStoriesNodeAggregationWhereInput;
+
+  BuiltList<GUserStoriesNodeAggregationWhereInput>? get AND;
+  BuiltList<GUserStoriesNodeAggregationWhereInput>? get OR;
+  String? get id_EQUAL;
+  String? get music_EQUAL;
+  double? get music_AVERAGE_EQUAL;
+  int? get music_LONGEST_EQUAL;
+  int? get music_SHORTEST_EQUAL;
+  int? get music_GT;
+  double? get music_AVERAGE_GT;
+  int? get music_LONGEST_GT;
+  int? get music_SHORTEST_GT;
+  int? get music_GTE;
+  double? get music_AVERAGE_GTE;
+  int? get music_LONGEST_GTE;
+  int? get music_SHORTEST_GTE;
+  int? get music_LT;
+  double? get music_AVERAGE_LT;
+  int? get music_LONGEST_LT;
+  int? get music_SHORTEST_LT;
+  int? get music_LTE;
+  double? get music_AVERAGE_LTE;
+  int? get music_LONGEST_LTE;
+  int? get music_SHORTEST_LTE;
+  String? get media_EQUAL;
+  double? get media_AVERAGE_EQUAL;
+  int? get media_LONGEST_EQUAL;
+  int? get media_SHORTEST_EQUAL;
+  int? get media_GT;
+  double? get media_AVERAGE_GT;
+  int? get media_LONGEST_GT;
+  int? get media_SHORTEST_GT;
+  int? get media_GTE;
+  double? get media_AVERAGE_GTE;
+  int? get media_LONGEST_GTE;
+  int? get media_SHORTEST_GTE;
+  int? get media_LT;
+  double? get media_AVERAGE_LT;
+  int? get media_LONGEST_LT;
+  int? get media_SHORTEST_LT;
+  int? get media_LTE;
+  double? get media_AVERAGE_LTE;
+  int? get media_LONGEST_LTE;
+  int? get media_SHORTEST_LTE;
+  GDateTime? get createdAt_EQUAL;
+  GDateTime? get createdAt_MIN_EQUAL;
+  GDateTime? get createdAt_MAX_EQUAL;
+  GDateTime? get createdAt_GT;
+  GDateTime? get createdAt_MIN_GT;
+  GDateTime? get createdAt_MAX_GT;
+  GDateTime? get createdAt_GTE;
+  GDateTime? get createdAt_MIN_GTE;
+  GDateTime? get createdAt_MAX_GTE;
+  GDateTime? get createdAt_LT;
+  GDateTime? get createdAt_MIN_LT;
+  GDateTime? get createdAt_MAX_LT;
+  GDateTime? get createdAt_LTE;
+  GDateTime? get createdAt_MIN_LTE;
+  GDateTime? get createdAt_MAX_LTE;
+  GDateTime? get updatedAt_EQUAL;
+  GDateTime? get updatedAt_MIN_EQUAL;
+  GDateTime? get updatedAt_MAX_EQUAL;
+  GDateTime? get updatedAt_GT;
+  GDateTime? get updatedAt_MIN_GT;
+  GDateTime? get updatedAt_MAX_GT;
+  GDateTime? get updatedAt_GTE;
+  GDateTime? get updatedAt_MIN_GTE;
+  GDateTime? get updatedAt_MAX_GTE;
+  GDateTime? get updatedAt_LT;
+  GDateTime? get updatedAt_MIN_LT;
+  GDateTime? get updatedAt_MAX_LT;
+  GDateTime? get updatedAt_LTE;
+  GDateTime? get updatedAt_MIN_LTE;
+  GDateTime? get updatedAt_MAX_LTE;
+  static Serializer<GUserStoriesNodeAggregationWhereInput> get serializer =>
+      _$gUserStoriesNodeAggregationWhereInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoriesNodeAggregationWhereInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoriesNodeAggregationWhereInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoriesNodeAggregationWhereInput.serializer, json);
+}
+
+abstract class GUserStoriesUpdateConnectionInput
+    implements
+        Built<GUserStoriesUpdateConnectionInput,
+            GUserStoriesUpdateConnectionInputBuilder> {
+  GUserStoriesUpdateConnectionInput._();
+
+  factory GUserStoriesUpdateConnectionInput(
+          [Function(GUserStoriesUpdateConnectionInputBuilder b) updates]) =
+      _$GUserStoriesUpdateConnectionInput;
+
+  GStoryUpdateInput? get node;
+  static Serializer<GUserStoriesUpdateConnectionInput> get serializer =>
+      _$gUserStoriesUpdateConnectionInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoriesUpdateConnectionInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoriesUpdateConnectionInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesUpdateConnectionInput.serializer, json);
+}
+
+abstract class GUserStoriesUpdateFieldInput
+    implements
+        Built<GUserStoriesUpdateFieldInput,
+            GUserStoriesUpdateFieldInputBuilder> {
+  GUserStoriesUpdateFieldInput._();
+
+  factory GUserStoriesUpdateFieldInput(
+          [Function(GUserStoriesUpdateFieldInputBuilder b) updates]) =
+      _$GUserStoriesUpdateFieldInput;
+
+  GUserStoriesConnectionWhere? get where;
+  @BuiltValueField(wireName: 'update')
+  GUserStoriesUpdateConnectionInput? get Gupdate;
+  BuiltList<GUserStoriesConnectFieldInput>? get connect;
+  BuiltList<GUserStoriesDisconnectFieldInput>? get disconnect;
+  BuiltList<GUserStoriesCreateFieldInput>? get create;
+  BuiltList<GUserStoriesDeleteFieldInput>? get delete;
+  BuiltList<GUserStoriesConnectOrCreateFieldInput>? get connectOrCreate;
+  static Serializer<GUserStoriesUpdateFieldInput> get serializer =>
+      _$gUserStoriesUpdateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoriesUpdateFieldInput.serializer, this) as Map<String, dynamic>);
+  static GUserStoriesUpdateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoriesUpdateFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesAggregateInput
+    implements
+        Built<GUserStoryLikesAggregateInput,
+            GUserStoryLikesAggregateInputBuilder> {
+  GUserStoryLikesAggregateInput._();
+
+  factory GUserStoryLikesAggregateInput(
+          [Function(GUserStoryLikesAggregateInputBuilder b) updates]) =
+      _$GUserStoryLikesAggregateInput;
+
+  int? get count;
+  int? get count_LT;
+  int? get count_LTE;
+  int? get count_GT;
+  int? get count_GTE;
+  BuiltList<GUserStoryLikesAggregateInput>? get AND;
+  BuiltList<GUserStoryLikesAggregateInput>? get OR;
+  GUserStoryLikesNodeAggregationWhereInput? get node;
+  static Serializer<GUserStoryLikesAggregateInput> get serializer =>
+      _$gUserStoryLikesAggregateInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoryLikesAggregateInput.serializer, this) as Map<String, dynamic>);
+  static GUserStoryLikesAggregateInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesAggregateInput.serializer, json);
+}
+
+abstract class GUserStoryLikesConnectFieldInput
+    implements
+        Built<GUserStoryLikesConnectFieldInput,
+            GUserStoryLikesConnectFieldInputBuilder> {
+  GUserStoryLikesConnectFieldInput._();
+
+  factory GUserStoryLikesConnectFieldInput(
+          [Function(GUserStoryLikesConnectFieldInputBuilder b) updates]) =
+      _$GUserStoryLikesConnectFieldInput;
+
+  GStoryConnectWhere? get where;
+  BuiltList<GStoryConnectInput>? get connect;
+  static Serializer<GUserStoryLikesConnectFieldInput> get serializer =>
+      _$gUserStoryLikesConnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoryLikesConnectFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesConnectFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesConnectFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesConnectionSort
+    implements
+        Built<GUserStoryLikesConnectionSort,
+            GUserStoryLikesConnectionSortBuilder> {
+  GUserStoryLikesConnectionSort._();
+
+  factory GUserStoryLikesConnectionSort(
+          [Function(GUserStoryLikesConnectionSortBuilder b) updates]) =
+      _$GUserStoryLikesConnectionSort;
+
+  GStorySort? get node;
+  static Serializer<GUserStoryLikesConnectionSort> get serializer =>
+      _$gUserStoryLikesConnectionSortSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoryLikesConnectionSort.serializer, this) as Map<String, dynamic>);
+  static GUserStoryLikesConnectionSort? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesConnectionSort.serializer, json);
+}
+
+abstract class GUserStoryLikesConnectionWhere
+    implements
+        Built<GUserStoryLikesConnectionWhere,
+            GUserStoryLikesConnectionWhereBuilder> {
+  GUserStoryLikesConnectionWhere._();
+
+  factory GUserStoryLikesConnectionWhere(
+          [Function(GUserStoryLikesConnectionWhereBuilder b) updates]) =
+      _$GUserStoryLikesConnectionWhere;
+
+  BuiltList<GUserStoryLikesConnectionWhere>? get AND;
+  BuiltList<GUserStoryLikesConnectionWhere>? get OR;
+  GStoryWhere? get node;
+  GStoryWhere? get node_NOT;
+  static Serializer<GUserStoryLikesConnectionWhere> get serializer =>
+      _$gUserStoryLikesConnectionWhereSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+      GUserStoryLikesConnectionWhere.serializer, this) as Map<String, dynamic>);
+  static GUserStoryLikesConnectionWhere? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesConnectionWhere.serializer, json);
+}
+
+abstract class GUserStoryLikesConnectOrCreateFieldInput
+    implements
+        Built<GUserStoryLikesConnectOrCreateFieldInput,
+            GUserStoryLikesConnectOrCreateFieldInputBuilder> {
+  GUserStoryLikesConnectOrCreateFieldInput._();
+
+  factory GUserStoryLikesConnectOrCreateFieldInput(
+      [Function(GUserStoryLikesConnectOrCreateFieldInputBuilder b)
+          updates]) = _$GUserStoryLikesConnectOrCreateFieldInput;
+
+  GStoryConnectOrCreateWhere get where;
+  GUserStoryLikesConnectOrCreateFieldInputOnCreate get onCreate;
+  static Serializer<GUserStoryLikesConnectOrCreateFieldInput> get serializer =>
+      _$gUserStoryLikesConnectOrCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GUserStoryLikesConnectOrCreateFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesConnectOrCreateFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoryLikesConnectOrCreateFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesConnectOrCreateFieldInputOnCreate
+    implements
+        Built<GUserStoryLikesConnectOrCreateFieldInputOnCreate,
+            GUserStoryLikesConnectOrCreateFieldInputOnCreateBuilder> {
+  GUserStoryLikesConnectOrCreateFieldInputOnCreate._();
+
+  factory GUserStoryLikesConnectOrCreateFieldInputOnCreate(
+      [Function(GUserStoryLikesConnectOrCreateFieldInputOnCreateBuilder b)
+          updates]) = _$GUserStoryLikesConnectOrCreateFieldInputOnCreate;
+
+  GStoryCreateInput get node;
+  static Serializer<GUserStoryLikesConnectOrCreateFieldInputOnCreate>
+      get serializer =>
+          _$gUserStoryLikesConnectOrCreateFieldInputOnCreateSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GUserStoryLikesConnectOrCreateFieldInputOnCreate.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesConnectOrCreateFieldInputOnCreate? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoryLikesConnectOrCreateFieldInputOnCreate.serializer, json);
+}
+
+abstract class GUserStoryLikesCreateFieldInput
+    implements
+        Built<GUserStoryLikesCreateFieldInput,
+            GUserStoryLikesCreateFieldInputBuilder> {
+  GUserStoryLikesCreateFieldInput._();
+
+  factory GUserStoryLikesCreateFieldInput(
+          [Function(GUserStoryLikesCreateFieldInputBuilder b) updates]) =
+      _$GUserStoryLikesCreateFieldInput;
+
+  GStoryCreateInput get node;
+  static Serializer<GUserStoryLikesCreateFieldInput> get serializer =>
+      _$gUserStoryLikesCreateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoryLikesCreateFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesCreateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesCreateFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesDeleteFieldInput
+    implements
+        Built<GUserStoryLikesDeleteFieldInput,
+            GUserStoryLikesDeleteFieldInputBuilder> {
+  GUserStoryLikesDeleteFieldInput._();
+
+  factory GUserStoryLikesDeleteFieldInput(
+          [Function(GUserStoryLikesDeleteFieldInputBuilder b) updates]) =
+      _$GUserStoryLikesDeleteFieldInput;
+
+  GUserStoryLikesConnectionWhere? get where;
+  GStoryDeleteInput? get delete;
+  static Serializer<GUserStoryLikesDeleteFieldInput> get serializer =>
+      _$gUserStoryLikesDeleteFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoryLikesDeleteFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesDeleteFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesDeleteFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesDisconnectFieldInput
+    implements
+        Built<GUserStoryLikesDisconnectFieldInput,
+            GUserStoryLikesDisconnectFieldInputBuilder> {
+  GUserStoryLikesDisconnectFieldInput._();
+
+  factory GUserStoryLikesDisconnectFieldInput(
+          [Function(GUserStoryLikesDisconnectFieldInputBuilder b) updates]) =
+      _$GUserStoryLikesDisconnectFieldInput;
+
+  GUserStoryLikesConnectionWhere? get where;
+  GStoryDisconnectInput? get disconnect;
+  static Serializer<GUserStoryLikesDisconnectFieldInput> get serializer =>
+      _$gUserStoryLikesDisconnectFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoryLikesDisconnectFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesDisconnectFieldInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoryLikesDisconnectFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesFieldInput
+    implements
+        Built<GUserStoryLikesFieldInput, GUserStoryLikesFieldInputBuilder> {
+  GUserStoryLikesFieldInput._();
+
+  factory GUserStoryLikesFieldInput(
+          [Function(GUserStoryLikesFieldInputBuilder b) updates]) =
+      _$GUserStoryLikesFieldInput;
+
+  BuiltList<GUserStoryLikesCreateFieldInput>? get create;
+  BuiltList<GUserStoryLikesConnectFieldInput>? get connect;
+  BuiltList<GUserStoryLikesConnectOrCreateFieldInput>? get connectOrCreate;
+  static Serializer<GUserStoryLikesFieldInput> get serializer =>
+      _$gUserStoryLikesFieldInputSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i2.serializers.serializeWith(GUserStoryLikesFieldInput.serializer, this)
+          as Map<String, dynamic>);
+  static GUserStoryLikesFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesFieldInput.serializer, json);
+}
+
+abstract class GUserStoryLikesNodeAggregationWhereInput
+    implements
+        Built<GUserStoryLikesNodeAggregationWhereInput,
+            GUserStoryLikesNodeAggregationWhereInputBuilder> {
+  GUserStoryLikesNodeAggregationWhereInput._();
+
+  factory GUserStoryLikesNodeAggregationWhereInput(
+      [Function(GUserStoryLikesNodeAggregationWhereInputBuilder b)
+          updates]) = _$GUserStoryLikesNodeAggregationWhereInput;
+
+  BuiltList<GUserStoryLikesNodeAggregationWhereInput>? get AND;
+  BuiltList<GUserStoryLikesNodeAggregationWhereInput>? get OR;
+  String? get id_EQUAL;
+  String? get music_EQUAL;
+  double? get music_AVERAGE_EQUAL;
+  int? get music_LONGEST_EQUAL;
+  int? get music_SHORTEST_EQUAL;
+  int? get music_GT;
+  double? get music_AVERAGE_GT;
+  int? get music_LONGEST_GT;
+  int? get music_SHORTEST_GT;
+  int? get music_GTE;
+  double? get music_AVERAGE_GTE;
+  int? get music_LONGEST_GTE;
+  int? get music_SHORTEST_GTE;
+  int? get music_LT;
+  double? get music_AVERAGE_LT;
+  int? get music_LONGEST_LT;
+  int? get music_SHORTEST_LT;
+  int? get music_LTE;
+  double? get music_AVERAGE_LTE;
+  int? get music_LONGEST_LTE;
+  int? get music_SHORTEST_LTE;
+  String? get media_EQUAL;
+  double? get media_AVERAGE_EQUAL;
+  int? get media_LONGEST_EQUAL;
+  int? get media_SHORTEST_EQUAL;
+  int? get media_GT;
+  double? get media_AVERAGE_GT;
+  int? get media_LONGEST_GT;
+  int? get media_SHORTEST_GT;
+  int? get media_GTE;
+  double? get media_AVERAGE_GTE;
+  int? get media_LONGEST_GTE;
+  int? get media_SHORTEST_GTE;
+  int? get media_LT;
+  double? get media_AVERAGE_LT;
+  int? get media_LONGEST_LT;
+  int? get media_SHORTEST_LT;
+  int? get media_LTE;
+  double? get media_AVERAGE_LTE;
+  int? get media_LONGEST_LTE;
+  int? get media_SHORTEST_LTE;
+  GDateTime? get createdAt_EQUAL;
+  GDateTime? get createdAt_MIN_EQUAL;
+  GDateTime? get createdAt_MAX_EQUAL;
+  GDateTime? get createdAt_GT;
+  GDateTime? get createdAt_MIN_GT;
+  GDateTime? get createdAt_MAX_GT;
+  GDateTime? get createdAt_GTE;
+  GDateTime? get createdAt_MIN_GTE;
+  GDateTime? get createdAt_MAX_GTE;
+  GDateTime? get createdAt_LT;
+  GDateTime? get createdAt_MIN_LT;
+  GDateTime? get createdAt_MAX_LT;
+  GDateTime? get createdAt_LTE;
+  GDateTime? get createdAt_MIN_LTE;
+  GDateTime? get createdAt_MAX_LTE;
+  GDateTime? get updatedAt_EQUAL;
+  GDateTime? get updatedAt_MIN_EQUAL;
+  GDateTime? get updatedAt_MAX_EQUAL;
+  GDateTime? get updatedAt_GT;
+  GDateTime? get updatedAt_MIN_GT;
+  GDateTime? get updatedAt_MAX_GT;
+  GDateTime? get updatedAt_GTE;
+  GDateTime? get updatedAt_MIN_GTE;
+  GDateTime? get updatedAt_MAX_GTE;
+  GDateTime? get updatedAt_LT;
+  GDateTime? get updatedAt_MIN_LT;
+  GDateTime? get updatedAt_MAX_LT;
+  GDateTime? get updatedAt_LTE;
+  GDateTime? get updatedAt_MIN_LTE;
+  GDateTime? get updatedAt_MAX_LTE;
+  static Serializer<GUserStoryLikesNodeAggregationWhereInput> get serializer =>
+      _$gUserStoryLikesNodeAggregationWhereInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers.serializeWith(
+          GUserStoryLikesNodeAggregationWhereInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesNodeAggregationWhereInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoryLikesNodeAggregationWhereInput.serializer, json);
+}
+
+abstract class GUserStoryLikesUpdateConnectionInput
+    implements
+        Built<GUserStoryLikesUpdateConnectionInput,
+            GUserStoryLikesUpdateConnectionInputBuilder> {
+  GUserStoryLikesUpdateConnectionInput._();
+
+  factory GUserStoryLikesUpdateConnectionInput(
+          [Function(GUserStoryLikesUpdateConnectionInputBuilder b) updates]) =
+      _$GUserStoryLikesUpdateConnectionInput;
+
+  GStoryUpdateInput? get node;
+  static Serializer<GUserStoryLikesUpdateConnectionInput> get serializer =>
+      _$gUserStoryLikesUpdateConnectionInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoryLikesUpdateConnectionInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesUpdateConnectionInput? fromJson(
+          Map<String, dynamic> json) =>
+      _i2.serializers.deserializeWith(
+          GUserStoryLikesUpdateConnectionInput.serializer, json);
+}
+
+abstract class GUserStoryLikesUpdateFieldInput
+    implements
+        Built<GUserStoryLikesUpdateFieldInput,
+            GUserStoryLikesUpdateFieldInputBuilder> {
+  GUserStoryLikesUpdateFieldInput._();
+
+  factory GUserStoryLikesUpdateFieldInput(
+          [Function(GUserStoryLikesUpdateFieldInputBuilder b) updates]) =
+      _$GUserStoryLikesUpdateFieldInput;
+
+  GUserStoryLikesConnectionWhere? get where;
+  @BuiltValueField(wireName: 'update')
+  GUserStoryLikesUpdateConnectionInput? get Gupdate;
+  BuiltList<GUserStoryLikesConnectFieldInput>? get connect;
+  BuiltList<GUserStoryLikesDisconnectFieldInput>? get disconnect;
+  BuiltList<GUserStoryLikesCreateFieldInput>? get create;
+  BuiltList<GUserStoryLikesDeleteFieldInput>? get delete;
+  BuiltList<GUserStoryLikesConnectOrCreateFieldInput>? get connectOrCreate;
+  static Serializer<GUserStoryLikesUpdateFieldInput> get serializer =>
+      _$gUserStoryLikesUpdateFieldInputSerializer;
+  Map<String, dynamic> toJson() => (_i2.serializers
+          .serializeWith(GUserStoryLikesUpdateFieldInput.serializer, this)
+      as Map<String, dynamic>);
+  static GUserStoryLikesUpdateFieldInput? fromJson(Map<String, dynamic> json) =>
+      _i2.serializers
+          .deserializeWith(GUserStoryLikesUpdateFieldInput.serializer, json);
 }
 
 abstract class GUserUniqueWhere
@@ -4900,6 +6943,8 @@ abstract class GUserUpdateInput
   GPointInput? get location;
   BuiltList<GUserPostsUpdateFieldInput>? get posts;
   BuiltList<GUserPostLikesUpdateFieldInput>? get postLikes;
+  BuiltList<GUserStoriesUpdateFieldInput>? get stories;
+  BuiltList<GUserStoryLikesUpdateFieldInput>? get storyLikes;
   BuiltList<GUserCommentLikesUpdateFieldInput>? get commentLikes;
   BuiltList<GUserFriendsUpdateFieldInput>? get friends;
   static Serializer<GUserUpdateInput> get serializer =>
@@ -5047,6 +7092,12 @@ abstract class GUserWhere implements Built<GUserWhere, GUserWhereBuilder> {
   GPostWhere? get postLikes;
   GPostWhere? get postLikes_NOT;
   GUserPostLikesAggregateInput? get postLikesAggregate;
+  GStoryWhere? get stories;
+  GStoryWhere? get stories_NOT;
+  GUserStoriesAggregateInput? get storiesAggregate;
+  GStoryWhere? get storyLikes;
+  GStoryWhere? get storyLikes_NOT;
+  GUserStoryLikesAggregateInput? get storyLikesAggregate;
   GCommentWhere? get commentLikes;
   GCommentWhere? get commentLikes_NOT;
   GUserCommentLikesAggregateInput? get commentLikesAggregate;
@@ -5057,6 +7108,10 @@ abstract class GUserWhere implements Built<GUserWhere, GUserWhereBuilder> {
   GUserPostsConnectionWhere? get postsConnection_NOT;
   GUserPostLikesConnectionWhere? get postLikesConnection;
   GUserPostLikesConnectionWhere? get postLikesConnection_NOT;
+  GUserStoriesConnectionWhere? get storiesConnection;
+  GUserStoriesConnectionWhere? get storiesConnection_NOT;
+  GUserStoryLikesConnectionWhere? get storyLikesConnection;
+  GUserStoryLikesConnectionWhere? get storyLikesConnection_NOT;
   GUserCommentLikesConnectionWhere? get commentLikesConnection;
   GUserCommentLikesConnectionWhere? get commentLikesConnection_NOT;
   GUserFriendsConnectionWhere? get friendsConnection;

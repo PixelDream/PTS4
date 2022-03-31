@@ -1,0 +1,19 @@
+query FeedInfo($user: UserWhere) {
+    users(where: $user) {
+        id
+        pseudo
+        firstName
+        lastName
+        biography
+        image
+        postsConnection {
+            totalCount
+        }
+        friendsConnection {
+            totalCount
+        }
+        storiesConnection {
+            totalCount
+        }
+    }
+}
